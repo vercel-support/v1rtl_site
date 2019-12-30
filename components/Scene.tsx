@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { useEffect, useRef } from 'preact/hooks'
 import * as THREE from 'three'
 
-const Scene = ({ objects }) => {
+type SceneProps = {
+  objects: THREE.Object3D[]
+}
+
+const Scene = ({ objects }: SceneProps) => {
   let scene, camera
   let renderer, controls
 
@@ -31,31 +34,7 @@ const Scene = ({ objects }) => {
     renderer.render(scene, camera)
   }, [])
 
-  const render = time => {
-    time *= 0.001
-
-    for (let i of objects) {
-      i.rotation.y = time
-    }
-    if (renderer) {
-      renderer.setPixelRatio(devicePixelRatio)
-      renderer.render(scene, camera)
-    }
-
-    if (camera) {
-      camera.updateProjectionMatrix()
-    }
-
-    if (controls) {
-      controls.update()
-    }
-
-    requestAnimationFrame(render)
-  }
-
-  requestAnimationFrame(render)
-
-  return <canvas ref={ref} height={window.innerHeight - 5} width={window.innerWidth} />
+  return <canvas ref={ref} height={window.innerHeight - 10} width={window.innerWidth} />
 }
 
 export default Scene
