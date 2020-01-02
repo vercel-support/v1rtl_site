@@ -6,7 +6,6 @@ dependencies:
   react-dom: 16.12.0_react@16.12.0
   rebass: 4.0.7_react@16.12.0
   three: 0.112.1
-  three-text2d: 0.5.3_three@0.112.1
 devDependencies:
   '@types/node': 13.1.1
   '@types/react': 16.9.17
@@ -5625,15 +5624,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-0ikKraVtRDKGzHrzkCv5rUNDzqlhmhowOBqC0XqUHFpW+vJ45+20/IFBcebwKfiS2Z9fJin6Eo+F1zLZsxi8RA==
-  /three-text2d/0.5.3_three@0.112.1:
-    dependencies:
-      three: 0.112.1
-    dev: false
-    peerDependencies:
-      '@types/three': '*'
-      three: '*'
-    resolution:
-      integrity: sha512-y9WSyVzO2nQ/+ZUsvT4iqgeqRkjh4nhMwOdcNsUbCzgmpORhG8KQRxI4CokWoZYPesj/KwVUJlyzMtQRjo8o6g==
   /three/0.112.1:
     dev: false
     resolution:
@@ -6062,10 +6052,9 @@ specifiers:
   '@types/rebass': ^4.0.3
   babel-plugin-emotion: ^10.0.27
   emotion-theming: ^10.0.27
-  next: latest
+  next: ^9.1.6
   react: ^16.12.0
   react-dom: ^16.12.0
   rebass: ^4.0.7
   three: ^0.112.1
-  three-text2d: ^0.5.3
   typescript: ^3.7.4
