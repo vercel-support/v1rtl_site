@@ -1,15 +1,33 @@
 import React from 'react'
-import { Flex, Link } from 'rebass'
-import { default as NextLink } from 'next/link'
+import Link from 'next/link'
+import { css } from '@emotion/core'
 
 const NavBar = ({ items }: { items: { text: string; href: string }[] }) => (
-  <Flex as="nav" variant="nav">
+  <nav
+    css={{
+      position: 'sticky',
+      top: 0,
+      display: 'flex',
+      backgroundColor: 'var(--bg-dark)',
+      justifyContent: 'center',
+      left: 0,
+      height: '4rem',
+      alignItems: 'center'
+    }}>
     {items.map(({ href, text }) => (
-      <NextLink href={href}>
-        <Link>{text}</Link>
-      </NextLink>
+      <Link href={href}>
+        <a
+          css={{
+            fontWeight: 'bold',
+            fontSize: '1.6rem',
+            marginLeft: '0.5em',
+            marginRight: '0.5em'
+          }}>
+          {text}
+        </a>
+      </Link>
     ))}
-  </Flex>
+  </nav>
 )
 
 export default NavBar

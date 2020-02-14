@@ -1,11 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
 import { Global, css } from '@emotion/core'
-import { ThemeProvider } from 'emotion-theming'
-import theme from '../lib/theme'
+import NavBar from '../components/Navbar'
 
 const CustomApp = ({ Component, pageProps }) => (
-  <ThemeProvider theme={theme}>
+  <>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta
@@ -28,13 +27,43 @@ const CustomApp = ({ Component, pageProps }) => (
     </Head>
     <Global
       styles={css`
+        @import url('https://rsms.me/inter/inter.css');
+        html {
+          font-family: 'Inter', sans-serif;
+        }
+        @supports (font-variation-settings: normal) {
+          html {
+            font-family: 'Inter var', sans-serif;
+          }
+        }
+        :root {
+          --bg-dark: black;
+          --primary-dark: #f2f2f2;
+        }
         body {
           margin: 0;
+          background-color: var(--bg-dark);
+          color: var(--primary-dark);
         }
       `}
     />
+
+    <NavBar
+      items={[
+        { text: 'about', href: '#about' },
+        { text: 'code', href: '#code' },
+        {
+          text: 'design',
+          href: '#design'
+        },
+        {
+          text: 'contact',
+          href: '#contact'
+        }
+      ]}
+    />
     <Component {...pageProps} />
-  </ThemeProvider>
+  </>
 )
 
 export default CustomApp
