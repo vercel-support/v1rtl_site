@@ -1,32 +1,42 @@
 import React from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/core'
+import ThemeSwitch from './ThemeSwitch'
 
 const NavBar = ({ items }: { items: { text: string; href: string }[] }) => (
   <nav
     css={{
-      position: 'sticky',
-      top: 0,
       display: 'flex',
-      backgroundColor: 'var(--bg-dark)',
+      backgroundColor: 'var(--bg)',
       justifyContent: 'center',
+      flexWrap: 'wrap',
       left: 0,
       height: '4rem',
       alignItems: 'center'
-    }}>
+    }}
+  >
     {items.map(({ href, text }) => (
       <Link href={href}>
         <a
+          href={href}
           css={{
+            color: 'var(--fg)',
             fontWeight: 'bold',
-            fontSize: '1.6rem',
+            fontSize: 'calc(0.8rem + 0.8vw)',
             marginLeft: '0.5em',
-            marginRight: '0.5em'
-          }}>
+            textDecoration: 'none',
+            marginRight: '0.5em',
+            '&:hover': {
+              cursor: 'pointer',
+              textDecoration: 'line-through'
+            }
+          }}
+        >
           {text}
         </a>
       </Link>
     ))}
+    <ThemeSwitch />
   </nav>
 )
 

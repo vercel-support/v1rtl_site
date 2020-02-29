@@ -1,40 +1,78 @@
-import React, { useEffect, useRef } from 'react'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
+import * as TWEEN from 'es6-tween'
 
 type SceneProps = {
   objects: THREE.Object3D[]
 }
 
 const Scene = ({ objects }: SceneProps) => {
-  let scene, camera
-  let renderer, controls
-
   const ref = useRef()
 
-  const fov = 50
-  const aspect = window.innerWidth / window.innerHeight
-  const near = 0.1
-  const far = 5
+  const [h, setH] = useState(800)
+  const [w, setW] = useState(600)
 
   useEffect(() => {
-    scene = new THREE.Scene()
-    camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-    controls = new OrbitControls(camera, ref.current)
+    setH(window.innerHeight)
+    setW(window.innerWidth)
+    const effect = async () => {
+      const OrbitControls = await (await import('three/examples/jsm/controls/OrbitControls')).OrbitControls
 
-    renderer = new THREE.WebGLRenderer({
-      canvas: ref.current
-    })
+      const fov = 30
+      const aspect = window.innerWidth / window.innerHeight
+      const near = 0.1
+      const far = 5
 
-    for (let obj of objects) {
-      scene.add(obj)
+      let scene = new THREE.Scene()
+
+      let camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
+
+      let renderer = new THREE.WebGLRenderer({
+        canvas: ref.current,
+        alpha: true
+      })
+
+      renderer.setPixelRatio(window.devicePixelRatio)
+
+      for (let obj of objects) {
+        scene.add(obj)
+      }
+      camera.position.z = 4
+
+      renderer.render(scene, camera)
+
+      window.onresize = () => {
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        camera.aspect = window.innerWidth / window.innerHeight
+        camera.updateProjectionMatrix()
+      }
+
+      const render = () => {
+        camera.updateProjectionMatrix()
+
+        renderer.render(scene, camera)
+
+        requestAnimationFrame(render)
+      }
+
+      requestAnimationFrame(render)
     }
-    camera.position.z = 4
 
-    renderer.render(scene, camera)
+    effect()
   }, [])
 
-  return <canvas ref={ref} height={window.innerHeight - 10} width={window.innerWidth} />
+  return (
+    <canvas
+      ref={ref}
+      height={h}
+      width={w}
+      css={{
+        height: '100vh',
+        width: '100vw',
+        zIndex: -99999999999999
+      }}
+    />
+  )
 }
 
 export default Scene

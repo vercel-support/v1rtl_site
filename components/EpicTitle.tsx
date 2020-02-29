@@ -1,11 +1,11 @@
 import React from 'react'
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
-import { InterpolationWithTheme } from '@emotion/core'
+import { CSSObject } from '@emotion/core'
 
-const shadow = (color: string): InterpolationWithTheme<any> => ({
-  fontSize: 'calc(100% + 5vw)',
+const shadow = (color: string): CSSObject => ({
+  fontSize: 'calc(3rem + 3vw)',
   fontWeight: 1000,
-  margin: '2rem',
+  margin: 'calc(1rem + 2vw)',
+  color: '#606060',
   textShadow: `3px 3px ${color}`
 })
 
@@ -13,27 +13,22 @@ const EpicTitle = () => (
   <div
     css={{
       display: 'flex',
-      height: ' calc(200vh)',
+      marginBottom: '25vh',
+      height: '150vh',
       justifyContent: 'center',
-      alignItems: 'center'
-    }}>
-    <ParallaxProvider>
-      <Parallax x={[-150, 0]} y={[100, 300]}>
-        <span css={shadow('red')}>v</span>
-      </Parallax>
-      <Parallax x={[-100, 0]} y={[30, 300]}>
-        <span css={shadow('blue')}>1</span>
-      </Parallax>
-      <Parallax y={[50, 300]}>
-        <span css={shadow('green')}>r</span>
-      </Parallax>
-      <Parallax y={[75, 300]}>
-        <span css={shadow('orange')}>t</span>
-      </Parallax>
-      <Parallax y={[110, 300]} x={[150, 0]}>
-        <span css={shadow('magenta')}>l</span>
-      </Parallax>
-    </ParallaxProvider>
+      alignItems: 'center',
+      marginTop: '50vh'
+    }}
+  >
+    <span css={shadow('red')}>v</span>
+
+    <span css={shadow('blue')}>1</span>
+
+    <span css={shadow('green')}>r</span>
+
+    <span css={shadow('orange')}>t</span>
+
+    <span css={shadow('magenta')}>l</span>
   </div>
 )
 

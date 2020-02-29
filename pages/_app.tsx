@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import { Global, css } from '@emotion/core'
-import NavBar from '../components/Navbar'
 
 const CustomApp = ({ Component, pageProps }) => (
   <>
@@ -31,36 +30,59 @@ const CustomApp = ({ Component, pageProps }) => (
         html {
           font-family: 'Inter', sans-serif;
         }
+        ::-webkit-scrollbar {
+          background-color: #1a1c1d;
+          color: #ddd9cf;
+        }
+        ::-webkit-scrollbar-thumb {
+          background-color: #2a2c2f;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background-color: #333739;
+        }
+        ::-webkit-scrollbar-thumb:active {
+          background-color: #404447;
+        }
+        ::-webkit-scrollbar-corner {
+          background-color: #151819;
+        }
+        * {
+          scrollbar-color: #2a2c2f #1a1c1d;
+        }
         @supports (font-variation-settings: normal) {
           html {
             font-family: 'Inter var', sans-serif;
           }
         }
-        :root {
-          --bg-dark: black;
-          --primary-dark: #f2f2f2;
-        }
+
         body {
+          overflow-x: hidden;
+
           margin: 0;
-          background-color: var(--bg-dark);
-          color: var(--primary-dark);
+        }
+        [data-theme='dark'] {
+          :root {
+            --bg: #292d3e;
+            --fg: #c7c7c7;
+
+            --red: #5f0808;
+          }
+          body {
+            background-color: var(--bg);
+            color: var(--fg);
+          }
+        }
+        [data-theme='light'] {
+          :root {
+            --bg: #c7c7c7;
+            --fg: #292d3e;
+          }
+          body {
+            background-color: var(--bg);
+            color: var(--fg);
+          }
         }
       `}
-    />
-
-    <NavBar
-      items={[
-        { text: 'about', href: '#about' },
-        { text: 'code', href: '#code' },
-        {
-          text: 'design',
-          href: '#design'
-        },
-        {
-          text: 'contact',
-          href: '#contact'
-        }
-      ]}
     />
     <Component {...pageProps} />
   </>
