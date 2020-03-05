@@ -54,29 +54,55 @@ const CustomApp = ({ Component, pageProps }) => (
             font-family: 'Inter var', sans-serif;
           }
         }
+        /* Shared colors */
+        :root {
+          --sass: #cf6599;
+          --apollo: #102b4b;
+          --wasm: #644fed;
+          --ts: #007bcc;
+          --gql: #e435a7;
+        }
 
         body {
           overflow-x: hidden;
 
           margin: 0;
         }
+        /* Light theme colors */
         [data-theme='dark'] {
           :root {
             --bg: #292d3e;
             --fg: #c7c7c7;
-
             --red: #5f0808;
+
+            --js: #f7df1f;
+            --react: #00d8ff;
+            --go: #21bcae;
+            --node: #84cd27;
+            --illo: #fc7b02;
+            --gql: #e435a7;
+            --apollo: var(--fg);
           }
+
           body {
             background-color: var(--bg);
             color: var(--fg);
           }
         }
+        /* Dark theme colors */
         [data-theme='light'] {
           :root {
             --bg: #c7c7c7;
             --fg: #292d3e;
+            --red: #f06459;
+
+            --illo: #fc7b02;
+            --js: #9f8f0c;
+            --ps: #021b27;
+            --node: #497117;
+            --react: #108fa6;
           }
+
           body {
             background-color: var(--bg);
             color: var(--fg);

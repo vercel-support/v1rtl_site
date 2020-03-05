@@ -1,37 +1,34 @@
 import React, { useEffect } from 'react'
 import * as THREE from 'three'
 import Scene from './Scene'
-import { CSSObject } from '@emotion/core'
 
 const Figure = ({
   figure,
-  color,
-  content,
-  styles,
-  id,
-  handleFigure
+  color = 'red',
+  handleFigure,
+  ...props
 }: {
   figure: THREE.BufferGeometry
-  color: string
-  content: {
-    heading: string
-    text: any
-  }
-  styles?: CSSObject
-  id: string
-  handleFigure?: (fig: THREE.LineSegments) => void
+  color?: string | number
+  handleFigure?: (fig: THREE.Mesh) => void
 }) => {
-  const material = new THREE.LineBasicMaterial({ color })
+  // const material = new THREE.LineBasicMaterial({ color })
 
-  const geometry = new THREE.EdgesGeometry(figure)
+  const geometry = figure
 
-  const line = new THREE.LineSegments(geometry, material)
+  const material = new THREE.MeshPhongMaterial({
+    morphTargets: true,
+    color,
+    wireframe: true
+  })
+
+  const line = new THREE.Mesh(geometry, material)
+
+  // const line = new THREE.LineSegments(geometry, material)
 
   line.position.x = 0.6
 
   useEffect(() => {
-    handleFigure && handleFigure(line)
-
     const draw = () => {
       line.rotateX(0.01)
       line.rotateY(0.02)
@@ -46,22 +43,11 @@ const Figure = ({
 
       line.position.x = 0.05
     }
+
+    handleFigure?.(line)
   }, [])
 
-  return (
-    <div
-      css={{
-        position: 'relative'
-      }}
-      id={id}
-    >
-      <Scene objects={[line]} />
-      <article css={{ position: 'absolute', ...styles }}>
-        <h2>{content.heading}</h2>
-        <p>{content.text}</p>
-      </article>
-    </div>
-  )
+  return <Scene objects={[line]} {...props} />
 }
 
 export default Figure

@@ -20,8 +20,8 @@ const Scene = ({ objects }: SceneProps) => {
 
       const fov = 30
       const aspect = window.innerWidth / window.innerHeight
-      const near = 0.1
-      const far = 5
+      const near = 1
+      const far = 10
 
       let scene = new THREE.Scene()
 
@@ -34,10 +34,12 @@ const Scene = ({ objects }: SceneProps) => {
 
       renderer.setPixelRatio(window.devicePixelRatio)
 
+      scene.add(new THREE.AmbientLight(0x8fbcd4, 0.4))
+
       for (let obj of objects) {
         scene.add(obj)
       }
-      camera.position.z = 4
+      camera.position.z = 5
 
       renderer.render(scene, camera)
 
@@ -69,7 +71,10 @@ const Scene = ({ objects }: SceneProps) => {
       css={{
         height: '100vh',
         width: '100vw',
-        zIndex: -99999999999999
+        position: 'sticky',
+        top: 0,
+        right: 0,
+        zIndex: -99
       }}
     />
   )

@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import * as THREE from 'three'
+import React, { useMemo, useState } from 'react'
 import Plx from 'react-plx'
 import EpicTitle from '../components/EpicTitle'
 import dynamic from 'next/dynamic'
-import { Theme } from '../components/ThemeSwitch'
 
 import NavBar from '../components/Navbar'
+import { createGeometry } from '../lib/createGeometry'
+import Section from '../components/Section'
+import skills, { pickSize } from '../lib/skills'
+import Skills from '../components/Skills'
 
 const Figure = dynamic(() => import('../components/Figure'))
 
 const Index = () => {
+  const [myselfVisible, setMyselfVisible] = useState(true)
+
+  const age = useMemo(
+    () => Math.abs(new Date(Date.now() - new Date(2003, 12, 5).getTime()).getUTCFullYear() - 1970),
+    []
+  )
+
   return (
     <>
       <Plx
@@ -80,6 +89,7 @@ const Index = () => {
           left: `calc(50% - ${1092 / 6}px)`,
           zIndex: 100
         }}
+        onPlxEnd={() => setMyselfVisible(false)}
         parallaxData={[
           {
             start: 0,
@@ -110,7 +120,8 @@ const Index = () => {
         <img
           draggable="false"
           css={{
-            userSelect: 'none'
+            userSelect: 'none',
+            display: myselfVisible ? 'block' : 'none'
           }}
           src="/me.png"
           onMouseDown={e => e.preventDefault()}
@@ -119,30 +130,70 @@ const Index = () => {
         />
       </Plx>
       <EpicTitle />
-
       <Figure
-        figure={new THREE.BoxBufferGeometry(0.6, 0.6, 0.6)}
-        color="red"
-        id="about"
-        content={{
-          heading: 'Hello',
-          text: (
-            <>
-              I'm a 16 y/o fullstack web developer who tries to combine both tech and art. I like frontend and backend.
-              I'm one of the developers at Komfy and author of <a href="https://t.me/we_use_js">@we_use_js.</a>
-            </>
-          )
-        }}
-        styles={{
-          left: 50,
-          top: 150,
-          width: '25rem',
-          '@media (max-width: 700px)': {
-            width: 'unset'
+        color="white"
+        figure={createGeometry()}
+        handleFigure={fig => {
+          window.onscroll = () => {
+            fig.morphTargetInfluences[0] = window.scrollY / 500
           }
         }}
       />
-      {/* <Figure figure={new THREE.SphereBufferGeometry(1, 1, 1)} color="blue" /> */}
+      <Section
+        id="about"
+        heading="Howdy, I'm Paul"
+        text={
+          <>
+            <p>
+              I'm a self-taught fullstack web developer who tries to combine both tech and art. I like web development,
+              OSS, design and drawing. I'm one of the developers at Komfy and author of{' '}
+              <a href="https://t.me/we_use_js">@we_use_js.</a>
+            </p>
+            <ul css={{ padding: '1rem' }}>
+              <li>
+                <strong>Country: </strong> Russia
+              </li>
+              <li>
+                <strong>Location: </strong>a small town near Moscow
+              </li>
+              <li>
+                <strong>Age: </strong>
+
+                {age}
+              </li>
+              <li>
+                <strong>Gender:</strong> Male
+              </li>
+              <li>
+                <strong>Distro</strong>: Manjaro Linux
+              </li>
+            </ul>
+            <Skills />
+          </>
+        }
+      />
+
+      <Section
+        id="code"
+        heading="Code"
+        text={
+          <>
+            I found myself in web development. This is the perfect job for me because it is creative and technical at
+            the same time. I have been building the web for 1.5 years and still do it. I try to learn any new tech that
+            comes out and integrate it in new projects.
+          </>
+        }
+      />
+      <Section
+        id="design"
+        heading="Hello"
+        text={
+          <>
+            I'm a 16 y/o fullstack web developer who tries to combine both tech and art. I like frontend and backend.
+            I'm one of the developers at Komfy and author of <a href="https://t.me/we_use_js">@we_use_js.</a>
+          </>
+        }
+      />
     </>
   )
 }
