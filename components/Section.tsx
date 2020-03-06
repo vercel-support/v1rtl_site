@@ -1,31 +1,42 @@
 import React from 'react'
-import { CSSObject } from '@emotion/core'
+import { CSSObject, css } from '@emotion/core'
 
-const Section = ({ heading, text, id, css, ...props }: { heading: string; text: any; id: string; css?: CSSObject }) => (
+const Section = ({
+  heading,
+  text,
+  id,
+  styles,
+  ...props
+}: {
+  heading: string
+  text: any
+  id: string
+  styles?: CSSObject
+}) => (
   <div
-    css={{
-      height: '100vh',
-      a: {
-        color: 'var(--blue)'
+    css={css`
+      padding-bottom: 10rem;
+      padding-top: 10rem;
+      padding-left: 5rem;
+      a {
+        color: var(--blue);
       }
-    }}
+    `}
   >
     <article
       id={id}
       {...props}
       css={{
-        marginTop: '5rem',
-        marginLeft: '10em',
-
+        scrollMarginTop: '150px',
         width: '25rem',
         '@media (max-width: 700px)': {
           width: 'unset'
         },
-        ...css
+        ...styles
       }}
     >
       <h2>{heading}</h2>
-      <p>{text}</p>
+      {text}
     </article>
   </div>
 )

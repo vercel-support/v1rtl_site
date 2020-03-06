@@ -1,27 +1,27 @@
 import * as THREE from 'three'
 
 export function createGeometry() {
-  var geometry = new THREE.BoxBufferGeometry(1, 1, 1, 2, 2, 2)
+  const geometry = new THREE.BoxBufferGeometry(0.8, 0.8, 0.8, 1, 1, 1)
 
   // create an empty array to  hold targets for the attribute we want to morph
   // morphing positions and normals is supported
   geometry.morphAttributes.position = []
 
   // the original positions of the cube's vertices
-  var positions = geometry.attributes.position.array
+  const positions = geometry.attributes.position.array
 
   // for the first morph target we'll move the cube's vertices onto the surface of a sphere
-  var spherePositions = []
+  const spherePositions = []
 
   // for the second morph target, we'll twist the cubes vertices
-  var twistPositions = []
-  var direction = new THREE.Vector3(1, 0, 0).normalize()
-  var vertex = new THREE.Vector3()
+  const twistPositions = []
+  const direction = new THREE.Vector3(1, 0, 0).normalize()
+  const vertex = new THREE.Vector3()
 
-  for (var i = 0; i < positions.length; i += 3) {
-    var x = positions[i]
-    var y = positions[i + 1]
-    var z = positions[i + 2]
+  for (let i = 0; i < positions.length; i += 3) {
+    const x = positions[i]
+    const y = positions[i + 1]
+    const z = positions[i + 2]
 
     spherePositions.push(
       x * Math.sqrt(1 - (y * y) / 2 - (z * z) / 2 + (y * y * z * z) / 3),

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
-import * as TWEEN from 'es6-tween'
 
 type SceneProps = {
   objects: THREE.Object3D[]
@@ -23,20 +22,18 @@ const Scene = ({ objects }: SceneProps) => {
       const near = 1
       const far = 10
 
-      let scene = new THREE.Scene()
+      const scene = new THREE.Scene()
 
-      let camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
+      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
 
-      let renderer = new THREE.WebGLRenderer({
+      const renderer = new THREE.WebGLRenderer({
         canvas: ref.current,
         alpha: true
       })
 
       renderer.setPixelRatio(window.devicePixelRatio)
 
-      scene.add(new THREE.AmbientLight(0x8fbcd4, 0.4))
-
-      for (let obj of objects) {
+      for (const obj of objects) {
         scene.add(obj)
       }
       camera.position.z = 5

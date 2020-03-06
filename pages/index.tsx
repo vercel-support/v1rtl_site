@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import NavBar from '../components/Navbar'
 import { createGeometry } from '../lib/createGeometry'
 import Section from '../components/Section'
-import skills, { pickSize } from '../lib/skills'
+
 import Skills from '../components/Skills'
 
 const Figure = dynamic(() => import('../components/Figure'))
@@ -135,7 +135,7 @@ const Index = () => {
         figure={createGeometry()}
         handleFigure={fig => {
           window.onscroll = () => {
-            fig.morphTargetInfluences[0] = window.scrollY / 500
+            fig.morphTargetInfluences[0] = (window.scrollY - 2000) / 500
           }
         }}
       />
@@ -144,31 +144,39 @@ const Index = () => {
         heading="Howdy, I'm Paul"
         text={
           <>
-            <p>
-              I'm a self-taught fullstack web developer who tries to combine both tech and art. I like web development,
-              OSS, design and drawing. I'm one of the developers at Komfy and author of{' '}
-              <a href="https://t.me/we_use_js">@we_use_js.</a>
-            </p>
-            <ul css={{ padding: '1rem' }}>
-              <li>
-                <strong>Country: </strong> Russia
-              </li>
-              <li>
-                <strong>Location: </strong>a small town near Moscow
-              </li>
-              <li>
-                <strong>Age: </strong>
+            <section>
+              <p>
+                I&apos;m a self-taught fullstack web developer who tries to combine both tech and art. I like web
+                development, OSS, design and drawing. I&apos;m one of the developers at{' '}
+                <a href="https://komfy.now.sh">Komfy</a> and author of <a href="https://t.me/we_use_js">@we_use_js.</a>
+              </p>
+            </section>
+            <section>
+              <ul css={{ padding: '1rem' }}>
+                <li>
+                  <strong>Country: </strong> Russia
+                </li>
+                <li>
+                  <strong>Location: </strong>a small town near Moscow
+                </li>
+                <li>
+                  <strong>Age: </strong>
 
-                {age}
-              </li>
-              <li>
-                <strong>Gender:</strong> Male
-              </li>
-              <li>
-                <strong>Distro</strong>: Manjaro Linux
-              </li>
-            </ul>
-            <Skills />
+                  {age}
+                </li>
+                <li>
+                  <strong>Gender:</strong> Male
+                </li>
+                <li>
+                  <strong>OS:</strong> GNU/Linux
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>Hard skills</h2>
+              <Skills />
+            </section>
           </>
         }
       />
@@ -189,8 +197,9 @@ const Index = () => {
         heading="Hello"
         text={
           <>
-            I'm a 16 y/o fullstack web developer who tries to combine both tech and art. I like frontend and backend.
-            I'm one of the developers at Komfy and author of <a href="https://t.me/we_use_js">@we_use_js.</a>
+            I&apos;m a 16 y/o fullstack web developer who tries to combine both tech and art. I like frontend and
+            backend. I&apos;m one of the developers at Komfy and author of{' '}
+            <a href="https://t.me/we_use_js">@we_use_js.</a>
           </>
         }
       />

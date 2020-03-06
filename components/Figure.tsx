@@ -4,7 +4,7 @@ import Scene from './Scene'
 
 const Figure = ({
   figure,
-  color = 'red',
+  color,
   handleFigure,
   ...props
 }: {
@@ -18,7 +18,7 @@ const Figure = ({
 
   const material = new THREE.MeshPhongMaterial({
     morphTargets: true,
-    color,
+
     wireframe: true
   })
 

@@ -1,8 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
+import { AppProps } from 'next/app'
 import { Global, css } from '@emotion/core'
 
-const CustomApp = ({ Component, pageProps }) => (
+const CustomApp = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +11,8 @@ const CustomApp = ({ Component, pageProps }) => (
         name="description"
         content="I'm a teen fullstack web developer who tries to combine both tech and art. I like frontend and backend. I'm a lead dev of Komfy and CEO author t.me/we_use_js."
       />
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       <meta name="og:title" content="V!RTL" />
       <meta name="og:image" content="https://i.ibb.co/4jbtNwK/ezgif-com-resize.png" />
       <meta name="og:url" content="https://v1rtl.site" />
@@ -65,7 +66,6 @@ const CustomApp = ({ Component, pageProps }) => (
 
         body {
           overflow-x: hidden;
-
           margin: 0;
         }
         /* Light theme colors */
@@ -96,7 +96,7 @@ const CustomApp = ({ Component, pageProps }) => (
             --fg: #292d3e;
             --red: #f06459;
 
-            --illo: #fc7b02;
+            --illo: #9d5612;
             --js: #9f8f0c;
             --ps: #021b27;
             --node: #497117;
