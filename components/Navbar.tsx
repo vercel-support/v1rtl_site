@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { css } from '@emotion/core'
 import ThemeSwitch from './ThemeSwitch'
 
 const NavBar = ({ items }: { items: { text: string; href: string }[] }) => (
@@ -15,8 +14,8 @@ const NavBar = ({ items }: { items: { text: string; href: string }[] }) => (
       alignItems: 'center'
     }}
   >
-    {items.map(({ href, text }) => (
-      <Link href={href}>
+    {items.map(({ href, text }, i) => (
+      <Link href={href} key={i}>
         <a
           href={href}
           css={{

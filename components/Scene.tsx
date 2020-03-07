@@ -15,8 +15,6 @@ const Scene = ({ objects }: SceneProps) => {
     setH(window.innerHeight)
     setW(window.innerWidth)
     const effect = async () => {
-      const OrbitControls = await (await import('three/examples/jsm/controls/OrbitControls')).OrbitControls
-
       const fov = 30
       const aspect = window.innerWidth / window.innerHeight
       const near = 1
