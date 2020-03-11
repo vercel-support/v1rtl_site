@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
 export function createGeometry() {
-  const geometry = new THREE.BoxBufferGeometry(0.8, 0.8, 0.8, 1, 1, 1)
+  const geometry = new THREE.BoxBufferGeometry(0.8, 0.8, 0.8, 2, 2, 2)
 
   // create an empty array to  hold targets for the attribute we want to morph
   // morphing positions and normals is supported

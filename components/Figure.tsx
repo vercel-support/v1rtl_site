@@ -1,53 +1,57 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+
+import { useFrame, Canvas, useUpdate, useThree } from 'react-three-fiber'
+import { useRef } from 'react'
 import * as THREE from 'three'
-import Scene from './Scene'
 
-const Figure = ({
-  figure,
-  color,
-  handleFigure,
-  ...props
-}: {
-  figure: THREE.BufferGeometry
-  color?: string | number
-  handleFigure?: (fig: THREE.Mesh) => void
-}) => {
-  // const material = new THREE.LineBasicMaterial({ color })
+interface MeshProps {
+  geometry: THREE.BufferGeometry
+  color?: THREE.Color
+}
 
-  const geometry = figure
+const Mesh = ({ geometry, color, ...props }: MeshProps) => {
+  // This reference will give us direct access to the mesh
+  const mesh = useRef<THREE.Mesh>()
 
-  const material = new THREE.MeshPhongMaterial({
-    morphTargets: true,
+  const { gl } = useThree()
 
-    wireframe: true
+  const [influences, setInfluences] = useState([0, 0])
+  const [meshColor, setMeshColor] = useState(color || '')
+
+  useFrame(() => {
+    mesh.current.rotation.x = mesh.current.rotation.y += 0.01
   })
 
-  const line = new THREE.Mesh(geometry, material)
-
-  // const line = new THREE.LineSegments(geometry, material)
-
-  line.position.x = 0.6
-
   useEffect(() => {
-    const draw = () => {
-      line.rotateX(0.01)
-      line.rotateY(0.02)
+    window.onscroll = () => setInfluences([(window.scrollY - window.innerHeight * 3) / 200, 0])
 
-      requestAnimationFrame(draw)
+    return () => {
+      gl.forceContextLoss()
+      gl.dispose()
     }
-
-    requestAnimationFrame(draw)
-
-    if (window.innerWidth <= 800) {
-      line.position.y = -0.6
-
-      line.position.x = 0.05
-    }
-
-    handleFigure?.(line)
   }, [])
 
-  return <Scene objects={[line]} {...props} />
+  return (
+    <mesh {...props} ref={mesh} morphTargetInfluences={influences} geometry={geometry} scale={[3, 3, 3]}>
+      <ambientLight />
+      <pointLight position={[1, 1, 1]} />
+      <meshPhongMaterial attach="material" color={meshColor} morphTargets wireframe />
+    </mesh>
+  )
 }
+
+const Figure = (props: MeshProps) => (
+  <Canvas
+    style={{
+      position: 'sticky',
+      height: '100vh',
+      width: '100vw',
+      right: 0,
+      top: 0
+    }}
+  >
+    <Mesh {...props} />
+  </Canvas>
+)
 
 export default Figure

@@ -12,8 +12,9 @@ const Skills = () => (
       gap: '0.4rem'
     }}
   >
-    {skills.map(({ color, value, text }) => (
+    {skills.map(({ color, value, text }, i) => (
       <span
+        key={i}
         css={{
           fontSize: pickSize(value),
           color: `var(--${color})`

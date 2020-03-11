@@ -1,15 +1,17 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import Plx from 'react-plx'
-import EpicTitle from '../components/EpicTitle'
 import dynamic from 'next/dynamic'
-
+import { useWindowHeight } from '@react-hook/window-size'
 import NavBar from '../components/Navbar'
 import { createGeometry } from '../lib/createGeometry'
 import Section from '../components/Section'
 
 import Skills from '../components/Skills'
+import ProjectList from '../components/ProjectList'
+import { websites } from '../lib/projects'
 
 const Figure = dynamic(() => import('../components/Figure'))
+const EpicTitle = dynamic(() => import('../components/EpicTitle'))
 
 const Index = () => {
   const [myselfVisible, setMyselfVisible] = useState(true)
@@ -18,6 +20,8 @@ const Index = () => {
     () => Math.abs(new Date(Date.now() - new Date(2003, 12, 5).getTime()).getUTCFullYear() - 1970),
     []
   )
+
+  const height = useWindowHeight()
 
   return (
     <>
@@ -130,15 +134,11 @@ const Index = () => {
         />
       </Plx>
       <EpicTitle />
-      <Figure
-        color="white"
-        figure={createGeometry()}
-        handleFigure={fig => {
-          window.onscroll = () => {
-            fig.morphTargetInfluences[0] = (window.scrollY - 2000) / 500
-          }
-        }}
-      />
+
+      <Plx>
+        <Figure geometry={createGeometry()} />
+      </Plx>
+
       <Section
         id="about"
         heading="Howdy, I'm Paul"
@@ -192,17 +192,18 @@ const Index = () => {
           </>
         }
       />
-      <Section
-        id="design"
-        heading="Hello"
-        text={
-          <>
-            I&apos;m a 16 y/o fullstack web developer who tries to combine both tech and art. I like frontend and
-            backend. I&apos;m one of the developers at Komfy and author of{' '}
-            <a href="https://t.me/we_use_js">@we_use_js.</a>
-          </>
-        }
-      />
+      <section
+        css={{
+          paddingLeft: '2rem',
+          h2: {
+            marginLeft: '3rem'
+          }
+        }}
+      >
+        <h2>Websites</h2>
+
+        <ProjectList projects={websites} />
+      </section>
     </>
   )
 }

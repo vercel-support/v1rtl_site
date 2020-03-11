@@ -24,6 +24,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
       <meta name="og:site_name" content="v1rtl.site" />
       <link rel="icon" type="image/png" href="/icon.png" />
       <title>v 1 r t l ✨</title>
+      <meta name="theme-color" content="#464c68" />
     </Head>
     <Global
       styles={css`
