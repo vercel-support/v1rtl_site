@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { CSSObject } from '@emotion/core'
 import { Canvas, useLoader } from 'react-three-fiber'
-const { OBJLoader } = require('three/examples/jsm/loaders/OBJLoader')
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 
 // const shadow = (color: string): CSSObject => ({
 //   fontSize: 'calc(3rem + 3vw)',
