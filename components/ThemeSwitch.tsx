@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 export type Theme = 'dark' | 'light'
 
-const ThemeSwitch = () => {
+const ThemeSwitch = ({ handleTheme }: { handleTheme?: (theme: Theme) => void }) => {
   const [theme, setTheme] = useState<Theme>('dark')
 
   useEffect(() => {
@@ -24,13 +24,25 @@ const ThemeSwitch = () => {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    handleTheme?.(theme)
   }, [theme])
 
-  return <button onClick={() => toggleTheme(theme)} css={{
-    border: 'none',
-    background: 'none',
-    filter: theme === 'light' ? 'none' : 'invert(1)'
-  }}><img src="/contrast.svg" /></button>
+  return (
+    <button
+      onClick={() => toggleTheme(theme)}
+      css={{
+        border: 'none',
+        background: 'none',
+        filter: theme === 'light' ? 'none' : 'invert(1)',
+
+        '&:hover': {
+          cursor: 'pointer'
+        }
+      }}
+    >
+      <img src="/contrast.svg" />
+    </button>
+  )
 }
 
 export default ThemeSwitch

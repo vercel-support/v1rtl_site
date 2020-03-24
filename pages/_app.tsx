@@ -74,6 +74,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
           :root {
             --bg: #292d3e;
             --fg: #c7c7c7;
+            --fg-secondary: #383d54;
             --red: #5f0808;
 
             --js: #f7df1f;
@@ -95,6 +96,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
           :root {
             --bg: #c7c7c7;
             --fg: #292d3e;
+            --fg-secondary: #ababab;
             --red: #f06459;
 
             --illo: #9d5612;
@@ -111,6 +113,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
         }
       `}
     />
+
     <Component {...pageProps} />
   </>
 )

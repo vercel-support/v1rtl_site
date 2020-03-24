@@ -6,18 +6,17 @@ const Section = ({
   text,
   id,
   styles,
+  subheading,
   ...props
 }: {
-  heading: string
+  heading?: string
+  subheading?: string
   text: any
-  id: string
+  id?: string
   styles?: CSSObject
 }) => (
   <div
     css={css`
-      padding-bottom: 10rem;
-      padding-top: 10rem;
-      padding-left: 5rem;
       a {
         color: var(--blue);
       }
@@ -28,15 +27,13 @@ const Section = ({
       {...props}
       css={{
         scrollMarginTop: '150px',
-        width: '25rem',
-        '@media (max-width: 700px)': {
-          width: 'unset'
-        },
+        padding: 'calc(1rem + 2vw)',
         ...styles
       }}
     >
-      <h2>{heading}</h2>
-      {text}
+      {heading && <h2>{heading}</h2>}
+      {subheading && <h3>{subheading}</h3>}
+      <div>{text}</div>
     </article>
   </div>
 )

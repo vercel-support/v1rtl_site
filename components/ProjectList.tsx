@@ -1,18 +1,19 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import dynamic from 'next/dynamic'
-
+import Link from 'next/link'
 export interface ProjectProps {
   title: string
   desc: string
-  screenshot: string
+  screenshot?: string
   status: string
   stack: string[]
   link: string
+  teamProject?: boolean
+  longDesc?: string
 }
 
-const Project = ({ title, screenshot, status, stack, desc, link }: ProjectProps) => (
-  <figure
+const Project = ({ title, screenshot }: ProjectProps) => (
+  <div
     css={css`
       z-index: 100;
       * {
@@ -23,44 +24,43 @@ const Project = ({ title, screenshot, status, stack, desc, link }: ProjectProps)
       }
     `}
   >
-    <picture>
-      <source srcSet={`/projects/${screenshot}.png`} type="image/png" />
-      <source type="image/webp" srcSet={`/projects/${screenshot}.webp`} />
-      <img src={`/projects/${screenshot}.png`} width="100%" />
-    </picture>
-    <figcaption>
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        css={{
-          color: 'var(--fg)',
-          '&:hover': {
-            textDecorationThickness: 2
-          }
-        }}
-      >
-        <h3>{title}</h3>
-      </a>
-      <p>{desc}</p>
-      <strong>Status: {status}</strong>
-      <p
-        css={{
-          fontSize: '0.8rem'
-        }}
-      >
-        Stack: {stack.join(', ')}
-      </p>
-    </figcaption>
-  </figure>
+    {screenshot && (
+      <Link href={`/site?site=${screenshot}`}>
+        <a>
+          <figure
+            css={css`
+              margin: 0;
+            `}
+          >
+            <picture>
+              <source type="image/webp" srcSet={`/projects/${screenshot}.webp`} media="screen" />
+              <img src={`/projects/${screenshot}.png`} width="100%" />
+            </picture>
+            <figcaption>
+              <h1>{title}</h1>
+            </figcaption>
+          </figure>
+        </a>
+      </Link>
+    )}
+  </div>
 )
 
-const ProjectList = ({ projects }: { projects: ProjectProps[] }) => (
+const ProjectList = ({
+  projects,
+  cols = 'repeat(auto-fit, minmax(250px, 1fr))'
+}: {
+  projects: ProjectProps[]
+  cols?: string
+}) => (
   <div
     css={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
-      gridGap: '1rem'
+      gridTemplateColumns: cols,
+      gridGap: '5rem',
+      '@media (max-width: 650px)': {
+        gridTemplateColumns: '1fr'
+      }
     }}
   >
     {projects.map(proj => (

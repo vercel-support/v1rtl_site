@@ -1,8 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
-import ThemeSwitch from './ThemeSwitch'
+import ThemeSwitch, { Theme } from './ThemeSwitch'
 
-const NavBar = ({ items }: { items: { text: string; href: string }[] }) => (
+const NavBar = ({
+  items,
+  handleTheme
+}: {
+  items: { text: string; href: string }[]
+  handleTheme?: (theme: Theme) => void
+}) => (
   <nav
     css={{
       display: 'flex',
@@ -11,7 +17,8 @@ const NavBar = ({ items }: { items: { text: string; href: string }[] }) => (
       flexWrap: 'wrap',
       left: 0,
       height: '4rem',
-      alignItems: 'center'
+      alignItems: 'center',
+      zIndex: 1000
     }}
   >
     {items.map(({ href, text }, i) => (
@@ -35,7 +42,7 @@ const NavBar = ({ items }: { items: { text: string; href: string }[] }) => (
         </a>
       </Link>
     ))}
-    <ThemeSwitch />
+    <ThemeSwitch handleTheme={handleTheme} />
   </nav>
 )
 

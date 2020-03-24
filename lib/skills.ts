@@ -61,11 +61,11 @@ export default [
 ]
 
 export const pickSize = (value: number) => {
-  if (value > 800) return value / 20
-  if (value > 500) return value / 17
-  if (value >= 200) return value / 10
-  if (value >= 100) return value / 8
-  if (value > 50) return value / 5
-  if (value >= 25) return value / 3
-  else return value / 4
+  if (value > 800) return value / 12
+  if (value > 500) return value / 10
+  if (value >= 200) return value / 7
+  if (value >= 100) return value / 5
+  if (value > 50) return value / 3
+  if (value >= 25) return value / 2
+  else return value
 }

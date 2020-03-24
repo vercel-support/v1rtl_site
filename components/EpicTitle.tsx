@@ -1,30 +1,140 @@
-import React, { Suspense } from 'react'
-import { Canvas, useLoader } from 'react-three-fiber'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
+import React from 'react'
+import { css } from '@emotion/core'
+import Plx from 'react-plx'
 
-const Text = () => {
-  const obj = useLoader(OBJLoader, '/v1rtl.obj')
+const data = [
+  {
+    start: 300,
+    duration: 1500,
+    properties: [
+      {
+        startValue: 0,
+        endValue: 40,
+        property: 'translateY'
+      }
+    ]
+  },
+  {
+    start: 300,
+    duration: 1750,
+    properties: [
+      {
+        startValue: 30,
+        endValue: 0,
+        property: 'translateY'
+      }
+    ]
+  },
+  {
+    start: 300,
+    duration: 2000,
+    properties: [
+      {
+        startValue: 0,
+        endValue: 60,
+        property: 'translateY'
+      }
+    ]
+  },
+  {
+    start: 400,
+    duration: 1400,
+    properties: [
+      {
+        startValue: 50,
+        endValue: 0,
+        property: 'translateY'
+      }
+    ]
+  },
+  {
+    start: 350,
+    duration: 1600,
+    properties: [
+      {
+        startValue: 0,
+        endValue: 60,
+        property: 'translateY'
+      }
+    ]
+  }
+]
 
-  return <primitive object={obj} />
+const EpicTitle = () => {
+  return (
+    <div
+      css={css`
+        height: 250vh;
+      `}
+    >
+      <Plx
+        parallaxData={[
+          {
+            start: 300,
+            duration: 300,
+            properties: [
+              {
+                startValue: 0,
+                endValue: 1,
+                property: 'opacity'
+              }
+            ]
+          }
+        ]}
+        css={css`
+          opacity: 0;
+          display: flex;
+          height: 100vh;
+          position: sticky;
+          top: 0;
+          left: 0;
+          justify-content: center;
+          align-items: center;
+
+          #bgText {
+            div {
+              text-transform: uppercase;
+              color: var(--fg-secondary);
+            }
+            div:nth-of-type(1) {
+              font-size: 10.5vw;
+            }
+            div:nth-of-type(2) {
+              font-size: 14vw;
+            }
+          }
+          #v1rtl {
+            position: absolute;
+            top: calc(100vh / 2 - 10vw);
+            div {
+              font-size: 10vw;
+              text-transform: uppercase;
+              font-weight: bolder;
+              margin: calc(1rem + 1vw);
+            }
+          }
+        `}
+      >
+        <div id="bgText">
+          <div>full stack</div>
+          <div>web dev</div>
+        </div>
+        <div id="v1rtl">
+          {'v1rtl'.split('').map((letter, i) => (
+            <Plx
+              css={{
+                display: 'inline-block'
+              }}
+              parallaxData={[data[i]]}
+              key={i}
+            >
+              {letter}
+            </Plx>
+          ))}
+        </div>
+      </Plx>
+    </div>
+  )
 }
-
-const EpicTitle = () => (
-  <div
-    css={{
-      display: 'flex',
-      marginBottom: '25vh',
-      height: '150vh',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: '50vh'
-    }}
-  >
-    <Suspense fallback={<h1>Loading...</h1>}>
-      <Canvas>
-        <Text />
-      </Canvas>
-    </Suspense>
-  </div>
-)
 
 export default EpicTitle

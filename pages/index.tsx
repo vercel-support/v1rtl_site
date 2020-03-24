@@ -1,27 +1,27 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import Plx from 'react-plx'
-import dynamic from 'next/dynamic'
-import { useWindowHeight } from '@react-hook/window-size'
 import NavBar from '../components/Navbar'
-import { createGeometry } from '../lib/createGeometry'
 import Section from '../components/Section'
-
+import * as themeFile from '../lib/colors'
+import { ColorContextProvider } from '../lib/context'
 import Skills from '../components/Skills'
 import ProjectList from '../components/ProjectList'
-import { websites } from '../lib/projects'
+import { websites, tools } from '../lib/projects'
 
-const Figure = dynamic(() => import('../components/Figure'))
-const EpicTitle = dynamic(() => import('../components/EpicTitle'))
+import EpicTitle from '../components/EpicTitle'
+import Figure from '../components/Figure'
 
 const Index = () => {
-  const [myselfVisible, setMyselfVisible] = useState(true)
+  const [theme, setTheme] = useState('dark')
+
+  useEffect(() => {
+    setTheme(localStorage.getItem('v1rtl-theme'))
+  }, [])
 
   const age = useMemo(
     () => Math.abs(new Date(Date.now() - new Date(2003, 12, 5).getTime()).getUTCFullYear() - 1970),
     []
   )
-
-  const height = useWindowHeight()
 
   return (
     <>
@@ -47,14 +47,15 @@ const Index = () => {
           }
         ]}
       >
-        <div>scroll down</div>
+        <div>Who am I?</div>
       </Plx>
       <Plx
         css={{
           position: 'fixed',
           top: 0,
           width: '100%',
-          opacity: 0
+          opacity: 0,
+          zIndex: 1000
         }}
         parallaxData={[
           {
@@ -71,73 +72,30 @@ const Index = () => {
         ]}
       >
         <NavBar
+          handleTheme={theme => setTheme(theme)}
           items={[
-            { text: 'about', href: '#about' },
-            { text: 'code', href: '#code' },
+            { text: 'about', href: '/#about' },
+            { text: 'code', href: '/#code' },
             {
               text: 'design',
-              href: '#design'
+              href: '/#design'
             },
             {
               text: 'contact',
-              href: '#contact'
+              href: '/#contact'
             }
           ]}
         />
       </Plx>
 
-      <Plx
-        css={{
-          position: 'fixed',
-          bottom: -10,
-          left: `calc(50% - ${1092 / 6}px)`,
-          zIndex: 100
-        }}
-        onPlxEnd={() => setMyselfVisible(false)}
-        parallaxData={[
-          {
-            start: 0,
-            easing: 'easeInQuart',
-            end: 800,
-            properties: [
-              {
-                startValue: 0,
-                endValue: 1,
-                property: 'opacity'
-              }
-            ]
-          },
-          {
-            start: 800,
-            easing: 'easeInQuart',
-            end: 1500,
-            properties: [
-              {
-                startValue: 1,
-                endValue: 0,
-                property: 'opacity'
-              }
-            ]
-          }
-        ]}
-      >
-        <img
-          draggable="false"
-          css={{
-            userSelect: 'none',
-            display: myselfVisible ? 'block' : 'none'
-          }}
-          src="/me.png"
-          onMouseDown={e => e.preventDefault()}
-          height={830 / 3}
-          width={1092 / 3}
-        />
-      </Plx>
       <EpicTitle />
 
-      <Plx>
-        <Figure geometry={createGeometry()} />
-      </Plx>
+      {/* <Plx css={{ position: 'sticky', height: '100vh', right: 0, top: 0, userSelect: 'none', zIndex: -1 }}>
+        <Figure />
+      </Plx> */}
+      <ColorContextProvider value={themeFile[theme]}>
+        <Figure />
+      </ColorContextProvider>
 
       <Section
         id="about"
@@ -167,20 +125,12 @@ const Index = () => {
                 <li>
                   <strong>Gender:</strong> Male
                 </li>
-                <li>
-                  <strong>OS:</strong> GNU/Linux
-                </li>
               </ul>
-            </section>
-
-            <section>
-              <h2>Hard skills</h2>
-              <Skills />
             </section>
           </>
         }
       />
-
+      <Section text={<Skills />} />
       <Section
         id="code"
         heading="Code"
@@ -192,18 +142,9 @@ const Index = () => {
           </>
         }
       />
-      <section
-        css={{
-          paddingLeft: '2rem',
-          h2: {
-            marginLeft: '3rem'
-          }
-        }}
-      >
-        <h2>Websites</h2>
+      <Section id="websites" subheading="Websites" text={<ProjectList projects={websites} cols="1fr 1fr" />} />
 
-        <ProjectList projects={websites} />
-      </section>
+      <Section id="tools" subheading="Tools" text={<ProjectList projects={tools} />} />
     </>
   )
 }
