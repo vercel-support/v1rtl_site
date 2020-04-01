@@ -3,7 +3,22 @@ import React, { useMemo } from 'react'
 import { useLoader, useUpdate } from 'react-three-fiber'
 import { Mesh, TextGeometryParameters } from 'three'
 
-const Text = ({ children, size = 1, color = '#000000', x, y, z, ...props }) => {
+const Text = ({
+  children,
+  size = 1,
+  color = '#000000',
+  x = 0,
+  y = 0,
+  z = 0,
+  ...props
+}: {
+  children: any
+  size?: number
+  color?: string
+  x?: number
+  y?: number
+  z?: number
+}) => {
   const font = useLoader(THREE.FontLoader, '/font.json')
   const config = useMemo(
     (): TextGeometryParameters => ({

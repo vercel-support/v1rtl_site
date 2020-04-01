@@ -20,6 +20,9 @@ const Section = ({
       a {
         color: var(--blue);
       }
+      h2 {
+        font-size: calc(2rem + 2vw);
+      }
     `}
   >
     <article
@@ -27,7 +30,7 @@ const Section = ({
       {...props}
       css={{
         scrollMarginTop: '150px',
-        padding: 'calc(1rem + 2vw)',
+        padding: 'calc(1rem + 1vw)',
         ...styles
       }}
     >

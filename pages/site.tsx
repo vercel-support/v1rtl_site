@@ -1,27 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { websites } from '../lib/projects'
 import NavBar from '../components/Navbar'
 import { css } from '@emotion/core'
+import { NextPage } from 'next'
+import { ProjectProps } from '../components/ProjectList'
 
-const SitePage = () => {
-  const { query } = useRouter()
-
-  const website = websites.find(site => query.site === site.screenshot)
-
+const SitePage: NextPage<{ site: ProjectProps }> = ({ site }: { site: ProjectProps }) => {
   return (
     <>
       <NavBar
         items={[
-          { text: 'about', href: '#about' },
-          { text: 'code', href: '#code' },
+          { text: 'about', href: '/#about' },
+          { text: 'code', href: '/#code' },
           {
             text: 'design',
-            href: '#design'
+            href: '/#design'
           },
           {
             text: 'contact',
-            href: '#contact'
+            href: '/#contact'
           }
         ]}
       />
@@ -34,14 +32,14 @@ const SitePage = () => {
       >
         {' '}
         <picture>
-          <source type="image/webp" srcSet={`/projects/${website?.screenshot}.webp`} media="screen" />
-          <img src={`/projects/${website?.screenshot}.png`} width="100%" />
+          <source type="image/webp" srcSet={`/projects/${site?.screenshot}.webp`} media="screen" />
+          <img src={`/projects/${site?.screenshot}.png`} width="100%" />
         </picture>
         <figcaption>
-          <h1>{website?.title}</h1>
-          <p>{website?.longDesc ? website?.longDesc : website?.desc}</p>
+          <h1>{site?.title}</h1>
+          <p>{site?.longDesc ? site?.longDesc : site?.desc}</p>
 
-          {website?.teamProject && (
+          {site?.teamProject && (
             <p
               css={{
                 width: 'max-content',
@@ -53,16 +51,16 @@ const SitePage = () => {
               Team Project
             </p>
           )}
-          <strong>Status: {website?.status}</strong>
+          <strong>Status: {site?.status}</strong>
           <p
             css={{
               fontSize: '0.8rem'
             }}
           >
-            Stack: {website?.stack.join(', ')}
+            Stack: {site?.stack.join(', ')}
           </p>
           <a
-            href={website?.link}
+            href={site?.link}
             css={css`
               font-weight: bold;
               font-size: 2rem;
@@ -75,6 +73,21 @@ const SitePage = () => {
       </figure>
     </>
   )
+}
+
+SitePage.getInitialProps = ({ res, query }) => {
+  const site = websites.find(site => query.site === site.screenshot)
+
+  if (!site) {
+    res.writeHead(302, {
+      Location: '/'
+    })
+    res.end('')
+  }
+
+  return {
+    site
+  }
 }
 
 export default SitePage

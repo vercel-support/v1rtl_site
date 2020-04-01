@@ -17,6 +17,8 @@ const NavBar = ({
       flexWrap: 'wrap',
       left: 0,
       height: '4rem',
+      position: 'sticky',
+      top: 0,
       alignItems: 'center',
       zIndex: 1000
     }}

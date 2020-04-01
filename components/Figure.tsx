@@ -1,6 +1,6 @@
-import React, { Suspense, useContext, useEffect } from 'react'
+import React, { Suspense, useContext, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { useFrame, Canvas, useThree, useUpdate } from 'react-three-fiber'
+import { useFrame, Canvas, useThree, useUpdate, Dom } from 'react-three-fiber'
 import { useRef } from 'react'
 import * as THREE from 'three'
 import Text from './Text'
@@ -13,22 +13,34 @@ const Controls = dynamic(() => import('./Controls'), {
 const TextGroup = ({ red, green, blue, yellow }: { red: string; green: string; blue: string; yellow: string }) => {
   const mesh = useRef<THREE.Group>()
 
+  const [size, setSize] = useState(1)
+
   useFrame(() => {
-    mesh.current.rotateY(0.001)
+    mesh.current.rotateY(0.0005)
   })
+
+  useEffect(() => {
+    if (window.innerWidth >= 750) {
+      setSize(1)
+    } else if (window.innerWidth < 500) {
+      setSize(0.5)
+    } else if (window.innerWidth < 750) {
+      setSize(0.7)
+    }
+  }, [window.innerWidth])
 
   return (
     <group ref={mesh}>
-      <Text x={-20} y={10} z={-10} color={green}>
+      <Text x={-20} y={10} z={-10} size={size} color={green}>
         geek
       </Text>
-      <Text y={5} x={0} z={20} color={yellow}>
+      <Text y={5} x={0} z={20} size={size} color={yellow}>
         self-taught
       </Text>
-      <Text x={-30} y={-10} z={15} color={blue}>
+      <Text x={-30} y={-10} z={15} size={size} color={blue}>
         linux user
       </Text>
-      <Text x={-10} y={-25} z={5} color={red}>
+      <Text x={-10} y={-25} z={5} size={size} color={red}>
         webdev
       </Text>
     </group>
@@ -37,28 +49,31 @@ const TextGroup = ({ red, green, blue, yellow }: { red: string; green: string; b
 
 const Figure = () => {
   const colors = useContext(ColorContext)
+  const [visible, setVisible] = useState(false)
 
   return (
     <div
+      onMouseMove={() => setVisible(true)}
       css={{
         height: '100vh'
       }}
     >
-      <Canvas>
-        <ambientLight />
-        <pointLight position={[1, 5, 1]} />
-        <Suspense
-          fallback={
-            <mesh>
-              <boxGeometry args={[1, 1, 1]} attach="geometry" />
-              <meshBasicMaterial color="red" attach="material" />
-            </mesh>
-          }
-        >
-          <Controls />
-          <TextGroup {...colors} />
-        </Suspense>
-      </Canvas>
+      {visible && (
+        <Canvas>
+          <ambientLight />
+          <pointLight position={[1, 5, 1]} />
+          <Suspense
+            fallback={
+              <Dom>
+                <h1>Loading...</h1>
+              </Dom>
+            }
+          >
+            <Controls />
+            <TextGroup {...colors} />
+          </Suspense>
+        </Canvas>
+      )}
     </div>
   )
 }

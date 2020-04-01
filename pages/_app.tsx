@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
 import { Global, css } from '@emotion/core'
+import 'typeface-fira-code'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => (
   <>
@@ -28,9 +29,8 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
     </Head>
     <Global
       styles={css`
-        @import url('https://rsms.me/inter/inter.css');
-        html {
-          font-family: 'Inter', sans-serif;
+        * {
+          font-family: 'Fira Code', Losevka, Consolas, monospace;
         }
         ::-webkit-scrollbar {
           background-color: #1a1c1d;
@@ -51,11 +51,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
         * {
           scrollbar-color: #2a2c2f #1a1c1d;
         }
-        @supports (font-variation-settings: normal) {
-          html {
-            font-family: 'Inter var', sans-serif;
-          }
-        }
+
         /* Shared colors */
         :root {
           --sass: #cf6599;
@@ -72,7 +68,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
         /* Light theme colors */
         [data-theme='dark'] {
           :root {
-            --bg: #292d3e;
+            --bg: black;
             --fg: #c7c7c7;
             --fg-secondary: #383d54;
             --red: #5f0808;

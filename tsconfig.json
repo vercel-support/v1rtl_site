@@ -16,5 +16,5 @@
     "preserveSymlinks": true
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.gltf"]
+  "include": ["next-env.d.ts", "assets.d.ts", "**/*.ts", "**/*.tsx", "**/*.gltf", "**/*.glsl", "**/*.png"]
 }
