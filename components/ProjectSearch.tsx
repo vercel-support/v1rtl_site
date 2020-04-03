@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Router from 'next/router'
-import fonts from '../lib/fonts'
 
 const Tag = ({ tag, setTags }: { tag: string; setTags: (v: (tags: string[]) => string[]) => void }) => {
   const [clicked, click] = useState(false)

@@ -6,16 +6,7 @@ module.exports = withImages({
     config.module.rules.push({
       // shader import support
       test: /\.glsl$/,
-      use: [
-        {
-          loader: 'emit-file-loader',
-          options: {
-            name: 'dist/[path][name].[ext]'
-          }
-        },
-        'babel-loader',
-        'webpack-glsl-loader'
-      ]
+      use: ['webpack-glsl-loader']
     })
 
     return config

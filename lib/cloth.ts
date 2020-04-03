@@ -157,7 +157,7 @@ export class Cloth {
       }
     }
 
-    this.particles.map(_, (i: number) => {
+    this.particles.map((_, i: number) => {
       const particle = this.particles[i]
       particle.addForce(this.gravity)
       particle.integrate(TIMESTEP_SQ)
