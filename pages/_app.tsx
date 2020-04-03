@@ -3,6 +3,9 @@ import Head from 'next/head'
 import { AppProps } from 'next/app'
 import { Global, css } from '@emotion/core'
 import 'typeface-fira-code'
+import 'typeface-inter'
+import fonts from '../lib/fonts'
+import NavBar from '../components/Navbar'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => (
   <>
@@ -29,8 +32,57 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
     </Head>
     <Global
       styles={css`
+        :root {
+          --fg-hover: #d2c7c7;
+          --fg: white;
+          --bg: black;
+        }
         * {
-          font-family: 'Fira Code', Losevka, Consolas, monospace;
+          font-family: ${fonts.body};
+
+          scroll-behavior: smooth;
+          scrollbar-color: #2a2c2f #1a1c1d;
+        }
+
+        body {
+          color: var(--fg);
+          a {
+            color: var(--fg);
+            :hover {
+              color: var(--fg-hover);
+            }
+          }
+          overflow-x: hidden;
+          margin: 0;
+          background-color: var(--bg);
+          pre,
+          code {
+            font-family: ${fonts.code};
+          }
+          h2 {
+            letter-spacing: -3px;
+            font-size: calc(2rem + 2vw);
+          }
+
+          button,
+          select {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            margin-right: 1rem;
+            border: 3px solid;
+            border-color: var(--fg);
+            color: var(--fg);
+            background-color: var(--bg);
+            :hover {
+              cursor: pointer;
+              color: var(--fg-hover);
+              border-color: var(--fg-hover);
+            }
+          }
+          button {
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+          }
         }
         ::-webkit-scrollbar {
           background-color: #1a1c1d;
@@ -48,68 +100,10 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
         ::-webkit-scrollbar-corner {
           background-color: #151819;
         }
-        * {
-          scrollbar-color: #2a2c2f #1a1c1d;
-        }
-
-        /* Shared colors */
-        :root {
-          --sass: #cf6599;
-          --apollo: #102b4b;
-          --wasm: #644fed;
-          --ts: #007bcc;
-          --gql: #e435a7;
-        }
-
-        body {
-          overflow-x: hidden;
-          margin: 0;
-        }
-        /* Light theme colors */
-        [data-theme='dark'] {
-          :root {
-            --bg: black;
-            --fg: #c7c7c7;
-            --fg-secondary: #383d54;
-            --red: #5f0808;
-
-            --js: #f7df1f;
-            --react: #00d8ff;
-            --go: #21bcae;
-            --node: #84cd27;
-            --illo: #fc7b02;
-            --gql: #e435a7;
-            --apollo: var(--fg);
-          }
-
-          body {
-            background-color: var(--bg);
-            color: var(--fg);
-          }
-        }
-        /* Dark theme colors */
-        [data-theme='light'] {
-          :root {
-            --bg: #c7c7c7;
-            --fg: #292d3e;
-            --fg-secondary: #ababab;
-            --red: #f06459;
-
-            --illo: #9d5612;
-            --js: #9f8f0c;
-            --ps: #021b27;
-            --node: #497117;
-            --react: #108fa6;
-          }
-
-          body {
-            background-color: var(--bg);
-            color: var(--fg);
-          }
-        }
       `}
     />
 
+    <NavBar />
     <Component {...pageProps} />
   </>
 )

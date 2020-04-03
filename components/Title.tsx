@@ -1,14 +1,18 @@
-import React from 'react'
-import * as THREE from 'three'
-import { Canvas, useFrame } from 'react-three-fiber'
-import me from '../public/me.png'
+import React, { Suspense } from 'react'
+import { Clock, ShaderMaterial, TextureLoader } from 'three'
+import { Canvas, useFrame, useLoader, Dom } from 'react-three-fiber'
 
 // Kindly stolen from https://codesandbox.io/s/02-make-some-noise-ln8xv?from-embed
-import fragmentShader from '../lib/gl/fragment.glsl'
+
 import vertexShader from '../lib/gl/vertex.glsl'
+import fragmentShader from '../lib/gl/fragment.glsl'
 
 const Shader = () => {
-  const material = new THREE.ShaderMaterial({
+  const img = useLoader(TextureLoader, '/logo.png')
+
+  const clock = new Clock()
+
+  const material = new ShaderMaterial({
     vertexShader,
     fragmentShader,
     uniforms: {
@@ -16,21 +20,16 @@ const Shader = () => {
         value: 0.0
       },
       uTexture: {
-        value: me
+        value: img
       }
-    },
-    wireframe: true
+    }
   })
 
-  const clock = new THREE.Clock()
-
-  useFrame(() => {
-    material.uniforms.uTime.value = clock.getElapsedTime()
-  })
+  useFrame(() => (material.uniforms.uTime.value = clock.getElapsedTime()))
 
   return (
     <mesh material={material}>
-      <planeGeometry args={[5, 5, 16, 16]} attach="geometry" />
+      <planeGeometry args={[window.innerWidth / 170, window.innerWidth / 200, 15, 15]} attach="geometry" />
     </mesh>
   )
 }
@@ -39,12 +38,34 @@ const Title = () => {
   return (
     <div
       css={{
+        width: '100vw',
         height: '100vh',
-        width: '100vw'
+        position: 'relative'
       }}
     >
-      <Canvas>
-        <Shader />
+      <span
+        css={{
+          position: 'absolute',
+          top: '70vh',
+          left: 'calc(50vw - 10rem)',
+          zIndex: 1,
+          textAlign: 'center',
+          width: '20rem',
+          fontSize: 'calc(1rem + 1vw)'
+        }}
+      >
+        webdev / designer
+      </span>
+      <Canvas resize={{ scroll: false }}>
+        <Suspense
+          fallback={
+            <Dom>
+              <h1>v 1 r t l</h1>
+            </Dom>
+          }
+        >
+          <Shader />
+        </Suspense>
       </Canvas>
     </div>
   )

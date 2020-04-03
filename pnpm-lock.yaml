@@ -2,6 +2,7 @@ dependencies:
   '@emotion/core': 10.0.28_react@16.13.0
   '@react-hook/window-scroll': 1.0.7_react@16.13.0
   '@react-hook/window-size': 1.0.13_react@16.13.0
+  isomorphic-unfetch: 3.0.0
   lodash.chunk: 4.2.0
   next: 9.3.0_684d4c75022c872e6c3b65ae16c0eefb
   react: 16.13.0
@@ -10,6 +11,7 @@ dependencies:
   react-three-fiber: 4.0.20_b3d93cb50a7797851d03c769facdd7bc
   three: 0.113.2
   typeface-fira-code: 1.1.4
+  typeface-inter: 3.12.0
 devDependencies:
   '@babel/core': 7.8.7
   '@emotion/babel-preset-css-prop': 10.0.27_@babel+core@7.8.7
@@ -4204,6 +4206,13 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
+  /isomorphic-unfetch/3.0.0:
+    dependencies:
+      node-fetch: 2.6.0
+      unfetch: 4.1.0
+    dev: false
+    resolution:
+      integrity: sha512-V0tmJSYfkKokZ5mgl0cmfQMTb7MLHsBMngTkbLY0eXvKqiVRRoZP04Ly+KhKrJfKtzC9E6Pp15Jo+bwh7Vi2XQ==
   /jest-worker/24.9.0:
     dependencies:
       merge-stream: 2.0.0
@@ -7184,6 +7193,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-RInwMBx+jPn42hsPAzu6DWyoReLHximaMix5/brUJGPpthPs1QRH6qCXuUrndnLi1dqV551bb+qepudVygFDMQ==
+  /typeface-inter/3.12.0:
+    dev: false
+    resolution:
+      integrity: sha512-3vKBTKCl6S0OJhMKwmyAOodsfTD3Gxsrj5ReavpQmdZ385ecUr3swfNxiBZ4u594mNfojlqL/zUebavV3A1yCA==
   /typescript/3.8.3:
     engines:
       node: '>=4.2.0'
@@ -7569,6 +7582,7 @@ specifiers:
   eslint-plugin-prettier: ^3.1.2
   eslint-plugin-react: ^7.19.0
   eslint-plugin-react-hooks: ^2.5.0
+  isomorphic-unfetch: ^3.0.0
   lodash.chunk: ^4.2.0
   next: ^9.3.0
   next-images: ^1.4.0
@@ -7579,5 +7593,6 @@ specifiers:
   react-three-fiber: ^4.0.20
   three: ^0.113.2
   typeface-fira-code: ^1.1.4
+  typeface-inter: ^3.12.0
   typescript: ^3.8.3
   webpack-glsl-loader: ^1.0.1

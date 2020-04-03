@@ -1,18 +1,27 @@
 import React from 'react'
 import Link from 'next/link'
-import ThemeSwitch, { Theme } from './ThemeSwitch'
 
 const NavBar = ({
-  items,
-  handleTheme
+  items = [
+    { text: 'about', href: '/#about' },
+    { text: 'tech skills', href: '/#tech_skills' },
+    { text: 'code', href: '/#code' },
+    {
+      text: 'design',
+      href: '/#design'
+    },
+    {
+      text: 'contact',
+      href: '/#contact'
+    }
+  ]
 }: {
-  items: { text: string; href: string }[]
-  handleTheme?: (theme: Theme) => void
+  items?: { text: string; href: string }[]
 }) => (
   <nav
     css={{
       display: 'flex',
-      backgroundColor: 'var(--bg)',
+      backgroundColor: 'black',
       justifyContent: 'center',
       flexWrap: 'wrap',
       left: 0,
@@ -28,9 +37,7 @@ const NavBar = ({
         <a
           href={href}
           css={{
-            color: 'var(--fg)',
             fontWeight: 'bold',
-            fontSize: 'calc(0.8rem + 0.8vw)',
             marginLeft: '0.5em',
             textDecoration: 'none',
             marginRight: '0.5em',
@@ -44,7 +51,6 @@ const NavBar = ({
         </a>
       </Link>
     ))}
-    <ThemeSwitch handleTheme={handleTheme} />
   </nav>
 )
 
