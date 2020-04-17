@@ -157,16 +157,14 @@ export class Cloth {
       }
     }
 
-    this.particles.map((_, i: number) => {
-      const particle = this.particles[i]
+    this.particles.map((particle) => {
       particle.addForce(this.gravity)
       particle.integrate(TIMESTEP_SQ)
     })
   }
 
   satisfyConstrains() {
-    for (let i = 0; i < this.constrains.length; i++) {
-      const constrain = this.constrains[i]
+    for (const constrain of this.constrains) {
       const p1 = constrain[0]
       const p2 = constrain[1]
       const distance = constrain[2]
@@ -184,8 +182,7 @@ export class Cloth {
     }
   }
   pinConstrains() {
-    for (let i = 0; i < this.pins.length; i++) {
-      const xy = this.pins[i]
+    for (const xy of this.pins) {
       const p = this.particles[xy]
       p.position.copy(p.original)
       p.previous.copy(p.original)

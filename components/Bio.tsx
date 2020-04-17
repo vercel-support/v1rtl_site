@@ -30,8 +30,10 @@ const Bio = () => {
         }
       `}
     >
-      <div>$ sysinfo</div>
-      <div id="table">
+      <div>
+        $ <span contentEditable>sysinfo</span>
+      </div>
+      <div id="table" contentEditable>
         <div>
           <h3>Basic info</h3>
           <ul>

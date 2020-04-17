@@ -6,6 +6,7 @@ import 'typeface-fira-code'
 import 'typeface-inter'
 import fonts from '../lib/fonts'
 import NavBar from '../components/Navbar'
+import { ThemeProvider } from '../lib/theme'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => (
   <>
@@ -28,15 +29,18 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
       <meta name="og:site_name" content="v1rtl.site" />
       <link rel="icon" type="image/png" href="/icon.png" />
       <title>v 1 r t l ✨</title>
-      <meta name="theme-color" content="#464c68" />
+      <meta name="theme-color" content="#292d3e" />
     </Head>
     <Global
       styles={css`
-        :root {
-          --fg-hover: #d2c7c7;
-          --fg: white;
-          --bg: black;
+        html {
+          :root {
+            --fg-hover: #d2c7c7;
+            --fg: white;
+            --bg: black;
+          }
         }
+
         * {
           font-family: ${fonts.body};
 
@@ -45,6 +49,9 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
         }
 
         body {
+          overflow-x: hidden;
+          background-color: var(--bg);
+          margin: 0;
           color: var(--fg);
           a {
             color: var(--fg);
@@ -52,9 +59,10 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
               color: var(--fg-hover);
             }
           }
-          overflow-x: hidden;
-          margin: 0;
-          background-color: var(--bg);
+        }
+
+        body main,
+        body article {
           pre,
           code {
             font-family: ${fonts.code};
@@ -62,6 +70,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
           h2 {
             letter-spacing: -3px;
             font-size: calc(2rem + 2vw);
+            text-align: center;
           }
 
           button,
@@ -85,11 +94,10 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
           }
         }
         ::-webkit-scrollbar {
-          background-color: #1a1c1d;
-          color: #ddd9cf;
+          background-color: #1b1e2b;
         }
         ::-webkit-scrollbar-thumb {
-          background-color: #2a2c2f;
+          background-color: #212535;
         }
         ::-webkit-scrollbar-thumb:hover {
           background-color: #333739;
@@ -103,8 +111,10 @@ const CustomApp = ({ Component, pageProps }: AppProps) => (
       `}
     />
 
+    {/* <ThemeProvider> */}
     <NavBar />
     <Component {...pageProps} />
+    {/* </ThemeProvider> */}
   </>
 )
 

@@ -1,0 +1,79 @@
+[
+  {
+    "name": "go-web-app",
+    "primaryLanguage": {
+      "name": "Go",
+      "color": "#00ADD8"
+    },
+    "description": "📦 CLI for setting up Go WebAssembly frontend app",
+    "stargazers": {
+      "totalCount": 132
+    }
+  },
+  {
+    "name": "simple-ddos",
+    "primaryLanguage": {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    "description": "💀 Multi-threaded DDoS script",
+    "stargazers": {
+      "totalCount": 14
+    }
+  },
+  {
+    "name": "vdom",
+    "primaryLanguage": {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    "description": "Simple JavaScript Virtual DOM",
+    "stargazers": {
+      "totalCount": 9
+    }
+  },
+  {
+    "name": "v1rtl.site",
+    "primaryLanguage": {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    "description": "My own portfolio website :3",
+    "stargazers": {
+      "totalCount": 8
+    }
+  },
+  {
+    "name": "parsec",
+    "primaryLanguage": {
+      "name": "TypeScript",
+      "color": "#2b7489"
+    },
+    "description": "🌌 Asynchronous body parser for Node.js",
+    "stargazers": {
+      "totalCount": 7
+    }
+  },
+  {
+    "name": "f-serv",
+    "primaryLanguage": {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    "description": "📁 File explorer working on a server",
+    "stargazers": {
+      "totalCount": 4
+    }
+  },
+  {
+    "name": "node_modules_cleaner",
+    "primaryLanguage": {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    "description": "🧹 Cleans node_modules from non code files.",
+    "stargazers": {
+      "totalCount": 4
+    }
+  }
+]

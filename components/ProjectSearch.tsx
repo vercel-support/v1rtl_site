@@ -9,12 +9,12 @@ const Tag = ({ tag, setTags }: { tag: string; setTags: (v: (tags: string[]) => s
       css={
         clicked
           ? {
-              color: 'black',
-              backgroundColor: 'white'
+              color: 'var(--bg)',
+              backgroundColor: 'var(--fg)'
             }
           : {
-              color: 'white',
-              backgroundColor: 'black'
+              color: 'var(--fg)',
+              backgroundColor: 'var(--bg)'
             }
       }
       onClick={() => {
@@ -39,20 +39,18 @@ const ProjectSearch = () => {
   const [type, setType] = useState('all')
 
   const doQuery = () => {
-    Router.push(`/proj/[type]?tags=${tags.join(',')}`, `/proj/${type}?tags=${tags.join(',')}`)
+    if (type === 'all' && tags.length === 0) {
+      Router.push('/list')
+    } else {
+      Router.push(`/list?tags=${tags.join(',')}&type=${type}`)
+    }
   }
 
   return (
     <div
       id="tech_skills"
       css={{
-        padding: '3rem',
-        p: {
-          width: '40vw',
-          '@media (max-width: 450px)': {
-            width: '80vw'
-          }
-        }
+        padding: '3rem'
       }}
     >
       <section>

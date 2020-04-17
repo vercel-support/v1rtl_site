@@ -10,4 +10,13 @@ declare global {
       orbitControls: ReactThreeFiber.Object3DNode<OrbitControls, typeof OrbitControls>
     }
   }
+
+  namespace NodeJS {
+    interface ProcessEnv {
+      GITHUB_AUTH_TOKEN: string
+      NODE_ENV: 'development' | 'production'
+      PORT?: string
+      PWD: string
+    }
+  }
 }
