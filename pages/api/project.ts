@@ -1,4 +1,4 @@
-import { websites } from './projects'
+import { websites } from '../../lib/projects'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default (req: NextApiRequest, res: NextApiResponse) => {

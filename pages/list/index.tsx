@@ -4,7 +4,6 @@ import 'isomorphic-unfetch'
 import { Project } from '../../lib/projects'
 import BackButton from '../../components/BackButton'
 import ProjectView from '../../components/ProjectView'
-import { CSSObject } from '@emotion/core'
 
 type Props = {
   tags: string[]
