@@ -5,7 +5,7 @@ import { artworks } from '../lib/projects'
 const Artwork = () => {
   return (
     <section css={{ padding: '3rem' }} id="artwork">
-      <h2>artwork</h2>
+      <h2>Artwork</h2>
 
       <div
         css={{

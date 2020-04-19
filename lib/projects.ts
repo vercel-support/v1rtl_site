@@ -83,10 +83,24 @@ export const tools: Project[] = [
   },
   {
     type: 'tool',
-    stack: ['TypeScript', 'Jest'],
+    stack: ['TypeScript', 'Jest', 'Rollup'],
     title: 'multiple-fetch',
     link: 'https://github.com/talentlessguy/multiple-fetch',
     desc: 'Fetch multiple resources using one function',
+  },
+  {
+    link: 'https://github.com/relay-chat/react-link-previewer',
+    title: 'react-link-previewer',
+    desc: 'Link previews for React',
+    stack: ['React', 'TypeScript', 'Go', 'Rollup'],
+    type: 'tool',
+  },
+  {
+    type: 'tool',
+    title: 'node_modules_cleaner',
+    desc: 'Cleans node_modules from non code files.',
+    link: 'https://github.com/talentlessguy/node_modules_cleaner',
+    stack: ['Node.js'],
   },
 ]
 

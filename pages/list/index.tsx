@@ -4,6 +4,7 @@ import 'isomorphic-unfetch'
 import { Project } from '../../lib/projects'
 import BackButton from '../../components/BackButton'
 import ProjectView from '../../components/ProjectView'
+import { CSSObject } from '@emotion/core'
 
 type Props = {
   tags: string[]
@@ -11,12 +12,15 @@ type Props = {
   filter: string
 }
 
-export const ProjectGrid = ({ children }: { children: any }) => (
+export const ProjectGrid = ({ children, limit = 300 }: { children: any; limit?: number }) => (
   <div
     css={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gap: '3rem'
+      gridTemplateColumns: `repeat(auto-fit, minmax(${limit}px, 1fr))`,
+      gap: '3rem',
+      [`@media screen (max-width: ${limit + 50})`]: {
+        gridTemplateColumns: `repeat(auto-fit, minmax(${limit - 150}px, 1fr))`,
+      },
     }}
   >
     {children}
@@ -25,9 +29,9 @@ export const ProjectGrid = ({ children }: { children: any }) => (
 
 const FilteredProjectList: NextPage<Props> = ({ tags, list, filter }: Props) => {
   if (filter !== 'sites' && filter !== 'tools') {
-    const sites = list.filter(l => l.type === 'site')
+    const sites = list.filter((l) => l.type === 'site')
 
-    const tools = list.filter(l => l.type === 'tool')
+    const tools = list.filter((l) => l.type === 'tool')
 
     return (
       <article css={{ padding: '3rem' }}>
@@ -36,8 +40,8 @@ const FilteredProjectList: NextPage<Props> = ({ tags, list, filter }: Props) => 
         {sites?.[0] && (
           <section>
             <h2>Websites</h2>
-            <ProjectGrid>
-              {sites.map(s => (
+            <ProjectGrid limit={475}>
+              {sites.map((s) => (
                 <ProjectView key={s.title} proj={s} />
               ))}
             </ProjectGrid>
@@ -47,7 +51,7 @@ const FilteredProjectList: NextPage<Props> = ({ tags, list, filter }: Props) => 
           <section>
             <h2>Tools</h2>
             <ProjectGrid>
-              {tools.map(t => (
+              {tools.map((t) => (
                 <ProjectView key={t.title} proj={t} />
               ))}
             </ProjectGrid>
@@ -65,7 +69,7 @@ const FilteredProjectList: NextPage<Props> = ({ tags, list, filter }: Props) => 
         <section>
           <h2>{filter[0].toUpperCase() + filter.slice(1)}</h2>
           <ProjectGrid>
-            {list.map(i => (
+            {list.map((i) => (
               <ProjectView key={i.title} proj={i} />
             ))}
           </ProjectGrid>
@@ -109,7 +113,7 @@ FilteredProjectList.getInitialProps = async ({ req, query }: NextPageContext) =>
   return {
     tags,
     filter,
-    list: json
+    list: json,
   }
 }
 

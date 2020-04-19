@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useContext, useState } from 'react'
 import { Clock, ShaderMaterial, TextureLoader, LinearFilter } from 'three'
 import { Canvas, useFrame, useLoader, Dom, useThree } from 'react-three-fiber'
 
@@ -7,6 +7,7 @@ import { Canvas, useFrame, useLoader, Dom, useThree } from 'react-three-fiber'
 import vertexShader from '../lib/gl/vertex.glsl'
 import fragmentShader from '../lib/gl/fragment.glsl'
 import { ContainerProps } from 'react-three-fiber/targets/shared/web/ResizeContainer'
+import { DataContext } from '../lib/context'
 
 const Shader = ({
   texture,
@@ -64,6 +65,7 @@ const Shader = ({
 
 const Wave = ({
   img = '/logo.png',
+  imgFallback,
   children,
   amp = 0.5,
   freq = 1.5,
@@ -78,10 +80,13 @@ const Wave = ({
   amp?: number
   freq?: number
   width?: number
+  imgFallback?: string
   height?: number
   canvasProps?: Omit<ContainerProps, 'children'>
   fallback?: any
 }) => {
+  const { isWebpSupported } = useContext(DataContext)
+
   return (
     <div {...props}>
       <Canvas resize={{ scroll: false }} {...canvasProps}>
@@ -92,7 +97,7 @@ const Wave = ({
             </Dom>
           }
         >
-          <Shader texture={img} {...{ amp, freq, width, height }} />
+          <Shader texture={isWebpSupported ? img : imgFallback} {...{ amp, freq, width, height }} />
         </Suspense>
       </Canvas>
       {children}

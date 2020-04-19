@@ -10,20 +10,20 @@ const Tag = ({ tag, setTags }: { tag: string; setTags: (v: (tags: string[]) => s
         clicked
           ? {
               color: 'var(--bg)',
-              backgroundColor: 'var(--fg)'
+              backgroundColor: 'var(--fg)',
             }
           : {
               color: 'var(--fg)',
-              backgroundColor: 'var(--bg)'
+              backgroundColor: 'var(--bg)',
             }
       }
       onClick={() => {
-        click(clicked => {
+        click((clicked) => {
           const c = !clicked
           if (c) {
-            setTags(tags => [...tags, tag])
+            setTags((tags) => [...tags, tag])
           } else {
-            setTags(tags => tags.filter(t => t !== tag))
+            setTags((tags) => tags.filter((t) => t !== tag))
           }
           return c
         })
@@ -50,11 +50,11 @@ const ProjectSearch = () => {
     <div
       id="tech_skills"
       css={{
-        padding: '3rem'
+        padding: '3rem',
       }}
     >
       <section>
-        <h2>tech skills</h2>
+        <h2>Tech skills</h2>
         <p>
           Here&apos;s a list of all the tools I ever used for my work. Here are programming languages, frameworks,
           design tools, Kanban boards, and more.
@@ -70,9 +70,9 @@ const ProjectSearch = () => {
             marginBottom: '0.5rem',
             fontSize: '0.8rem',
             '&:hover, button:hover': {
-              cursor: 'pointer'
-            }
-          }
+              cursor: 'pointer',
+            },
+          },
         }}
       >
         <div>
@@ -98,7 +98,7 @@ const ProjectSearch = () => {
             'Linux',
             'Travis CI',
             'THREE',
-            'react-three-fiber'
+            'react-three-fiber',
           ].map((tag, i) => (
             <Tag key={i} tag={tag} setTags={setTags} />
           ))}
@@ -106,7 +106,7 @@ const ProjectSearch = () => {
         Scope:
         <select
           autoComplete="on"
-          onChange={e => setType(e.currentTarget.value)}
+          onChange={(e) => setType(e.currentTarget.value)}
           defaultValue="all"
           css={{ marginLeft: '1rem' }}
         >

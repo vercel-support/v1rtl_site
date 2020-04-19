@@ -4,16 +4,16 @@ import ProjectView from './ProjectView'
 
 const Sites = ({ projects }: { projects: Project[] }) => (
   <section css={{ padding: '3rem' }} id="sites">
-    <h2>sites</h2>
+    <h2>Sites</h2>
 
     <div
       css={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
-        gap: '3rem'
+        gap: '3rem',
       }}
     >
-      {projects.map(proj => (
+      {projects.map((proj) => (
         <ProjectView proj={proj} key={proj.title} />
       ))}
     </div>

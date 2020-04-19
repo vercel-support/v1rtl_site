@@ -13,6 +13,10 @@ const NavBar = ({
     },
     { text: 'repos', href: '/#repos' },
     {
+      text: 'contrib',
+      href: '/#contrib',
+    },
+    {
       text: 'contact',
       href: '/#contact',
     },

@@ -18,7 +18,7 @@ const Tools: NextPage<{ repos: Repo[] }> = ({ repos }: { repos: Repo[] }) => {
         padding: '3rem',
       }}
     >
-      <h2>repos</h2>
+      <h2>Repos</h2>
       <div
         css={{
           gridGap: '3rem',
