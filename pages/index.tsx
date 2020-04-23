@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { websites } from '../lib/projects'
-import dynamic from 'next/dynamic'
 import Bio from '../components/Bio'
 import ProjectSearch from '../components/ProjectSearch'
 import Sites from '../components/Sites'
@@ -9,8 +8,6 @@ import Repos, { Repo } from '../components/Repos'
 import { NextPage } from 'next'
 import 'isomorphic-unfetch'
 import githubRepos from '../lib/github/repos.json'
-
-const Wave = dynamic(() => import('../components/Wave'))
 
 const Index: NextPage = () => {
   const repos: Repo[] = githubRepos.map((item) => {
@@ -31,30 +28,23 @@ const Index: NextPage = () => {
 
   return (
     <main>
-      <header>
-        <Wave
-          height={6}
-          fallback="v 1 r t l"
-          width={8}
-          css={{
-            height: 'calc(100vh - 64px)',
-            position: 'relative',
-          }}
-        >
-          <span
-            css={{
-              position: 'absolute',
-              top: '70vh',
-              left: 'calc(50vw - 10rem)',
-              zIndex: 1,
-              textAlign: 'center',
-              width: '20rem',
-              fontSize: 'calc(1rem + 1vw)',
-            }}
-          >
-            webdev / designer
-          </span>
-        </Wave>
+      <header
+        css={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          height: 'calc(100vh - 64px)',
+          span: {
+            zIndex: 1,
+            textAlign: 'center',
+            width: '20rem',
+            fontSize: 'calc(1rem + 1vw)',
+          },
+        }}
+      >
+        <video src="/v1rtl.mp4" width="50%" autoPlay loop />
+        <span>webdev / designer</span>
       </header>
 
       <div
@@ -83,7 +73,7 @@ const Index: NextPage = () => {
           }}
         >
           <source srcSet="/me.webp" type="image/webp" media="screen" />
-          <img src="/me.gif" alt="me" />
+          <img src="/me.gif" alt="me" width="100%" />
         </picture>
         <Bio />
       </div>

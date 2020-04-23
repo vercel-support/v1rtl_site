@@ -10,6 +10,7 @@ const Bio = () => {
 
   return (
     <section
+      contentEditable
       css={css`
         border: 3px solid white;
         padding: 2rem;
@@ -31,9 +32,10 @@ const Bio = () => {
       `}
     >
       <div>
-        $ <span contentEditable>sysinfo</span>
+        $ <span>sysinfo</span>
       </div>
-      <div id="table" contentEditable>
+      <div css={{ color: 'darkgray' }}># you can edit it</div>
+      <div id="table">
         <div>
           <h3>Basic info</h3>
           <ul>

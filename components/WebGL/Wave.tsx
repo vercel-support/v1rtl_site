@@ -4,10 +4,10 @@ import { Canvas, useFrame, useLoader, Dom, useThree } from 'react-three-fiber'
 
 // Kindly stolen from https://codesandbox.io/s/02-make-some-noise-ln8xv?from-embed
 
-import vertexShader from '../lib/gl/vertex.glsl'
-import fragmentShader from '../lib/gl/fragment.glsl'
+import vertexShader from '../../lib/gl/vertex.glsl'
+import fragmentShader from '../../lib/gl/fragment.glsl'
 import { ContainerProps } from 'react-three-fiber/targets/shared/web/ResizeContainer'
-import { DataContext } from '../lib/context'
+import { DataContext } from '../../lib/context'
 
 const Shader = ({
   texture,

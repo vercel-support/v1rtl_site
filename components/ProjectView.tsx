@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Project } from '../lib/projects'
-import Wave from './Wave'
+import Wave from './WebGL/Wave'
 import { DataContext } from '../lib/context'
 
 const ProjectView = ({ proj }: { proj: Project }) => {
