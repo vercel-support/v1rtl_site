@@ -5,7 +5,7 @@ export interface Project {
   screenshot?: string
   longDesc?: string
   link: string
-  type: 'site' | 'tool' | 'artwork'
+  type: 'site' | 'repo' | 'artwork'
 }
 
 export const websites: Project[] = [
@@ -66,41 +66,130 @@ export const websites: Project[] = [
   },
 ]
 
-export const tools: Project[] = [
+// export const tools: Project[] = [
+//   {
+//     type: 'tool',
+//     stack: ['Go', 'WebAssembly'],
+//     desc: 'Write frontend apps with Go',
+//     link: 'https://github.com/talentlessguy/go-web-app',
+//     title: 'go-web-app',
+//   },
+//   {
+//     type: 'tool',
+//     stack: ['Node.js'],
+//     title: 'SimpleDDoS',
+//     desc: 'Multi-threaded DDoS script',
+//     link: 'https://github.com/talentlessguy/simple-ddos',
+//   },
+//   {
+//     type: 'tool',
+//     stack: ['TypeScript', 'Jest', 'Rollup'],
+//     title: 'multiple-fetch',
+//     link: 'https://github.com/talentlessguy/multiple-fetch',
+//     desc: 'Fetch multiple resources using one function',
+//   },
+//   {
+//     link: 'https://github.com/relay-chat/react-link-previewer',
+//     title: 'react-link-previewer',
+//     desc: 'Link previews for React',
+//     stack: ['React', 'TypeScript', 'Go', 'Rollup'],
+//     type: 'tool',
+//   },
+//   {
+//     type: 'tool',
+//     title: 'node_modules_cleaner',
+//     desc: 'Cleans node_modules from non code files.',
+//     link: 'https://github.com/talentlessguy/node_modules_cleaner',
+//     stack: ['Node.js'],
+//   },
+// ]
+
+export type Repo = Omit<Project, 'link'> & {
+  primaryLanguage: {
+    name: string
+    color: string
+  }
+  stars: number
+}
+
+export const repos: Repo[] = [
   {
-    type: 'tool',
-    stack: ['Go', 'WebAssembly'],
-    desc: 'Write frontend apps with Go',
-    link: 'https://github.com/talentlessguy/go-web-app',
     title: 'go-web-app',
+    primaryLanguage: {
+      name: 'Go',
+      color: '#00ADD8',
+    },
+    desc: '📦 CLI for setting up Go WebAssembly frontend app',
+    stars: 132,
+    type: 'repo',
+    stack: ['Go', 'WebAssembly'],
   },
   {
-    type: 'tool',
+    title: 'vimlet/bundl-plugins',
+    primaryLanguage: {
+      name: 'TypeScript',
+      color: '#2b7489',
+    },
+    desc: 'Official plugins for Bundl',
+    stars: 2,
+    type: 'repo',
+    stack: ['TypeScript', 'Jest'],
+  },
+  {
+    title: 'simple-ddos',
+    type: 'repo',
+    primaryLanguage: {
+      name: 'JavaScript',
+      color: '#f1e05a',
+    },
+    desc: '💀 Multi-threaded DDoS script',
+    stars: 14,
+    stack: ['JavaScript', 'Node.js'],
+  },
+  {
+    title: 'vdom',
+    primaryLanguage: {
+      name: 'JavaScript',
+      color: '#f1e05a',
+    },
+    desc: 'Simple JavaScript Virtual DOM',
+    stars: 9,
+    type: 'repo',
+    stack: ['JavaScript'],
+  },
+
+  {
+    title: 'parsec',
+    primaryLanguage: {
+      name: 'TypeScript',
+      color: '#2b7489',
+    },
+    desc: '🌌 Asynchronous body parser for Node.js',
+    stars: 7,
+    type: 'repo',
+    stack: ['TypeScript', 'Node.js'],
+  },
+  {
+    title: 'f-serv',
+    primaryLanguage: {
+      name: 'JavaScript',
+      color: '#f1e05a',
+    },
+    desc: '📁 File explorer working on a server',
+    stars: 4,
+    type: 'repo',
     stack: ['Node.js'],
-    title: 'SimpleDDoS',
-    desc: 'Multi-threaded DDoS script',
-    link: 'https://github.com/talentlessguy/simple-ddos',
   },
   {
-    type: 'tool',
-    stack: ['TypeScript', 'Jest', 'Rollup'],
-    title: 'multiple-fetch',
-    link: 'https://github.com/talentlessguy/multiple-fetch',
-    desc: 'Fetch multiple resources using one function',
-  },
-  {
-    link: 'https://github.com/relay-chat/react-link-previewer',
-    title: 'react-link-previewer',
-    desc: 'Link previews for React',
-    stack: ['React', 'TypeScript', 'Go', 'Rollup'],
-    type: 'tool',
-  },
-  {
-    type: 'tool',
     title: 'node_modules_cleaner',
-    desc: 'Cleans node_modules from non code files.',
-    link: 'https://github.com/talentlessguy/node_modules_cleaner',
-    stack: ['Node.js'],
+    primaryLanguage: {
+      name: 'JavaScript',
+      color: '#f1e05a',
+    },
+    desc: '🧹 Cleans node_modules from non code files.',
+    stars: 4,
+    type: 'repo',
+    stack: ['JavaScript'],
   },
 ]
 
@@ -162,7 +251,7 @@ export const artworks: Artwork[] = [
     rotate: 1,
     position: {
       x: -10,
-      y: -50,
+      y: -75,
     },
   },
   {
@@ -172,7 +261,7 @@ export const artworks: Artwork[] = [
     rotate: -3,
     position: {
       x: 15,
-      y: -35,
+      y: -100,
     },
   },
 ]

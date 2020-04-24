@@ -1,31 +1,16 @@
-import React, { useState, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import { websites } from '../lib/projects'
 import Bio from '../components/Bio'
 import ProjectSearch from '../components/ProjectSearch'
 import Sites from '../components/Sites'
 import Artwork from '../components/Artwork'
-import Repos, { Repo } from '../components/Repos'
+import Repos from '../components/Repos'
 import { NextPage } from 'next'
 import 'isomorphic-unfetch'
-import githubRepos from '../lib/github/repos.json'
+import { Canvas } from 'react-three-fiber'
+import Text from '../components/WebGL/Text'
 
 const Index: NextPage = () => {
-  const repos: Repo[] = githubRepos.map((item) => {
-    const stars = item.stargazers.totalCount
-    const desc = item.description
-    const lang = item.primaryLanguage.name
-
-    const color = item.primaryLanguage.color
-
-    return {
-      name: item.name,
-      stars,
-      color,
-      desc,
-      lang,
-    }
-  })
-
   return (
     <main>
       <header
@@ -34,16 +19,34 @@ const Index: NextPage = () => {
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
+
           height: 'calc(100vh - 64px)',
           span: {
             zIndex: 1,
             textAlign: 'center',
-            width: '20rem',
-            fontSize: 'calc(1rem + 1vw)',
+
+            fontSize: 'calc(0.8rem + 0.8vw)',
           },
         }}
       >
-        <video src="/v1rtl.mp4" width="50%" autoPlay loop />
+        <div
+          css={{
+            width: '70vw',
+            height: '40vh',
+          }}
+        >
+          <Canvas
+            resize={{
+              scroll: false,
+            }}
+          >
+            <Suspense fallback={<h1>Hello World</h1>}>
+              <Text>v 1 r t l</Text>
+            </Suspense>
+          </Canvas>
+        </div>
+
+        {/* <video src="/v1rtl.mp4" width="50%" autoPlay loop /> */}
         <span>webdev / designer</span>
       </header>
 
@@ -80,7 +83,7 @@ const Index: NextPage = () => {
       <ProjectSearch />
       <Sites projects={websites} />
       <Artwork />
-      <Repos repos={repos} />
+      <Repos />
     </main>
   )
 }

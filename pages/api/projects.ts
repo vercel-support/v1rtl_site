@@ -1,21 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Project, tools, websites } from '../../lib/projects'
+import { Project, repos, websites } from '../../lib/projects'
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const projectsCategory = req.query.type
 
-  let projectList: Project[]
+  let projectList: Project[] & any
 
   switch (projectsCategory) {
     case 'sites':
       projectList = websites
 
       break
-    case 'tools':
-      projectList = tools
+    case 'repos':
+      projectList = repos
       break
     default:
-      projectList = [...tools, ...websites]
+      projectList = [...repos, ...websites]
   }
   const tags = req.query.tags as string
 
@@ -25,7 +25,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     const filteredProjects = []
 
     for (const proj of projectList as Project[]) {
-      if (requestedTags.every(tag => proj.stack.includes(tag))) {
+      if (requestedTags.every((tag) => proj.stack.includes(tag))) {
         filteredProjects.push(proj)
       }
     }

@@ -21,6 +21,9 @@ const ProjectView = ({ proj }: { proj: Project }) => {
               freq={0.2}
               css={{
                 height: '50vh',
+                '@media (max-width: 500px)': {
+                  height: '100vh',
+                },
               }}
             />
           </a>

@@ -27,10 +27,10 @@ export const ProjectGrid = ({ children, limit = 300 }: { children: any; limit?: 
 )
 
 const FilteredProjectList: NextPage<Props> = ({ tags, list, filter }: Props) => {
-  if (filter !== 'sites' && filter !== 'tools') {
+  if (filter !== 'sites' && filter !== 'repos') {
     const sites = list.filter((l) => l.type === 'site')
 
-    const tools = list.filter((l) => l.type === 'tool')
+    const repos = list.filter((l) => l.type === 'repo')
 
     return (
       <article css={{ padding: '3rem' }}>
@@ -46,11 +46,12 @@ const FilteredProjectList: NextPage<Props> = ({ tags, list, filter }: Props) => 
             </ProjectGrid>
           </section>
         )}
-        {tools?.[0] && (
+        {repos?.[0] && (
           <section>
-            <h2>Tools</h2>
+            <h2 css={{ marginBottom: 0 }}>Repos</h2>
+            <h4 css={{ textAlign: 'center', marginBottom: '1rem' }}>(other than sites)</h4>
             <ProjectGrid>
-              {tools.map((t) => (
+              {repos.map((t) => (
                 <ProjectView key={t.title} proj={t} />
               ))}
             </ProjectGrid>

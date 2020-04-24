@@ -1,16 +1,9 @@
 import React from 'react'
 import { NextPage } from 'next'
 import 'isomorphic-unfetch'
+import { repos } from '../lib/projects'
 
-export interface Repo {
-  name: string
-  stars: number
-  color: string
-  desc: string
-  lang: string
-}
-
-const Tools: NextPage<{ repos: Repo[] }> = ({ repos }: { repos: Repo[] }) => {
+const Repos: NextPage = () => {
   return (
     <section
       id="repos"
@@ -26,39 +19,37 @@ const Tools: NextPage<{ repos: Repo[] }> = ({ repos }: { repos: Repo[] }) => {
           gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
         }}
       >
-        {repos
-          .filter((repo) => repo.name !== 'v1rtl.site')
-          .map((repo) => (
-            <a
-              key={repo.name}
+        {repos.map((repo) => (
+          <a
+            key={repo.title}
+            css={{
+              ':not(:hover)': {
+                textDecoration: 'none',
+              },
+            }}
+            href={`https://github.com/${!repo.title.includes('/') ? '' : 'talentlessguy'}/${repo.title}`}
+          >
+            <div
+              title={repo.desc}
               css={{
-                ':not(:hover)': {
-                  textDecoration: 'none',
+                border: `3px solid ${repo.primaryLanguage.color}`,
+                borderRadius: '15px',
+                padding: '1rem',
+                h3: {
+                  margin: 0,
                 },
               }}
-              href={`https://github.com/talentlessguy/${repo.name}`}
             >
-              <div
-                title={repo.desc}
-                css={{
-                  border: `3px solid ${repo.color}`,
-                  borderRadius: '15px',
-                  padding: '1rem',
-                  h3: {
-                    margin: 0,
-                  },
-                }}
-              >
-                <h3>
-                  {repo.name} 🟊 {repo.stars}
-                </h3>
-                <p>{repo.desc}</p>
-              </div>
-            </a>
-          ))}
+              <h3>
+                {repo.title} 🟊 {repo.stars}
+              </h3>
+              <p>{repo.desc}</p>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
   )
 }
 
-export default Tools
+export default Repos
