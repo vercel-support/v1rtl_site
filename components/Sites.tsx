@@ -9,8 +9,8 @@ const Sites = ({ projects }: { projects: Project[] }) => (
     <div
       css={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
-        gap: '3rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+        gap: '4.5rem',
       }}
     >
       {projects.map((proj) => (

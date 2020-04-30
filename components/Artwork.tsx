@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react'
 import Draggable from 'react-draggable'
 import { artworks } from '../lib/projects'
@@ -32,8 +33,8 @@ const Artwork = () => {
             >
               <picture>
                 <source srcSet={`/artwork/${artwork.link}.webp`} type="image/webp" />
+
                 <img
-                  loading="lazy"
                   src={`/artwork/${artwork.link}.jpg`}
                   alt={artwork.title}
                   onMouseDown={(e) => e.preventDefault()}

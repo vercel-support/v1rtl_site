@@ -44,10 +44,10 @@ const Wave = ({
   img = '/logo.png',
   imgFallback,
   children,
-  amp = 0.5,
+  amp = 1.0,
   freq = 1.5,
   width = 15,
-  height = 9,
+  height = 7.5,
   canvasProps,
   fallback = '',
   ...props

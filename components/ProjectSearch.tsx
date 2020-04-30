@@ -4,8 +4,21 @@ import Router from 'next/router'
 const Tag = ({ tag, setTags }: { tag: string; setTags: (v: (tags: string[]) => string[]) => void }) => {
   const [clicked, click] = useState(false)
 
+  const handleTagClick = () => {
+    click((clicked) => {
+      const c = !clicked
+      if (c) {
+        setTags((tags) => [...tags, tag])
+      } else {
+        setTags((tags) => tags.filter((t) => t !== tag))
+      }
+      return c
+    })
+  }
+
   return (
     <span
+      role="button"
       css={
         clicked
           ? {
@@ -17,17 +30,13 @@ const Tag = ({ tag, setTags }: { tag: string; setTags: (v: (tags: string[]) => s
               backgroundColor: 'var(--bg)',
             }
       }
-      onClick={() => {
-        click((clicked) => {
-          const c = !clicked
-          if (c) {
-            setTags((tags) => [...tags, tag])
-          } else {
-            setTags((tags) => tags.filter((t) => t !== tag))
-          }
-          return c
-        })
+      onClick={handleTagClick}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleTagClick()
+        }
       }}
+      tabIndex={0}
     >
       {tag}
     </span>
@@ -61,7 +70,7 @@ const ProjectSearch = () => {
         </p>
         <p>Select tags and then click &quot;Filter projects&quot; to see my work with usage of any of these tech.</p>
       </section>
-      <div
+      <form
         css={{
           span: {
             display: 'inline-block',
@@ -96,9 +105,17 @@ const ProjectSearch = () => {
             'Trello',
             'ZEIT Now',
             'Linux',
+            'Ubuntu',
+            'Python',
+            'pm2',
+            'Django',
+            'PostgreSQL',
+            'Heroku',
             'Travis CI',
             'THREE',
             'react-three-fiber',
+            'Monaco Editor',
+            'MDX',
           ].map((tag, i) => (
             <Tag key={i} tag={tag} setTags={setTags} />
           ))}
@@ -106,16 +123,16 @@ const ProjectSearch = () => {
         Scope:
         <select
           autoComplete="on"
-          onChange={(e) => setType(e.currentTarget.value)}
+          onBlur={(e) => setType(e.currentTarget.value)}
           defaultValue="all"
           css={{ marginLeft: '1rem' }}
         >
-          <option>all</option>
-          <option>sites</option>
-          <option>tools</option>
+          <option label="all">all</option>
+          <option label="sites">sites</option>
+          <option label="tools">tools</option>
         </select>
         <button onClick={doQuery}>Submit</button>
-      </div>
+      </form>
     </div>
   )
 }

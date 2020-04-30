@@ -4,7 +4,8 @@ import Link from 'next/link'
 
 const NavBar = ({
   items = [
-    { text: 'title', href: '/#' },
+    { text: 'home', href: '/#' },
+    { text: 'posts', href: '/blog' },
     { text: 'about', href: '/#about' },
     { text: 'tech skills', href: '/#tech_skills' },
     { text: 'sites', href: '/#sites' },

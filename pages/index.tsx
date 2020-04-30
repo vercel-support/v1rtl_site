@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { websites } from '../lib/projects'
 import Bio from '../components/Bio'
 import ProjectSearch from '../components/ProjectSearch'
@@ -7,8 +7,9 @@ import Artwork from '../components/Artwork'
 import Repos from '../components/Repos'
 import { NextPage } from 'next'
 import 'isomorphic-unfetch'
-import { Canvas } from 'react-three-fiber'
-import Text from '../components/WebGL/Text'
+
+import Contact from '../components/Contact'
+import Title from '../components/WebGL/Title'
 
 const Index: NextPage = () => {
   return (
@@ -35,28 +36,20 @@ const Index: NextPage = () => {
             height: '40vh',
           }}
         >
-          <Canvas
-            resize={{
-              scroll: false,
-            }}
-          >
-            <Suspense fallback={<h1>Hello World</h1>}>
-              <Text>v 1 r t l</Text>
-            </Suspense>
-          </Canvas>
+          <Title />
         </div>
 
         {/* <video src="/v1rtl.mp4" width="50%" autoPlay loop /> */}
         <span>webdev / designer</span>
       </header>
 
-      <div
+      <section
         id="about"
         css={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           padding: '3rem',
-          scrollMarginTop: '35vh',
+          scrollMarginTop: '150px',
           gap: '3rem',
         }}
       >
@@ -79,11 +72,12 @@ const Index: NextPage = () => {
           <img src="/me.gif" alt="me" width="100%" />
         </picture>
         <Bio />
-      </div>
+      </section>
       <ProjectSearch />
       <Sites projects={websites} />
       <Artwork />
       <Repos />
+      <Contact />
     </main>
   )
 }

@@ -20,9 +20,9 @@ const ProjectView = ({ proj }: { proj: Project }) => {
               amp={0.1}
               freq={0.2}
               css={{
-                height: '50vh',
-                '@media (max-width: 500px)': {
-                  height: '100vh',
+                height: '60vh',
+                '@media (max-width: 1055px)': {
+                  height: '80vh',
                 },
               }}
             />
@@ -44,24 +44,25 @@ const ProjectView = ({ proj }: { proj: Project }) => {
             </picture>
           </a>
         ))}
-
-      <a href={proj.link} target="_blank" rel="noopener noreferrer">
-        <h3>{proj.title}</h3>
-      </a>
-      <p>{proj.longDesc ?? proj.desc}</p>
-      {proj.stack.map((t) => (
-        <span
-          css={{
-            marginRight: '1rem',
-            display: 'inline-block',
-            marginBottom: '1rem',
-            fontSize: '0.8rem',
-          }}
-          key={t}
-        >
-          {t}
-        </span>
-      ))}
+      <div>
+        <a href={proj.link} target="_blank" rel="noopener noreferrer">
+          <h3>{proj.title}</h3>
+        </a>
+        <p>{proj.desc}</p>
+        {proj.stack.map((t) => (
+          <span
+            css={{
+              marginRight: '1rem',
+              display: 'inline-block',
+              marginBottom: '1rem',
+              fontSize: '0.8rem',
+            }}
+            key={t}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }

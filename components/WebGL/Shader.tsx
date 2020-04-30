@@ -43,7 +43,6 @@ const Shader = ({
   freq = 1.5,
   materialParams = {},
   children,
-  geometry,
   ...props
 }: ShaderProps & {
   children?: any
@@ -58,7 +57,7 @@ const Shader = ({
   useFrame(() => (material.uniforms.uTime.value = clock.getElapsedTime()))
 
   return (
-    <mesh {...props} {...{ material, geometry }}>
+    <mesh {...props} {...{ material }}>
       {children}
     </mesh>
   )

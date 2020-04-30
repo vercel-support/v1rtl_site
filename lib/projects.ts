@@ -3,7 +3,6 @@ export interface Project {
   desc?: string
   title: string
   screenshot?: string
-  longDesc?: string
   link: string
   type: 'site' | 'repo' | 'artwork'
 }
@@ -24,19 +23,19 @@ export const websites: Project[] = [
       'ZEIT Now',
       'Travis CI',
     ],
-    desc: 'Ad-free open-source secure social network',
     link: 'https://komfy.now.sh/',
     title: 'Komfy',
     screenshot: 'komfy',
-    longDesc:
-      'Komfy is an ad-free social network without tracking, focused on users rather than businesses. The main goals are simplicity, usability and privacy. The project is developed by a team of hobby developers.',
+    desc:
+      'Komfy is an ad-free social network without tracking, focused on users rather than businesses. The main goals are simplicity, usability and privacy. It is developed by a small group of hobby developers where I am Project Manager and Frontend Developer.',
   },
   {
     type: 'site',
-    stack: ['Next.js', 'PostCSS', 'React', 'styled-jsx', 'Linux', 'REST', 'Trello'],
+    stack: ['Next.js', 'PostCSS', 'React', 'styled-jsx', 'Linux', 'REST', 'Trello', 'Ubuntu', 'PostgreSQL', 'Django'],
     title: 'ProtestWiki',
-    desc: 'Russian opposition wiki',
-    link: 'http://provalwiki.online',
+    desc:
+      'protest.wiki is a special wiki for collecting and structurizing information about russian opposition, including categories, periods of time, political wings and location. I work as Frontend Developer here.',
+    link: 'http://protest.wiki',
     screenshot: 'provalwiki',
   },
 
@@ -44,7 +43,7 @@ export const websites: Project[] = [
     type: 'site',
     stack: ['Next.js', 'Rebass', 'Emotion', 'TypeScript', 'Contentful', 'Figma', 'ZEIT Now'],
     title: 'Proctolog',
-    desc: 'Doctor personal site',
+    desc: 'Doctor personal site. The whole website is made from scratch, both design and code.',
     link: 'https://isachkov.com',
     screenshot: 'proctolog',
   },
@@ -62,47 +61,18 @@ export const websites: Project[] = [
     title: 'This website',
     desc: 'The one you are currently watching',
     screenshot: 'v1rtl',
-    link: '/',
+    link: '/#',
+  },
+  {
+    type: 'site',
+    stack: ['React', 'Heroku', 'Monaco Editor'],
+    title: 'SoloLearn Playground V2',
+    desc:
+      'Concept of the new playground for SoloLearn. In comparison of current one, it is fast, has auto-suggestions and is less buggy.',
+    screenshot: 'sl_v2',
+    link: 'https://sl-playground-v2.herokuapp.com/',
   },
 ]
-
-// export const tools: Project[] = [
-//   {
-//     type: 'tool',
-//     stack: ['Go', 'WebAssembly'],
-//     desc: 'Write frontend apps with Go',
-//     link: 'https://github.com/talentlessguy/go-web-app',
-//     title: 'go-web-app',
-//   },
-//   {
-//     type: 'tool',
-//     stack: ['Node.js'],
-//     title: 'SimpleDDoS',
-//     desc: 'Multi-threaded DDoS script',
-//     link: 'https://github.com/talentlessguy/simple-ddos',
-//   },
-//   {
-//     type: 'tool',
-//     stack: ['TypeScript', 'Jest', 'Rollup'],
-//     title: 'multiple-fetch',
-//     link: 'https://github.com/talentlessguy/multiple-fetch',
-//     desc: 'Fetch multiple resources using one function',
-//   },
-//   {
-//     link: 'https://github.com/relay-chat/react-link-previewer',
-//     title: 'react-link-previewer',
-//     desc: 'Link previews for React',
-//     stack: ['React', 'TypeScript', 'Go', 'Rollup'],
-//     type: 'tool',
-//   },
-//   {
-//     type: 'tool',
-//     title: 'node_modules_cleaner',
-//     desc: 'Cleans node_modules from non code files.',
-//     link: 'https://github.com/talentlessguy/node_modules_cleaner',
-//     stack: ['Node.js'],
-//   },
-// ]
 
 export type Repo = Omit<Project, 'link'> & {
   primaryLanguage: {
@@ -119,7 +89,7 @@ export const repos: Repo[] = [
       name: 'Go',
       color: '#00ADD8',
     },
-    desc: '📦 CLI for setting up Go WebAssembly frontend app',
+    desc: 'CLI for setting up Go WebAssembly frontend app',
     stars: 132,
     type: 'repo',
     stack: ['Go', 'WebAssembly'],
@@ -136,13 +106,24 @@ export const repos: Repo[] = [
     stack: ['TypeScript', 'Jest'],
   },
   {
+    title: 'relay-chat/react-link-previewer',
+    primaryLanguage: {
+      name: 'Go',
+      color: '#00ADD8',
+    },
+    desc: 'Link previews for React',
+    type: 'repo',
+    stars: 2,
+    stack: ['Go', 'TypeScript', 'Rollup', 'React'],
+  },
+  {
     title: 'simple-ddos',
     type: 'repo',
     primaryLanguage: {
       name: 'JavaScript',
       color: '#f1e05a',
     },
-    desc: '💀 Multi-threaded DDoS script',
+    desc: 'Multi-threaded DDoS script',
     stars: 14,
     stack: ['JavaScript', 'Node.js'],
   },
@@ -164,7 +145,7 @@ export const repos: Repo[] = [
       name: 'TypeScript',
       color: '#2b7489',
     },
-    desc: '🌌 Asynchronous body parser for Node.js',
+    desc: 'Asynchronous body parser for Node.js',
     stars: 7,
     type: 'repo',
     stack: ['TypeScript', 'Node.js'],
@@ -175,7 +156,7 @@ export const repos: Repo[] = [
       name: 'JavaScript',
       color: '#f1e05a',
     },
-    desc: '📁 File explorer working on a server',
+    desc: 'File explorer working on a server',
     stars: 4,
     type: 'repo',
     stack: ['Node.js'],
@@ -186,7 +167,7 @@ export const repos: Repo[] = [
       name: 'JavaScript',
       color: '#f1e05a',
     },
-    desc: '🧹 Cleans node_modules from non code files.',
+    desc: 'Cleans node_modules from non code files.',
     stars: 4,
     type: 'repo',
     stack: ['JavaScript'],

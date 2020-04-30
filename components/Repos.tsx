@@ -27,7 +27,7 @@ const Repos: NextPage = () => {
                 textDecoration: 'none',
               },
             }}
-            href={`https://github.com/${!repo.title.includes('/') ? '' : 'talentlessguy'}/${repo.title}`}
+            href={`https://github.com/${repo.title.includes('/') ? '' : 'talentlessguy'}/${repo.title}`}
           >
             <div
               title={repo.desc}
