@@ -11,7 +11,10 @@ const Artwork = () => {
       <div
         css={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
+          '@media (max-width: 700px)': {
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          },
         }}
       >
         {artworks.map((artwork) => (

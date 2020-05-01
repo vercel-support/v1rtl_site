@@ -12,10 +12,6 @@ module.exports = withOptimizedImages(
       mozjpeg: {
         quality: 60,
       },
-      gifsicle: {
-        interlaced: true,
-        optimizationLevel: 3,
-      },
       webp: {
         preset: 'default',
         quality: 60,
