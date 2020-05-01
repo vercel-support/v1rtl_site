@@ -17,6 +17,7 @@ module.exports = withOptimizedImages(
         quality: 60,
       },
       pageExtensions: ['md', 'mdx', 'tsx', 'ts'],
+
       webpack(config) {
         /* GLSL */
 
