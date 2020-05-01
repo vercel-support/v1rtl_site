@@ -43,7 +43,6 @@ const Index: NextPage = () => {
           <Title />
         </div>
 
-        {/* <video src="/v1rtl.mp4" width="50%" autoPlay loop /> */}
         <span>webdev / designer</span>
       </header>
 
@@ -61,7 +60,7 @@ const Index: NextPage = () => {
           <h3 css={{ marginTop: 0 }}>Howdy, I&apos;m Paul</h3>
           <p>
             I&apos;m a self-taught fullstack web developer who tries to combine technology and art. I like web
-            development, OSS, design and drawing. I&apos;m the lead developer at{' '}
+            development, OSS, design and drawing. I&apos;m the lead developer at
             <a href="https://komfy.now.sh">Komfy</a> and author of <a href="https://t.me/we_use_js">@we_use_js</a>{' '}
             Telegram channel.
           </p>

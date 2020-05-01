@@ -1,18 +1,40 @@
+import Meta from '../../components/Meta.tsx'
+
 export const title = 'My new website!'
 export const date = '30/4/2020'
+export const desc = 'Thoughts on my new website and plans for the future.'
+export const image = '/sites/v1rtl.jpg'
+
+<Meta {...{ title, desc, date, image }} />
+<img src={image} alt={title} />
 
 # My new website!
 
-After weeks of hard work I finally finished my site, the final version of it.
-
 ## What?
 
-lorem ipsum
+After weeks of hard work I finally finished my new personal site.
+I spent nearly 3 weeks on it because in the beginning I couldn't come up with something unique and not overcomplicated.
+I had 3 different versions of the website but decided to stop on the current one, because it is simple, looks unusual and I like it myself.
 
 ## Why?
 
-lorem ipsum
+My old site didn't have Safari support because of webp, which I used actively on my site, without any fallbacks.
+
+![my old site](/blog/old_site.jpg)
+
+First, I thought that it isn't worth it to make a new site, I can just simply set the fallbacks up.
+But the problem was that the look of the website was awful.
+Random images combined with app UI and monospace font made it look like a mess.
+I think the problem was that I didn't make the mockup beforehand, but in this time I avoided my mistake.
+I was scratching ideas in Figma, until I got what I wanted.
+
+![piece of my mockup](/blog/mockup.jpg)
+
+The final result differs from the website a bit but the idea remains the same.
+Pure black background, glitchy effects, unusual layouts and so on.
+I didn't want to make it fully static but at the same time it should've been simple to navigate.
 
 ## Plans for the future
 
-lorem ipsum
+From now on I'll be using this site as a place to write tutorials, tips and anything else I want to write.
+I will transfer all my articles from DEV and translate some from [my Telegram channel](https://t.me/we_use_js).

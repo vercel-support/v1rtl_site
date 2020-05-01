@@ -15,7 +15,15 @@ type PageListProps = {
 
 const PageList: NextPage<PageListProps> = ({ posts }: PageListProps) => {
   return (
-    <>
+    <section
+      css={{
+        padding: '3rem',
+        h1: {
+          fontSize: 'calc(2rem + 2vw)',
+          marginBottom: 0,
+        },
+      }}
+    >
       <h1>My blog</h1>
       {posts.map((post) => (
         <Link key={post.title} href={`/blog/${post.link}`}>
@@ -32,7 +40,7 @@ const PageList: NextPage<PageListProps> = ({ posts }: PageListProps) => {
           </a>
         </Link>
       ))}
-    </>
+    </section>
   )
 }
 

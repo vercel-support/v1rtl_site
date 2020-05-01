@@ -1,8 +1,8 @@
 import * as THREE from 'three'
 import React, { MutableRefObject } from 'react'
-import { useUpdate, useFrame } from 'react-three-fiber'
+import { useUpdate, useFrame, ReactThreeFiber } from 'react-three-fiber'
 import { Font, Mesh, TextGeometryParameters, Clock } from 'three'
-import fontJson from '../../public/font.json'
+import FiraMono from '../../public/font.json'
 import { createShaderMaterial } from './Shader'
 import colorFragmentShader from '../../lib/gl/color_fragment.glsl'
 
@@ -10,9 +10,10 @@ type TextProps = {
   size?: number
   children: any
   color?: string
-}
+  fontJson?: any
+} & ReactThreeFiber.Object3DNode<Mesh, typeof Mesh>
 
-const Text = ({ children, ...props }: TextProps) => {
+const Text = ({ children, fontJson = FiraMono, ...props }: TextProps) => {
   const font = new Font(fontJson)
 
   const clock = new Clock()
@@ -45,7 +46,7 @@ const Text = ({ children, ...props }: TextProps) => {
   })
 
   return (
-    <mesh {...props} ref={mesh} position={[-7.5, 0, 0]} rotation={[0, 0, 0]} material={material}>
+    <mesh position={[-7.5, 0, 0]} {...props} ref={mesh} rotation={[0, 0, 0]} material={material}>
       <ambientLight />
       <textGeometry attach="geometry" args={[children, config]} />
     </mesh>

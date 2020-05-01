@@ -1,5 +1,6 @@
 import React /* , { useContext }  */ from 'react'
 import Link from 'next/link'
+import Notice from './Notice'
 // import { ThemeContext } from '../lib/theme'
 
 const NavBar = ({
@@ -27,40 +28,50 @@ const NavBar = ({
   return (
     <nav
       css={{
-        display: 'flex',
         backgroundColor: 'var(--bg)',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        left: 0,
-        height: '4rem',
         position: 'sticky',
+        left: 0,
         top: 0,
-        alignItems: 'center',
-        zIndex: 1000,
+        zIndex: 999,
       }}
     >
-      {items.map(({ href, text }, i) => (
-        <Link href={href} key={i}>
-          <a
-            href={href}
-            css={{
-              marginLeft: '0.5em',
-              textDecoration: 'none',
-              fontSize: '0.95rem',
-              marginRight: '0.5em',
-              color: 'var(--fg)',
-              '&:hover': {
-                cursor: 'pointer',
-                textDecoration: 'line-through',
-              },
-            }}
-          >
-            {text}
-          </a>
+      <Notice>
+        I am available for part-time webdev job! You can message me{' '}
+        <Link href="/#contact">
+          <a href="/#contact">here</a>
         </Link>
-      ))}
+      </Notice>
+      <div
+        css={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          height: '4rem',
+          alignItems: 'center',
+        }}
+      >
+        {items.map(({ href, text }, i) => (
+          <Link href={href} key={i}>
+            <a
+              href={href}
+              css={{
+                marginLeft: '0.5em',
+                textDecoration: 'none',
+                fontSize: '0.95rem',
+                marginRight: '0.5em',
+                color: 'var(--fg)',
+                '&:hover': {
+                  cursor: 'pointer',
+                  textDecoration: 'line-through',
+                },
+              }}
+            >
+              {text}
+            </a>
+          </Link>
+        ))}
 
-      {/* <button
+        {/* <button
         onClick={() => toggleTheme()}
         css={{
           border: 'none',
@@ -75,6 +86,7 @@ const NavBar = ({
         Theme: {theme === 'light' ? 'Palenlight' : 'Black'}
         <img src="/contrast.svg" />
       </button> */}
+      </div>
     </nav>
   )
 }

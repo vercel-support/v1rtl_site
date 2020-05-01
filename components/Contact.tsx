@@ -117,14 +117,12 @@ const Contact = () => {
       <h2>Links</h2>
       <div
         css={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
         }}
       >
         <div
           css={{
-            width: 'calc(50vw - 6rem)',
             paddingTop: '3rem',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
@@ -175,12 +173,7 @@ const Contact = () => {
             </a>
           ))}
         </div>
-        <div
-          css={{
-            width: 'calc(50vw - 6rem)',
-            paddingLeft: '3rem',
-          }}
-        >
+        <div>
           <h3>All my accounts I have ever created</h3>
           <p>
             I am online most of the time on Telegram, Twitter and Reddit so if you need to PM me better write there.

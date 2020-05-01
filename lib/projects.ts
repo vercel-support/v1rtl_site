@@ -152,7 +152,17 @@ export const repos: Repo[] = [
     type: 'repo',
     stack: ['JavaScript'],
   },
-
+  {
+    title: 'multiple-fetch',
+    desc: 'Fetch multiple resources using one function',
+    stars: 1,
+    type: 'repo',
+    stack: ['TypeScript'],
+    primaryLanguage: {
+      name: 'TypeScript',
+      color: '#2b7489',
+    },
+  },
   {
     title: 'parsec',
     primaryLanguage: {

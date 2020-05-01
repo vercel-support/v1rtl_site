@@ -5,14 +5,15 @@ import { artworks } from '../lib/projects'
 
 const Artwork = () => {
   return (
-    <section css={{ padding: '3rem' }} id="artwork">
+    <section css={{ padding: '3rem 0' }} id="artwork">
       <h2>Artwork</h2>
 
       <div
         css={{
+          overflowX: 'hidden',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
-          '@media (max-width: 700px)': {
+          gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+          '@media (max-width: 1200px)': {
             gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
           },
         }}
@@ -42,15 +43,18 @@ const Artwork = () => {
                   alt={artwork.title}
                   onMouseDown={(e) => e.preventDefault()}
                   css={{
-                    width: '100%',
+                    width: '95%',
                     userSelect: 'none',
                     boxShadow: '10px 10px 5px rgba(0, 0, 0, 0.7)',
                     transition: '0.6s',
                     ':hover': {
                       boxShadow: '20px 20px 20px rgba(0, 0, 0, 0.5)',
                     },
+                    '@media (max-width: 1200px)': {
+                      width: '600px',
+                    },
                     '@media (max-width: 1100px)': {
-                      width: '90%',
+                      width: '500px',
                     },
                   }}
                 />
@@ -58,6 +62,7 @@ const Artwork = () => {
               <figcaption
                 css={{
                   fontFamily: 'monospace',
+                  width: 'max-content',
                 }}
               >
                 {artwork.title}

@@ -23,7 +23,7 @@ const PageStyles = () => (
       html {
         :root {
           --fg-hover: #d2c7c7;
-          --fg: #f8f8fb;
+          --fg: #d8d8e3;
           --bg: black;
         }
       }
@@ -31,6 +31,7 @@ const PageStyles = () => (
       * {
         scroll-behavior: smooth;
         scrollbar-color: #2a2c2f #1a1c1d;
+        line-height: 1.5;
       }
 
       body {
@@ -139,6 +140,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           <title>v 1 r t l ✨</title>
           <meta name="theme-color" content="#292d3e" />
         </Head>
+
         <PageStyles />
         <DataContextProvider
           value={{
@@ -152,10 +154,11 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         <Footer />
       </>
     )
-  } else {
+  } else if (pathname.includes('/blog/')) {
     return (
       <MDXProvider components={compos}>
         <PageStyles />
+
         <Global
           styles={css`
             h1 {
@@ -171,12 +174,33 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         <article
           css={{
             padding: '3rem',
+            width: 'calc(40vw + 10em)',
+            margin: '0 auto',
+            p: {
+              textAlign: 'justify',
+            },
+            img: {
+              width: '100%',
+              margin: '1em 0',
+            },
+            h1: {
+              textAlign: 'center',
+            },
           }}
         >
           <Component {...pageProps} />
         </article>
         <Footer />
       </MDXProvider>
+    )
+  } else {
+    return (
+      <>
+        <PageStyles />
+        <NavBar />
+        <Component {...pageProps} />
+        <Footer />
+      </>
     )
   }
 }
