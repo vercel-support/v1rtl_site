@@ -6,10 +6,6 @@ const withMDX = require('@next/mdx')({
 
 module.exports = withMDX(
   withImages({
-    experimental: {
-      modern: true,
-      polyfillsOptimization: true,
-    },
     pageExtensions: ['md', 'mdx', 'tsx'],
     webpack(config) {
       /* GLSL */

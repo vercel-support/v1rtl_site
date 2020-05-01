@@ -15,6 +15,8 @@ type PageListProps = {
 const PageList: NextPage<PageListProps> = ({ posts }: PageListProps) => {
   const [blogPosts, setBlogPosts] = useState<Post[]>(posts)
 
+  console.log(posts)
+
   useEffect(() => {
     if (posts.length !== 0) {
       localStorage.setItem('posts', JSON.stringify(posts))

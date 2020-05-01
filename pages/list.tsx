@@ -1,9 +1,9 @@
 import React from 'react'
 import { NextPage, NextPageContext } from 'next'
 import 'isomorphic-unfetch'
-import { Project } from '../../lib/projects'
-import BackButton from '../../components/BackButton'
-import ProjectView from '../../components/ProjectView'
+import { Project } from '../lib/projects'
+import BackButton from '../components/BackButton'
+import ProjectView from '../components/ProjectView'
 
 type Props = {
   tags: string[]

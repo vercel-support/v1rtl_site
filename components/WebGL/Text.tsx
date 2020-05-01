@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import { useUpdate, useFrame } from 'react-three-fiber'
 import { Font, Mesh, TextGeometryParameters, Clock } from 'three'
 import fontJson from '../../public/font.json'
@@ -12,7 +12,7 @@ type TextProps = {
   color?: string
 }
 
-const Text = ({ children, color = 'white', ...props }: TextProps) => {
+const Text = ({ children, ...props }: TextProps) => {
   const font = new Font(fontJson)
 
   const clock = new Clock()
@@ -31,7 +31,7 @@ const Text = ({ children, color = 'white', ...props }: TextProps) => {
     size: 2,
     curveSegments: 32,
   }
-  const mesh = useUpdate(
+  const mesh: MutableRefObject<Mesh> = useUpdate(
     (self: Mesh) => {
       const size = new THREE.Vector3()
       self.geometry.computeBoundingBox()
@@ -40,7 +40,9 @@ const Text = ({ children, color = 'white', ...props }: TextProps) => {
     [children]
   )
 
-  useFrame(() => (material.uniforms.uTime.value = clock.getElapsedTime()))
+  useFrame(() => {
+    return (material.uniforms.uTime.value = clock.getElapsedTime())
+  })
 
   return (
     <mesh {...props} ref={mesh} position={[-7.5, 0, 0]} rotation={[0, 0, 0]} material={material}>

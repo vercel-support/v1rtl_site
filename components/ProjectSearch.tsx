@@ -65,8 +65,8 @@ const ProjectSearch = () => {
       <section>
         <h2>Tech skills</h2>
         <p>
-          Here&apos;s a list of all the tools I ever used for my work. Here are programming languages, frameworks,
-          design tools, Kanban boards, and more.
+          Here&apos;s a list of all the tools I ever used for my work. I know some of them on a decent level, others I
+          may used a few times. Here are programming languages, frameworks, design tools, Kanban boards, CIs, and more.
         </p>
         <p>Select tags and then click &quot;Filter projects&quot; to see my work with usage of any of these tech.</p>
       </section>
@@ -86,6 +86,8 @@ const ProjectSearch = () => {
       >
         <div>
           {[
+            'JavaScript',
+            'CSS',
             'Go',
             'Next.js',
             'React',
@@ -116,6 +118,7 @@ const ProjectSearch = () => {
             'react-three-fiber',
             'Monaco Editor',
             'MDX',
+            'nginx',
           ].map((tag, i) => (
             <Tag key={i} tag={tag} setTags={setTags} />
           ))}

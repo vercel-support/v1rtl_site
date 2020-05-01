@@ -31,7 +31,20 @@ export const websites: Project[] = [
   },
   {
     type: 'site',
-    stack: ['Next.js', 'PostCSS', 'React', 'styled-jsx', 'Linux', 'REST', 'Trello', 'Ubuntu', 'PostgreSQL', 'Django'],
+    stack: [
+      'Next.js',
+      'PostCSS',
+      'React',
+      'styled-jsx',
+      'Linux',
+      'REST',
+      'Trello',
+      'Ubuntu',
+      'PostgreSQL',
+      'Django',
+      'JavaScript',
+      'nginx',
+    ],
     title: 'ProtestWiki',
     desc:
       'protest.wiki is a special wiki for collecting and structurizing information about russian opposition, including categories, periods of time, political wings and location. I work as Frontend Developer here.',
@@ -49,9 +62,10 @@ export const websites: Project[] = [
   },
   {
     type: 'site',
-    stack: ['Next.js', 'PostCSS', 'ZEIT Now'],
+    stack: ['Next.js', 'PostCSS', 'ZEIT Now', 'JavaScript'],
     title: 'Tech design',
-    desc: 'Design classes for children',
+    desc:
+      'Site for design classes where I had been going to for 4 years. There I learnt the basics of vector and bitmap graphics, animations and video editing. I made this site for free as a gift to this place.',
     link: 'https://techmedia-protvino.now.sh/',
     screenshot: 'tech_design',
   },
@@ -65,7 +79,7 @@ export const websites: Project[] = [
   },
   {
     type: 'site',
-    stack: ['React', 'Heroku', 'Monaco Editor'],
+    stack: ['React', 'Heroku', 'Monaco Editor', 'JavaScript'],
     title: 'SoloLearn Playground V2',
     desc:
       'Concept of the new playground for SoloLearn. In comparison of current one, it is fast, has auto-suggestions and is less buggy.',
@@ -90,7 +104,7 @@ export const repos: Repo[] = [
       color: '#00ADD8',
     },
     desc: 'CLI for setting up Go WebAssembly frontend app',
-    stars: 132,
+    stars: 136,
     type: 'repo',
     stack: ['Go', 'WebAssembly'],
   },

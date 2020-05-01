@@ -24,18 +24,20 @@ const PageStyles = () => (
         :root {
           --fg-hover: #d2c7c7;
           --fg: #f8f8fb;
-          --bg: #161325;
+          --bg: black;
         }
+      }
+
+      * {
+        scroll-behavior: smooth;
+        scrollbar-color: #2a2c2f #1a1c1d;
       }
 
       body {
         font-family: ${fonts.body};
-
-        scroll-behavior: smooth;
-        scrollbar-color: #2a2c2f #1a1c1d;
-        overflow-x: hidden;
-        background-color: var(--bg);
         margin: 0;
+        background-color: var(--bg);
+
         color: var(--fg);
         a {
           color: var(--fg);

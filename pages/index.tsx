@@ -7,9 +7,13 @@ import Artwork from '../components/Artwork'
 import Repos from '../components/Repos'
 import { NextPage } from 'next'
 import 'isomorphic-unfetch'
+import dynamic from 'next/dynamic'
 
 import Contact from '../components/Contact'
-import Title from '../components/WebGL/Title'
+
+const Title = dynamic(() => import('../components/WebGL/Title'), {
+  ssr: false,
+})
 
 const Index: NextPage = () => {
   return (

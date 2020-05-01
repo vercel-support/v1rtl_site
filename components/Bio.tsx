@@ -14,6 +14,7 @@ const Bio = () => {
       css={css`
         border: 3px solid white;
         padding: 2rem;
+        background: black;
         height: min-content;
         * {
           font-family: ${fonts.code};
