@@ -37,7 +37,7 @@ const PageList: NextPage<PageListProps> = ({ posts }: PageListProps) => {
 }
 
 PageList.getInitialProps = async ({ req }) => {
-  const host = `http://${req ? req.headers.host : ''}`
+  const host = req ? `http://${req.headers.host}` : ''
 
   const res = await fetch(`${host}/api/posts`)
 
