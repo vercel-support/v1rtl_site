@@ -11,7 +11,7 @@ const Artwork = () => {
       <div
         css={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
         }}
       >
         {artworks.map((artwork) => (
@@ -45,6 +45,9 @@ const Artwork = () => {
                     transition: '0.6s',
                     ':hover': {
                       boxShadow: '20px 20px 20px rgba(0, 0, 0, 0.5)',
+                    },
+                    '@media (max-width: 1100px)': {
+                      width: '90%',
                     },
                   }}
                 />

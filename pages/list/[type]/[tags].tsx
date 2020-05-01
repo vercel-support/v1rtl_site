@@ -1,9 +1,9 @@
 import React from 'react'
 import { NextPage, NextPageContext } from 'next'
 import 'isomorphic-unfetch'
-import { Project } from '../lib/projects'
-import BackButton from '../components/BackButton'
-import ProjectView from '../components/ProjectView'
+import { Project } from '../../../lib/projects'
+import BackButton from '../../../components/BackButton'
+import ProjectView from '../../../components/ProjectView'
 
 type Props = {
   tags: string[]
@@ -33,7 +33,14 @@ const FilteredProjectList: NextPage<Props> = ({ tags, list, filter }: Props) => 
     const repos = list.filter((l) => l.type === 'repo')
 
     return (
-      <article css={{ padding: '3rem' }}>
+      <article
+        css={{
+          padding: '3rem',
+          'h2, h4': {
+            textAlign: 'center',
+          },
+        }}
+      >
         <BackButton to="/#tech_skills" />
         {tags?.length && <header>Tags you picked: {tags.join(', ')}</header>}
         {sites?.[0] && (

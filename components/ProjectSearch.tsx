@@ -51,7 +51,7 @@ const ProjectSearch = () => {
     if (type === 'all' && tags.length === 0) {
       Router.push('/list')
     } else {
-      Router.push(`/list?tags=${tags.join(',')}&type=${type}`)
+      Router.push('/list/[type]/[tags]', `/list/${type}/${tags.join(',')}`)
     }
   }
 

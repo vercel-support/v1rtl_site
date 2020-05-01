@@ -4,8 +4,6 @@ import { Project, repos, websites } from '../../lib/projects'
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const projectsCategory = req.query.type
 
-  console.log(req.query)
-
   let projectList: Project[] & any
 
   switch (projectsCategory) {
