@@ -10,7 +10,7 @@ const Artwork = () => {
 
       <div
         css={{
-          overflowX: 'hidden',
+          overflow: 'hidden',
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
           '@media (max-width: 1200px)': {
