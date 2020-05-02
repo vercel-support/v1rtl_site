@@ -12,8 +12,11 @@ const Artwork = () => {
         css={{
           overflow: 'hidden',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))',
           '@media (max-width: 1200px)': {
+            gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+          },
+          '@media (max-width: 1000px)': {
             gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
           },
         }}

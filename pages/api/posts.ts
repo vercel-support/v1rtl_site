@@ -5,11 +5,11 @@ import { resolve } from 'path'
 const { readdir } = fs
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const postFiles = await readdir(resolve('./pages/blog'))
+  const postFiles = await readdir(resolve(process.cwd() + '/pages/blog'))
 
   const postNames: string[] = postFiles.filter((page: string) => page !== 'index.tsx')
 
-  let posts = []
+  const posts = []
 
   for (const post of postNames) {
     const mod = await import(`../blog/${post}`)
