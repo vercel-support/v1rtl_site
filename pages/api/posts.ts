@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { promises as fs } from 'fs'
-import { resolve } from 'path'
+import { join } from 'path'
 
 const { readdir } = fs
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const postFiles = await readdir(resolve(process.cwd() + '/pages/blog'))
+  const postFiles = await readdir(join(process.cwd(), 'pages/blog'))
 
   const postNames: string[] = postFiles.filter((page: string) => page !== 'index.tsx')
 
