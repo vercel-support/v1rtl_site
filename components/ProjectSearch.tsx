@@ -59,6 +59,8 @@ const ProjectSearch = () => {
     <div
       id="tech_skills"
       css={{
+        width: '60vw',
+        margin: '0 auto',
         padding: '3rem',
       }}
     >
