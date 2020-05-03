@@ -127,7 +127,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
           <meta name="og:title" content="V!RTL" />
-          <meta name="og:image" content="https://i.ibb.co/4jbtNwK/ezgif-com-resize.png" />
+          <meta name="og:image" content="/sites/v1rtl.jpg" />
           <meta name="og:url" content="https://v1rtl.site" />
           <meta
             name="og:description"
