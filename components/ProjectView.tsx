@@ -24,6 +24,9 @@ const ProjectView = ({ proj }: { proj: Project }) => {
                 '@media (max-width: 1055px)': {
                   height: '80vh',
                 },
+                '@media (max-width: 500px)': {
+                  width: '100%',
+                },
               }}
             />
           </a>

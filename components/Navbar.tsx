@@ -1,7 +1,6 @@
-import React /* , { useContext }  */ from 'react'
+import React from 'react'
 import Link from 'next/link'
 import Notice from './Notice'
-// import { ThemeContext } from '../lib/theme'
 
 const NavBar = ({
   items = [
@@ -23,8 +22,6 @@ const NavBar = ({
 }: {
   items?: { text: string; href: string }[]
 }) => {
-  // const { theme, toggleTheme } = useContext(ThemeContext)
-
   return (
     <nav
       css={{
@@ -44,10 +41,15 @@ const NavBar = ({
       <div
         css={{
           display: 'flex',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
+          width: '70%',
+          margin: '0 auto',
           flexWrap: 'wrap',
           height: '4rem',
           alignItems: 'center',
+          '@media (max-width: 600px)': {
+            flexDirection: 'column',
+          },
         }}
       >
         {items.map(({ href, text }, i) => (
@@ -55,10 +57,9 @@ const NavBar = ({
             <a
               href={href}
               css={{
-                marginLeft: '0.5em',
                 textDecoration: 'none',
                 fontSize: '0.95rem',
-                marginRight: '0.5em',
+
                 color: 'var(--fg)',
                 '&:hover': {
                   cursor: 'pointer',
@@ -70,22 +71,6 @@ const NavBar = ({
             </a>
           </Link>
         ))}
-
-        {/* <button
-        onClick={() => toggleTheme()}
-        css={{
-          border: 'none',
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          background: 'none',
-          width: '12em',
-          filter: 'invert(1)'
-        }}
-      >
-        Theme: {theme === 'light' ? 'Palenlight' : 'Black'}
-        <img src="/contrast.svg" />
-      </button> */}
       </div>
     </nav>
   )

@@ -1,0 +1,224 @@
+export const meta = {
+  title: "Let's write frontend in Go",
+  desc: 'A short tutorial of setting up a simple Go+WASM app',
+  date: '19/07/2019',
+  image: '/blog/go-wasm.jpg',
+}
+
+_I wrote a CLI for automatic Go+WASM app setup and management, [check it out](https://github.com/talentlessguy/go-web-app)._
+
+<h1>{meta.title}</h1>
+<img src={meta.image} alt={meta.title} />
+
+> picture [source](https://vk.com/wall12743298_297)
+
+## Intro
+
+Recently, Go 1.12 released. Go now has a great WebAssembly support, even a special UMD script for better DX.
+
+So, if we have WebAssembly, it means that we can access DOM. Go even has a special package for that – `syscall/js`. It basically just gets / sets global objects or calls functions. So, to avoid writing ugly `Call()` & `Get("document")` code, we'll be using [godom](https://github.com/siongui/godom/tree/master/wasm), a library with predefined shortened functions. It is mostly used for [GopherJS](https://github.com/gopherjs/gopherjs) (Go to JS compiler), but has WebAssembly support too.
+
+First, you need Go 1.12+. You can install go1.12 from the [website](https://golang.org/dl/) or with [gvm](goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'). Second, you need the latest version of your browser to support WebAssembly. While writing this article, I use Mozilla 68.
+
+## Let's code!
+
+### Glue
+
+Let's create glue.js and index.html to make WebAssembly work. Of course, WASM is magic that runs as a native platform, but it still needs some glue to load / display things.
+
+**index.html**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Go frontend app</title>
+    <script src="wasm_exec.js"></script>
+    <script src="glue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+```
+
+Here we attached two scripts and added a target container.
+
+Don't forget to copy `wasm_exec` script!
+
+```sh
+cp $(go env GOROOT)/misc/wasm/wasm_exec.js
+```
+
+**glue.js**
+
+```js
+const go = new Go()
+WebAssembly.instantiateStreaming(
+  fetch('app.wasm', {
+    headers: {
+      'Content-Type': 'application/wasm',
+    },
+  }),
+  go.importObject
+).then((result) => go.run(result.instance))
+```
+
+In our glue code, we created an instance of a special Go class for better error messages and some setup especially for Go, launched a WebAssembly stream using fetch (e.g. wasm module loads asynchronously), created a new WebAssembly instance, and ran it.
+
+Our frontend setup is done. Let's do some stuff with Go.
+
+### Go Setup
+
+Init go (Go 1.11+) module:
+
+```sh
+go mod init
+```
+
+Install godom (wasm section):
+
+```sh
+go get -u -v github.com/siongui/godom/wasm
+```
+
+### Go Code
+
+Write some Go code:
+
+```go
+package main
+
+import (
+	dom "github.com/siongui/godom/wasm"
+)
+
+func main() {
+	app := dom.Document.GetElementById("app")
+	app.SetInnerHTML(`
+	<div>
+		<h1>Hello World</h1>
+		<p>This page is built with Go, GoDOM and WebAssembly</p>
+	</div>
+	`)
+}
+```
+
+As you can see here, we selected our `#app` div defined in an HTML file. Then we modify a property called ["InnerHTML"](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML). godom doesn't have a function for every DOM interaction but you can still use `syscall/js` "Call".
+
+### Compile Go to WebAssembly
+
+We need to compile all this stuff to make it work. To compile to wasm, we should set architecture to WASM, and OS to JS:
+
+```sh
+ARCH=WASM OS=js go build -o app.wasm index.go
+```
+
+Nice, we have a compiled file. It will be called "app.wasm".
+
+Now try to open `index.html` file in a browser or run a local server using [goexec](https://github.com/shurcooL/goexec):
+
+```sh
+goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'
+```
+
+We see hello world!
+
+![](https://thepracticaldev.s3.amazonaws.com/i/aos421qpj7dkzxea888e.jpg)
+
+### Interactive DOM
+
+It is already very fun to write webpages with `innerHTML` but let's make some more complex stuff. We will attach a handler to a button and also add content with JS.
+
+First, we import `syscall/js` because godom doesn't have some functions we need:
+
+```go
+package main
+
+import (
+	dom "github.com/siongui/godom/wasm"
+	"syscall/js"
+)
+```
+
+Then we take our container (`#app`), create two elements – `<span>` and `<button>`.
+
+```go
+app := dom.Document.GetElementById("app")
+button := dom.Document.CreateElement("button")
+text := dom.Document.CreateElement("span")
+```
+
+Fine, let's add some text to our button.
+
+```go
+// Set button text
+
+button.Set("textContent", "Click on me")
+```
+
+Now here all the magic happens. We're gonna make a callback handler for click event. `syscall/js` has a special wrapper for JavaScript functions `js.FuncOf` and `Func` is an interface for `FuncOf`.
+
+```go
+// Callback for click event
+var cb js.Func
+cb = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	text.Set("textContent", "Button was clicked")
+	return nil
+})
+
+// Add event listener to a button
+button.Call("addEventListener", "click", cb)
+```
+
+We use an array for JS arguments because in JS we pass them as a simple list of things for functions:
+
+```js
+// Small example
+const args = (...arguments) => console.log(arguments)
+args(0, 1, 2)
+```
+
+The last thing we need to do is to append our elements to container:
+
+```go
+app.Call("appendChild", text)
+app.Call("appendChild", button)
+```
+
+But there is one small problem...
+
+```none
+ wasm_exec.js:378 Uncaught Error: bad callback: Go program has already exited
+     at global.Go._resolveCallbackPromise (wasm_exec.js:378)
+     at wasm_exec.js:394
+     at <anonymous>:1:1
+```
+
+Go program is already finished and it skips our callbacks. Let's fix it.
+
+We don't want Go to exit our program so we have to use [channels](https://tour.golang.org/concurrency/2). We need to put this in the beginning of our main function:
+
+```go
+// Create a channel that doesn't let our Go program exit
+c := make(chan bool)
+```
+
+And in the end we put this:
+
+```go
+<-c
+```
+
+Now our Go program doesn't exit even with callbacks!
+
+Let's try, it works!
+
+![](https://thepracticaldev.s3.amazonaws.com/i/hz4mrphhtckn4l7n943d.gif)
+
+## Conclusion
+
+You can do a lot of funny things related to DOM thanks to WebAssembly. And Go is a good language for building web apps without JS. It is easy, fun and cool.

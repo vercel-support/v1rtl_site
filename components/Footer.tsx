@@ -12,6 +12,9 @@ const Footer = () => (
           marginRight: '1rem',
         },
       },
+      img: {
+        margin: '0 2px',
+      },
     }}
   >
     <div>
@@ -19,11 +22,14 @@ const Footer = () => (
       <a href="https://github.com/talentlessguy/v1rtl.site/blob/master/LICENSE">MIT License</a>
     </div>
     <div>
-      Built with{' '}
-      <span role="img" aria-label="tears">
-        😭
-      </span>{' '}
-      and hosted on GitHub
+      Uploaded on{' '}
+      <a href="https://github.com/talentlessguy/v1rtl_site">
+        <img src="/icons/github.svg" alt="GitHub" height="16px" />
+      </a>{' '}
+      and hosted on{' '}
+      <a href="https://now.sh">
+        <img src="/icons/zeit.svg" alt="Vercel" height="16px" />
+      </a>
     </div>
   </footer>
 )

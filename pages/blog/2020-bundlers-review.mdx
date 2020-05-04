@@ -1,0 +1,141 @@
+export const meta = {
+  title: '2020 Bundlers Review',
+  date: '14/02/2020',
+  image: '/blog/bundlers.png',
+}
+
+<img src={meta.image} />
+<h1>{meta.title}</h1>
+
+## Intro
+
+Not a secret, the most popular bundler in JS world is webpack. Most companies and projects use it. However, there are some good alternatives to it if you struggle with the config or aren't satisfied with its speed (or anything else). So I don't include Webpack here, because everyone knows it already.
+
+Here's a list of tools I'll review:
+
+- Parcel
+- Poi
+- Pax
+- Packem
+- Bundl
+- esbuild
+- Klap
+
+## Parcel
+
+**Language**: JavaScript
+**Zero-config**: Yes, has optional configuration (v2 only)
+**Installation**: `yarn add -D parcel-bundler`
+
+Most probably you already know Parcel. While not only being zero-config, it is also quite fast. It has a huge community and a documentation website. Parcel is often used for quick demos (CodeSandbox uses it for vanilla js) but works fine in production.
+
+At the moment Parcel 2 is in development, but it already supports configuration and plugins but is not yet released so I don't recommend using it in prod. One of the greatest Parcel 2 features is hoisting, it reduces the bundle size multiple times.
+
+To install Parcel 2:
+
+```sh
+yarn add -D parcel@next
+```
+
+## Poi
+
+- **Language**: JavaScript
+- **Zero-config**: Yes, has optional configuration
+- **Website**: https://poi.js.org
+- **Installation**: `yarn add -D poi`
+
+Poi is a human-friendly wrapper about Webpack. This bundler is something between Parcel and Webpack. It can bundle your app without a single line of config but if you need some specific Webpack plugin, you can extend it in `poi.config.js`.
+
+If you are scared of Webpack but have to use its plugins don't forget to try Poi!
+
+## Pax
+
+- **Language**: Rust
+- **Zero-config**: Yes
+- **Website**: https://pax.js.org/
+- **Installation**: `cargo install pax`
+
+As I said preciously, Parcel is quite fast. But it's speed is limited to Node.js, which is slower compared to Rust. The fastest solution to bundlers is using a compiled language.
+
+Pax supports module resolution, JSX syntax, ES Modules etc.
+
+All those features can be enabled using CLI flags, so it remains zero config.
+
+## Bundl
+
+- **Language**: JavaScript
+- **Zero-config**: No
+- **Website**: https://bundljs.org/
+- **Installation**: `yarn add -D @vimlet/bundl`
+
+This bundler requires a full config, like Webpack. Config is much simpler though, and Bundl has a lot of features built-in like running executables or template processing.
+
+here's an example config showing main features:
+
+```js
+module.exports = {
+  output: {
+    // Build on file change
+    watch: "src",
+    // Name with hash to avoid cache issues
+    "build/bundle.{{hash}}.js": {
+      order: 1,
+      input: "src/js/**.js"
+    },
+    // Templating parsing support
+    "build/**": {
+      order: 1,
+      parse: true
+      input: "src/copy/**"
+    }
+  }
+};
+```
+
+There's an official repository for plugins (which I created btw): [repo](https://github.com/vimlet/bundl-plugins)
+
+## esbuild
+
+- **Language**: Go
+- **Zero-config**: Yes
+- **Website**: https://github.com/evanw/esbuild
+- **Installation**: `yarn add -D esbuild-linux-64`
+
+A piece from README:
+
+Why build another JavaScript build tool? The current build tools for the web are at least an order of magnitude slower than they should be. I'm hoping that this project serves as an "existence proof" that our JavaScript tooling can be much, much faster.
+
+esbuild is as fast as Pax because Go can be compiled. It has support for ES Modules, CJS, JSX, source maps and so on. For each target esbuild has a separate package.
+
+## Klap
+
+- **Language**: Rust
+- **Zero-config**: Yes
+- **Website**: https://github.com/osdevisnot/klap
+- **Installation**: `npx klap init`
+
+Klap is a bundler for packages based on Rollup and Babel.
+
+At the moment Klap is the only one that supports `<script type="module ">` and it is making it unique. It was created for writing libraries but also works fine as a bundler.
+
+Here's an [example](https://github.com/osdevisnot/klap/tree/master/examples/minimal) of bundling an ESM app.
+
+Here are some other notable features:
+
+- React / SC out of the box support
+- Dev server
+- Zero dependency
+
+## Honorable mentions
+
+There are just too many bundlers that I couldn't tell about them all.
+
+Here's a list of good ones:
+
+- [Microbundle](https://github.com/developit/microbundle)
+- [Packem](https://packem.github.io/)
+- [Brunch](https://brunch.io/)
+
+## Conclusion
+
+As you can see, there are some problems with webpack and js bundling in general. Different bundlers try to solve those problems in their own way.

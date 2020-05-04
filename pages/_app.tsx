@@ -186,6 +186,13 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             h1: {
               textAlign: 'center',
             },
+            ul: {
+              paddingLeft: '1rem',
+            },
+            blockquote: {
+              fontStyle: 'italic',
+              marginLeft: 0,
+            },
           }}
         >
           <Component {...pageProps} />
