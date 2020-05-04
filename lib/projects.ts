@@ -41,7 +41,6 @@ export const websites: Project[] = [
       'Trello',
       'Ubuntu',
       'PostgreSQL',
-      'Django',
       'JavaScript',
       'nginx',
     ],

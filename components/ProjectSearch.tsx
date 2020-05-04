@@ -112,7 +112,6 @@ const ProjectSearch = () => {
             'Ubuntu',
             'Python',
             'pm2',
-            'Django',
             'PostgreSQL',
             'Heroku',
             'Travis CI',
