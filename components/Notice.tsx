@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const Notice = ({ children }: { children: any }) => {
-  const [isShown, toggle] = useState(true)
+  const [isShown, toggle] = useState(false)
 
   const [initial, setInitial] = useState(true)
 
