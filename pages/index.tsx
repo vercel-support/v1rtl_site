@@ -11,9 +11,7 @@ import dynamic from 'next/dynamic'
 
 import Contact from '../components/Contact'
 
-const Title = dynamic(() => import('../components/WebGL/Title'), {
-  ssr: false,
-})
+const Title = dynamic(() => import('../components/WebGL/Title'))
 
 const Index: NextPage = () => {
   return (

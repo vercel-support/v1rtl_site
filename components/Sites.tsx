@@ -12,7 +12,7 @@ const Sites = ({ projects }: { projects: Project[] }) => (
         gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
         gap: '4.5rem',
         '@media (max-width: 500px)': {
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gridTemplateColumns: '1fr',
         },
       }}
     >

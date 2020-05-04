@@ -17,6 +17,9 @@ const Repos: NextPage = () => {
           gridGap: '3rem',
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          '@media (max-width: 500px)': {
+            gridTemplateColumns: '1fr',
+          },
         }}
       >
         {repos.map((repo) => (

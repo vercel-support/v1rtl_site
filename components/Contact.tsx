@@ -119,6 +119,9 @@ const Contact = () => {
         css={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+          '@media (max-width: 500px)': {
+            gridTemplateColumns: '1fr',
+          },
           gap: '3rem',
         }}
       >
