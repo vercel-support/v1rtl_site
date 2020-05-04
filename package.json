@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
+    "@mdx-js/runtime": "^1.6.1",
     "@react-hook/window-scroll": "^1.1.4",
     "@react-hook/window-size": "^1.0.13",
     "isomorphic-unfetch": "^3.0.0",

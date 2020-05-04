@@ -24,12 +24,10 @@ const Index: NextPage = () => {
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-
           height: 'calc(100vh - 64px)',
           span: {
             zIndex: 1,
             textAlign: 'center',
-
             fontSize: 'calc(0.8rem + 0.8vw)',
           },
         }}
