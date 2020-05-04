@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Project, repos, websites } from '../../lib/projects'
+import { Project, repos, websites } from '../lib/projects'
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const projectsCategory = req.query.type

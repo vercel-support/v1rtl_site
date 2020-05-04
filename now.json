@@ -1,0 +1,11 @@
+{
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next",
+      "config": {
+        "includeFiles": ["pages/blog/*.mdx"]
+      }
+    }
+  ]
+}
