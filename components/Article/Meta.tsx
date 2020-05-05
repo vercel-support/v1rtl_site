@@ -6,6 +6,7 @@ export type MetaProps = {
   title: string
   desc: string
   image: string
+  date: string
 }
 
 const Meta = ({ meta }: { meta: MetaProps }) => {
@@ -23,6 +24,7 @@ const Meta = ({ meta }: { meta: MetaProps }) => {
         <meta name="og:article:section" content="Programming" />
         <meta name="og:article:author" content="v1rtl" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="article:published_time" content={meta.date} />
       </Head>
       <header>
         <img src={meta.image} alt={meta.title} />

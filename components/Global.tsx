@@ -9,6 +9,11 @@ export const GlobalMeta = () => (
     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
     <link rel="icon" type="image/png" href="/icon.png" />
     <meta name="theme-color" content="#000" />
+    <meta name="apple-mobile-web-app-title" content="v1rtl.site" />
+    <meta name="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="og:site_name" content="v1rtl.site" />
+    <meta name="application-name" content="v1rtl.site" />
   </>
 )
 
