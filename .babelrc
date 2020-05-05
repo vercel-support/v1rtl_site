@@ -4,8 +4,8 @@
       "next/babel",
       {
         "preset-env": {
-          "useBuiltIns": false,
-          "targets": "Chrome >= 75, Safari >= 10.1, iOS >= 10.3, Firefox >= 69, Edge >= 18"
+          "useBuiltIns": "entry",
+          "corejs": 3
         }
       }
     ],
