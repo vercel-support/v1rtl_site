@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { GlobalMeta } from './Global'
 
 type Meta = {
   title: string
@@ -11,6 +12,7 @@ type Meta = {
 const Meta = ({ meta }: { meta: Meta }) => (
   <>
     <Head>
+      <GlobalMeta />
       <title>{meta.title}</title>
       <meta name="og:title" content={meta.title} />
       <meta name="og:type" content="article" />
