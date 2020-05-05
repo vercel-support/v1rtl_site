@@ -25,10 +25,6 @@ const Footer = () => (
       Uploaded on{' '}
       <a href="https://github.com/talentlessguy/v1rtl_site">
         <img src="/icons/github.svg" alt="GitHub" height="16px" />
-      </a>{' '}
-      and hosted on{' '}
-      <a href="https://now.sh">
-        <img src="/icons/zeit.svg" alt="Vercel" height="16px" />
       </a>
     </div>
   </footer>
