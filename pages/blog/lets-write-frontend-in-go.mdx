@@ -1,3 +1,5 @@
+import Meta from '../../components/Meta.tsx'
+
 export const meta = {
   title: "Let's write frontend in Go",
   desc: 'A short tutorial of setting up a simple Go+WASM app',
@@ -5,10 +7,7 @@ export const meta = {
   image: '/blog/go-wasm.jpg',
 }
 
-_I wrote a CLI for automatic Go+WASM app setup and management, [check it out](https://github.com/talentlessguy/go-web-app)._
-
-<h1>{meta.title}</h1>
-<img src={meta.image} alt={meta.title} />
+<Meta meta={meta} />
 
 > picture [source](https://vk.com/wall12743298_297)
 
