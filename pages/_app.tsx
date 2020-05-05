@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import { GlobalMeta, PageStyles } from '../components/Global'
 import CodeBlock from '../components/CodeBlock'
 import Footer from '../components/Footer'
+import Body from '../components/Article/Body'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   const [isWebGLSupported, setWebGLSupported] = useState(true)
@@ -82,35 +83,9 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           `}
         />
         <NavBar />
-        <article
-          css={{
-            padding: '3rem',
-            paddingTop: '5rem',
-            width: 'calc(40vw + 10em)',
-            margin: '0 auto',
-            p: {
-              textAlign: 'justify',
-            },
-            img: {
-              height: '350px',
-              width: '100%',
-              margin: '1em 0',
-              objectFit: 'cover',
-            },
-            h1: {
-              textAlign: 'center',
-            },
-            ul: {
-              paddingLeft: '1rem',
-            },
-            blockquote: {
-              fontStyle: 'italic',
-              marginLeft: 0,
-            },
-          }}
-        >
+        <Body>
           <Component {...pageProps} />
-        </article>
+        </Body>
         <Footer />
       </MDXProvider>
     )

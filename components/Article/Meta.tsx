@@ -1,15 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
-import { GlobalMeta } from './Global'
+import { GlobalMeta } from '../Global'
 
-type Meta = {
+export type MetaProps = {
   title: string
   desc: string
   image: string
   topic?: string
 }
 
-const Meta = ({ meta }: { meta: Meta }) => (
+const Meta = ({ meta }: { meta: MetaProps }) => (
   <>
     <Head>
       <GlobalMeta />
@@ -21,8 +21,10 @@ const Meta = ({ meta }: { meta: Meta }) => (
       <meta name="og:article:section" content={meta.topic} />
       <meta name="og:article:author" content="v1rtl" />
     </Head>
-    <img src={meta.image} alt={meta.title} />
-    <h1>{meta.title}</h1>
+    <header>
+      <img src={meta.image} alt={meta.title} />
+      <h1>{meta.title}</h1>
+    </header>
   </>
 )
 
