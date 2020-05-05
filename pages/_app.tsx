@@ -44,6 +44,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
             content="I'm a teen fullstack web developer who tries to combine both tech and art. I like frontend and backend. I'm a lead dev of Komfy and author of t.me/we_use_js."
           />
           <meta name="og:locale" content="en_US" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta name="og:site_name" content="v1rtl.site" />
           {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
           <title>v 1 r t l ✨</title>
