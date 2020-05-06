@@ -27,3 +27,4 @@ yarn-error.log*
 .now
 .mdx-data
 pnpm-debug.log
+v1rtl.site_*
