@@ -23,7 +23,7 @@ const Title = () => {
         scroll: false,
       }}
     >
-      <Suspense fallback={<h1>Hello World</h1>}>
+      <Suspense fallback={<h1>v 1 r t l</h1>}>
         <Text position={[-7.5, 0, scale]}>v 1 r t l</Text>
       </Suspense>
     </Canvas>

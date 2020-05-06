@@ -11,19 +11,29 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* Basic meta tags */}
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-
           <meta name="theme-color" content="#000" />
-          <meta name="apple-mobile-web-app-title" content="v1rtl.site" />
           <meta name="og:locale" content="en_US" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="og:site_name" content="v1rtl.site" />
           <meta name="application-name" content="v1rtl.site" />
 
+          {/* Apple tags */}
+
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="apple-mobile-web-app-title" content="v1rtl.site" />
+
+          {/* PWA tags */}
+
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="apple-mobile-web-app-title" content="v1rtl.site" />
+
+          {/* Favicon */}
 
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />

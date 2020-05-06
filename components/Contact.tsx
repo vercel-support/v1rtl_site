@@ -164,6 +164,7 @@ const Contact = () => {
                   height={45}
                   src={`/icons/${icon}.svg`}
                   alt={icon}
+                  loading="lazy"
                 />
                 <figcaption
                   css={{
