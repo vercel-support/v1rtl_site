@@ -9,7 +9,7 @@ import NavBar from '../components/Navbar'
 import { supportsWebp } from '../lib/webp'
 import { DataContextProvider } from '../lib/context'
 import { useRouter } from 'next/router'
-import { GlobalMeta, PageStyles } from '../components/Global'
+import { PageStyles } from '../components/Global'
 import CodeBlock from '../components/CodeBlock'
 import Footer from '../components/Footer'
 import Body from '../components/Article/Body'
@@ -45,7 +45,6 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           />
           {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
           <title>v 1 r t l ✨</title>
-          <GlobalMeta />
         </Head>
 
         <PageStyles />
@@ -90,9 +89,6 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
   } else {
     return (
       <>
-        <Head>
-          <GlobalMeta />
-        </Head>
         <PageStyles />
         <NavBar />
         <Component {...pageProps} />

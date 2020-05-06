@@ -44,6 +44,7 @@ const Artwork = () => {
                 <img
                   src={`/artwork/${artwork.link}.jpg`}
                   alt={artwork.title}
+                  loading="lazy"
                   onMouseDown={(e) => e.preventDefault()}
                   css={{
                     width: '95%',

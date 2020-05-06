@@ -68,7 +68,7 @@ const Index: NextPage = () => {
           }}
         >
           <source srcSet="/me.webp" type="image/webp" media="screen" />
-          <img src="/me.gif" alt="me" width="100%" />
+          <img src="/me.gif" alt="me" width="100%" loading="lazy" />
         </picture>
         <Bio />
       </section>
