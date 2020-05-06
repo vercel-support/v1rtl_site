@@ -29,6 +29,7 @@ const Page404 = () => {
           404
         </Text>
       </Canvas>
+
       <span
         css={{
           textAlign: 'center',

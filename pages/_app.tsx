@@ -15,17 +15,12 @@ import Footer from '../components/Footer'
 import Body from '../components/Article/Body'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
-  const [isWebGLSupported, setWebGLSupported] = useState(true)
-
   const [isWebpSupported, setWebpSupported] = useState(true)
 
   const { pathname } = useRouter()
 
   useEffect(() => {
     supportsWebp().then((sup) => setWebpSupported(sup))
-    import('three/examples/jsm/WebGL').then((mod) => {
-      setWebGLSupported(mod.WEBGL.isWebGLAvailable())
-    })
   }, [])
 
   if (pathname === '/') {
@@ -50,7 +45,6 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
         <PageStyles />
         <DataContextProvider
           value={{
-            isWebGLSupported,
             isWebpSupported,
           }}
         >

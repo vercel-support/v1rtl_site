@@ -10,6 +10,7 @@ import 'isomorphic-unfetch'
 
 import Contact from '../components/Contact'
 import Title from '../components/WebGL/Title'
+import fonts from '../lib/fonts'
 
 const Index: NextPage = () => {
   return (
@@ -34,6 +35,15 @@ const Index: NextPage = () => {
             height: '40vh',
           }}
         >
+          <noscript>
+            <img
+              css={{
+                width: '100%',
+              }}
+              alt="v1rtl logo"
+              src="/logo.png"
+            />
+          </noscript>
           <Title />
         </div>
 
