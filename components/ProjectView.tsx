@@ -14,6 +14,15 @@ const ProjectView = ({ proj }: { proj: Project }) => {
               imgFallback={`/sites/${proj.screenshot}.jpg`}
               amp={0.1}
               freq={0.2}
+              css={{
+                height: '60vh',
+                '@media (max-width: 1055px)': {
+                  height: '80vh',
+                },
+                '@media (max-width: 500px)': {
+                  width: '100%',
+                },
+              }}
             />
             <noscript>
               <picture>

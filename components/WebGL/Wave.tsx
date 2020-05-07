@@ -65,7 +65,7 @@ const Wave = ({
   const { isWebpSupported } = useContext(DataContext)
 
   return (
-    <>
+    <div {...props}>
       <Canvas resize={{ scroll: false }} {...canvasProps}>
         <Suspense
           fallback={
@@ -78,7 +78,7 @@ const Wave = ({
         </Suspense>
       </Canvas>
       {children}
-    </>
+    </div>
   )
 }
 
