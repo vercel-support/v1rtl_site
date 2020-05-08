@@ -6,6 +6,7 @@ export type MetaProps = {
   desc: string
   image: string
   date: string
+  imageLink?: string
 }
 
 const Meta = ({ meta }: { meta: MetaProps }) => {
@@ -25,7 +26,21 @@ const Meta = ({ meta }: { meta: MetaProps }) => {
         <meta name="article:published_time" content={meta.date} />
       </Head>
       <header>
-        <img src={meta.image} alt={meta.title} />
+        {meta.imageLink && (
+          <a href={meta.imageLink}>
+            <img
+              css={{
+                height: '350px',
+                width: '100%',
+                margin: '1em 0',
+                objectFit: 'cover',
+              }}
+              src={meta.image}
+              alt={meta.title}
+            />
+          </a>
+        )}
+
         <h1>{meta.title}</h1>
       </header>
     </>

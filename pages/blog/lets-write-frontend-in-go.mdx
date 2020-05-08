@@ -1,28 +1,45 @@
+import WasmHelloWorld from '../../blog-components/fe-in-go/WasmHelloWorld.tsx'
+import WasmButtonDemo from '../../blog-components/fe-in-go/WasmButtonDemo.tsx'
+
+import Alert from '../../components/Alert.tsx'
+
 import Meta from '../../components/Article/Meta.tsx'
 export const meta = {
   title: "Let's write frontend in Go",
   desc: 'A short tutorial of setting up a simple Go+WASM app',
   date: '19/07/2019',
   image: '/blog/go-wasm.jpg',
+  imageLink: 'https://vk.com/wall12743298_297',
 }
 
 <Meta meta={meta} />
-
-> picture [source](https://vk.com/wall12743298_297)
+<Alert>
+  I wrote a CLI to quickly bootstrap a simple Go + WebAssembly application. It contains a dev server, auto-build and
+  glue code. It also uses tinygo under the hood to produce the smallest binary possible. Go check it out on{' '}
+  <a href="https://github.com/talentlessguy/go-web-app">GitHub</a>!
+</Alert>
 
 ## Intro
 
 Recently, Go 1.12 released. Go now has a great WebAssembly support, even a special UMD script for better DX.
 
-So, if we have WebAssembly, it means that we can access DOM. Go even has a special package for that – `syscall/js`. It basically just gets / sets global objects or calls functions. So, to avoid writing ugly `Call()` & `Get("document")` code, we'll be using [godom](https://github.com/siongui/godom/tree/master/wasm), a library with predefined shortened functions. It is mostly used for [GopherJS](https://github.com/gopherjs/gopherjs) (Go to JS compiler), but has WebAssembly support too.
+So, if we have WebAssembly, it means that we can access DOM.
+Go even has a special package for that – `syscall/js`.
+It basically just gets / sets global objects or calls functions.
+So, to avoid writing ugly `Call()` & `Get("document")` code, we'll be using [godom](https://github.com/siongui/godom/tree/master/wasm), a library with predefined shortened functions.
+It is mostly used for [GopherJS](https://github.com/gopherjs/gopherjs) (Go to JS compiler), but has WebAssembly support as well.
 
-First, you need Go 1.12+. You can install go1.12 from the [website](https://golang.org/dl/) or with [gvm](goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'). Second, you need the latest version of your browser to support WebAssembly. While writing this article, I use Mozilla 68.
+## Requirements
+
+- [go 1.12+](https://golang.org/dl/)
+- Firefox 68 (was used during writing the article) / Chrome 69 / any other browser that supports WebAssembly
 
 ## Let's code!
 
 ### Glue
 
-Let's create glue.js and index.html to make WebAssembly work. Of course, WASM is magic that runs as a native platform, but it still needs some glue to load / display things.
+Let's create glue.js and index.html to make WebAssembly work.
+Even though WASM is _magic_ that runs natively it still needs some glue to load itself.
 
 **index.html**
 
@@ -71,13 +88,13 @@ Our frontend setup is done. Let's do some stuff with Go.
 
 ### Go Setup
 
-Init go (Go 1.11+) module:
+Init go module:
 
 ```sh
 go mod init
 ```
 
-Install godom (wasm section):
+Install godom (wasm package):
 
 ```sh
 go get -u -v github.com/siongui/godom/wasm
@@ -85,7 +102,7 @@ go get -u -v github.com/siongui/godom/wasm
 
 ### Go Code
 
-Write some Go code:
+At first let's write a simple Hello World markup:
 
 ```go
 package main
@@ -105,27 +122,48 @@ func main() {
 }
 ```
 
-As you can see here, we selected our `#app` div defined in an HTML file. Then we modify a property called ["InnerHTML"](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML). godom doesn't have a function for every DOM interaction but you can still use `syscall/js` "Call".
+As you can see here, we selected our `#app` div defined in an HTML file.
+Then we modify a property called ["InnerHTML"](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML).
+godom doesn't have a function for every DOM interaction but you can still use `syscall/js` "Call" for such cases.
 
 ### Compile Go to WebAssembly
 
-We need to compile all this stuff to make it work. To compile to wasm, we should set architecture to WASM, and OS to JS:
+We need to compile our go code to wasm to make it work.
+To compile to wasm, we should set system architecture to WASM, and OS to JS.
+Those is certainly no real OS called "JS" or processor architecture "WASM".
+Go uses them to detect that we want to compile it to WebAssembly instead of building a native executable.
+
+In the terminal run this command:
 
 ```sh
 ARCH=WASM OS=js go build -o app.wasm index.go
 ```
 
-Nice, we have a compiled file. It will be called "app.wasm".
+Now we have a compiled file. It is called "app.wasm".
 
-Now try to open `index.html` file in a browser or run a local server using [goexec](https://github.com/shurcooL/goexec):
+The last step is running a server to see the result. There are a few quick options that you can use:
+
+- Using Go [goexec](https://github.com/shurcooL/goexec) package:
 
 ```sh
 goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'
 ```
 
+- Using Python:
+
+```sh
+python -m http.server -p 8080
+```
+
+- Using Node.js and [serve](https://github.com/zeit/serve) module:
+
+```sh
+serve -p 8080
+```
+
 We see hello world!
 
-![](https://thepracticaldev.s3.amazonaws.com/i/aos421qpj7dkzxea888e.jpg)
+<WasmHelloWorld />
 
 ### Interactive DOM
 
@@ -215,7 +253,7 @@ Now our Go program doesn't exit even with callbacks!
 
 Let's try, it works!
 
-![](https://thepracticaldev.s3.amazonaws.com/i/hz4mrphhtckn4l7n943d.gif)
+<WasmButtonDemo />
 
 ## Conclusion
 

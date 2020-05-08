@@ -8,6 +8,7 @@ export const PageStyles = () => (
       html {
         :root {
           --fg-hover: #d2c7c7;
+          --fg-dark: #575757;
           --fg: #d8d8e3;
           --bg: black;
         }
@@ -40,13 +41,7 @@ export const PageStyles = () => (
         margin-top: 1.25rem;
       }
 
-      body main,
-      body article {
-        pre,
-        code {
-          font-family: ${fonts.code};
-        }
-
+      body main {
         button,
         select {
           padding: 0.5rem;
@@ -65,6 +60,14 @@ export const PageStyles = () => (
         button {
           padding: 0.5rem 1rem;
           font-weight: bold;
+        }
+      }
+
+      body main,
+      body article {
+        pre,
+        code {
+          font-family: ${fonts.code};
         }
       }
       ::-webkit-scrollbar {

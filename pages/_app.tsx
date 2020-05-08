@@ -10,7 +10,7 @@ import { supportsWebp } from '../lib/webp'
 import { DataContextProvider } from '../lib/context'
 import { useRouter } from 'next/router'
 import { PageStyles } from '../components/Global'
-import CodeBlock from '../components/CodeBlock'
+import CodeBlock from '../components/Article/CodeBlock'
 import Footer from '../components/Footer'
 import Body from '../components/Article/Body'
 
