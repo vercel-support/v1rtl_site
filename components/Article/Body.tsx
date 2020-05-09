@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import fonts from '../../lib/fonts'
 
 const Body = ({ children }: { children: any }) => (
   <>
@@ -29,6 +28,10 @@ const Body = ({ children }: { children: any }) => (
         blockquote {
           font-style: italic;
           margin-left: 0;
+        }
+        p > img {
+          width: 100%;
+          margin: 3rem 0;
         }
       `}
     >

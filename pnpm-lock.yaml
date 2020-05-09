@@ -37,6 +37,7 @@ devDependencies:
   next-optimized-images: 2.6.0
   next-transpile-modules: 3.3.0
   prettier: 1.19.1
+  raw-loader: 4.0.1
   typescript: 3.8.3
   webp-loader: 0.6.0
   webpack-glsl-loader: 1.0.1
@@ -6991,6 +6992,17 @@ packages:
       webpack: ^4.3.0
     resolution:
       integrity: sha512-kZnO5MoIyrojfrPWqrhFNLZemIAX8edMOCp++yC5RKxzFB3m92DqKNhKlU6+FvpOhWtvyh3jOaD7J6/9tpdIKg==
+  /raw-loader/4.0.1:
+    dependencies:
+      loader-utils: 2.0.0
+      schema-utils: 2.6.6
+    dev: true
+    engines:
+      node: '>= 10.13.0'
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    resolution:
+      integrity: sha512-baolhQBSi3iNh1cglJjA0mYzga+wePk7vdEX//1dTFd+v4TsQlQE0jitJSNF1OIP82rdYulH7otaVmdlDaJ64A==
   /react-dom/16.13.1_react@16.13.1:
     dependencies:
       loose-envify: 1.4.0
@@ -8899,6 +8911,7 @@ specifiers:
   next-transpile-modules: ^3.3.0
   prettier: ^1.19.1
   prism-react-renderer: ^1.1.0
+  raw-loader: ^4.0.1
   react: ^16.13.1
   react-dom: ^16.13.1
   react-draggable: ^4.3.1

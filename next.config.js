@@ -21,6 +21,8 @@ module.exports = withOptimizedImages(
       webpack(config) {
         const originalEntry = config.entry
 
+        /**Polyfill */
+
         config.entry = async () => {
           const entries = await originalEntry()
 
@@ -30,6 +32,13 @@ module.exports = withOptimizedImages(
 
           return entries
         }
+
+        /* Importing txt */
+
+        config.module.rules.push({
+          use: 'raw-loader',
+          test: /\.txt/,
+        })
 
         /* GLSL */
 

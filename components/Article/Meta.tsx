@@ -26,7 +26,7 @@ const Meta = ({ meta }: { meta: MetaProps }) => {
         <meta name="article:published_time" content={meta.date} />
       </Head>
       <header>
-        {meta.imageLink && (
+        {meta.imageLink ? (
           <a href={meta.imageLink}>
             <img
               css={{
@@ -39,6 +39,17 @@ const Meta = ({ meta }: { meta: MetaProps }) => {
               alt={meta.title}
             />
           </a>
+        ) : (
+          <img
+            css={{
+              height: '350px',
+              width: '100%',
+              margin: '1em 0',
+              objectFit: 'cover',
+            }}
+            src={meta.image}
+            alt={meta.title}
+          />
         )}
 
         <h1>{meta.title}</h1>

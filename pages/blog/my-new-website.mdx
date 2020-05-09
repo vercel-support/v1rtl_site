@@ -1,4 +1,7 @@
 import Meta from '../../components/Article/Meta.tsx'
+import Box from '../../blog-components/new-site/Box.tsx'
+import HtmlDemo from '../../blog-components/HtmlDemo.tsx'
+import Dino from '../../blog-components/new-site/Dino.tsx'
 
 export const meta = {
   title: 'My new website!',
@@ -17,23 +20,58 @@ I had 3 different versions of the website but decided to stop on the current one
 
 ## Why?
 
-My old site didn't have Safari support because of webp, which I used actively on my site, without any fallbacks.
+My old site didn't have Safari support because of webp, which I used actively.
+
+There were no fallbacks, so the site didn't work in Safari completely.
+You would just see either broken images or this message if you opened it from Safari:
+
+<HtmlDemo>
+  <center>
+    <span style={{ fontSize: '10vw'}}>😔</span>
+    <p style={{ width: '60%'}}>
+      Sorry, but Safari (and any other WebKit browser) isn't supported on my site. That's because I use webp which doesn't
+      work in WebKit. While waiting for webp to be supported, try opening from Chrome / Firefox / Brave / etc.
+    </p>
+  </center>
+</HtmlDemo>
+
+At the moment the website is fully supported by Safari (currently it's not. issue with `ResizeObserer`) so you won't see such screen anymore.
+
+If you opened the website with Internet Explorer, you would see this:
+
+<div style={{ fontFamily: 'monospace', userSelect: 'none' }}>
+  <Dino />
+  This site is unavailable for <strong>dinosaurs</strong>, please use something more modern.
+  Even if you have some old OS like Windows XP you can download <a>Opera</a> which is well supported on old OSes.
+  Otherwise just try Chrome / Firefox / Brave / etc.
+</div>
+
+I will do the same on my new website with Internet Explorer to help it to die .
+
+Here is the screenshot of how the old version looked like:
 
 ![my old site](/blog/old_site.jpg)
 
 First, I thought that it isn't worth it to make a new site, I can just simply set the fallbacks up.
-But the problem was that the look of the website was awful.
-Random images combined with app UI and monospace font made it look like a mess.
+But the problem was that the look of the website was too wrong.
+Random images combined with app UI and inappropriate fonts made it look like a mess.
 I think the problem was that I didn't make the mockup beforehand, but in this time I avoided my mistake.
 I was scratching ideas in Figma, until I got what I wanted.
 
 ![piece of my mockup](/blog/mockup.jpg)
 
-The final result differs from the website a bit but the idea remains the same.
+The final result differs from the mockup a bit but the idea remains the same.
 Pure black background, glitchy effects, unusual layouts and so on.
 I didn't want to make it fully static but at the same time it should've been simple to navigate.
 
 ## Plans for the future
 
 From now on I'll be using this site as a place to write tutorials, tips and anything else I want to write.
-I will transfer all my articles from DEV and translate some from [my Telegram channel](https://t.me/we_use_js).
+
+I have set up MDX so now every page can include React components, like here:
+
+<Box />
+
+With such components I'll be able to set up demos and complex examples without having to embed CodeSandbox or a screenshot.
+
+I will transfer all my articles from DEV and translate some from [my Telegram channel](https://t.me/we_use_js) so keep an eye on my blog :)
