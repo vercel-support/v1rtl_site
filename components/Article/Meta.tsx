@@ -20,6 +20,7 @@ const Meta = ({ meta }: { meta: MetaProps }) => {
         <meta name="og:type" content="article" />
         <meta name="og:description" content={meta.desc} />
         <meta name="og:image" content={meta.image} />
+        <meta name="twitter:image" content={meta.image} />
         <meta name="og:article:section" content="Programming" />
         <meta name="og:article:author" content="v1rtl" />
         <meta name="twitter:card" content="summary_large_image" />

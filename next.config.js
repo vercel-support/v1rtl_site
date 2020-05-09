@@ -1,8 +1,20 @@
 const withImages = require('next-images')
 const withOptimizedImages = require('next-optimized-images')
 
+const emoji = require('remark-emoji')
+const emojiToImage = require('remark-twemoji')
+
+const images = require('remark-images')
+
+const autoLink = require('rehype-autolink-headings')
+const slug = require('rehype-slug')
+
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [emoji, emojiToImage, images],
+    rehypePlugins: [slug, autoLink],
+  },
 })
 
 module.exports = withOptimizedImages(

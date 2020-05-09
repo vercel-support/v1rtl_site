@@ -48,6 +48,7 @@ const CodeBlock = ({ children, className }: { children: string; className: strin
           <pre
             css={{
               border: '1px solid var(--fg-dark)',
+
               padding: '1rem',
               overflowX: 'auto',
               '@media (max-width: 980px)': {

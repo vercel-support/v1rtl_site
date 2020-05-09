@@ -15,7 +15,6 @@ export const PageStyles = () => (
       }
 
       * {
-        scroll-behavior: smooth;
         scrollbar-color: #2a2c2f #1a1c1d;
         line-height: 1.5;
       }
@@ -42,6 +41,7 @@ export const PageStyles = () => (
       }
 
       body main {
+        scroll-behavior: smooth;
         button,
         select {
           padding: 0.5rem;

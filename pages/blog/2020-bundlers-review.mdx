@@ -1,9 +1,11 @@
 import Meta from '../../components/Article/Meta.tsx'
+import BundlerInfo from '../../blog-components/bundlers-review/BundlerInfo.tsx'
 
 export const meta = {
   title: '2020 Bundlers Review',
   date: '14/02/2020',
   image: '/blog/bundlers.png',
+  imageLink: 'https://medium.com/@ajmeyghani/javascript-bundlers-a-comparison-e63f01f2a364',
 }
 
 <Meta meta={meta} />
@@ -14,21 +16,26 @@ Not a secret, the most popular bundler in JS world is webpack. Most companies an
 
 Here's a list of tools I'll review:
 
-- Parcel
-- Poi
-- Pax
-- Packem
-- Bundl
-- esbuild
-- Klap
+- [Parcel](#parcel)
+- [Poi](#poi)
+- [Pax](#pax)
+- [Bundl](#bundl)
+- [esbuild](#esbuild)
+- [Klap](#klap)
 
 ## Parcel
 
-**Language**: JavaScript
-**Zero-config**: Yes, has optional configuration (v2 only)
-**Installation**: `yarn add -D parcel-bundler`
+<BundlerInfo
+  data={{
+    lang: 'JavaScript',
+    zeroConfig: 'Yes, has optional configuration',
+    installation: 'yarn add -D parcel-bundler',
+  }}
+/>
 
-Most probably you already know Parcel. While not only being zero-config, it is also quite fast. It has a huge community and a documentation website. Parcel is often used for quick demos (CodeSandbox uses it for vanilla js) but works fine in production.
+Most probably you already know Parcel. While not only being zero-config, it is also quite fast.
+It has a huge community and a documentation website.
+Parcel is often used for quick demos (CodeSandbox uses it for vanilla js) but works fine in production.
 
 At the moment Parcel 2 is in development, but it already supports configuration and plugins but is not yet released so I don't recommend using it in prod. One of the greatest Parcel 2 features is hoisting, it reduces the bundle size multiple times.
 
@@ -40,10 +47,14 @@ yarn add -D parcel@next
 
 ## Poi
 
-- **Language**: JavaScript
-- **Zero-config**: Yes, has optional configuration
-- **Website**: https://poi.js.org
-- **Installation**: `yarn add -D poi`
+<BundlerInfo
+  data={{
+    lang: 'JavaScript',
+    zeroConfig: 'Yes, has optional configuration',
+    website: 'https://poi.js.org',
+    installation: 'yarn add -D poi',
+  }}
+/>
 
 Poi is a human-friendly wrapper about Webpack. This bundler is something between Parcel and Webpack. It can bundle your app without a single line of config but if you need some specific Webpack plugin, you can extend it in `poi.config.js`.
 
@@ -51,10 +62,14 @@ If you are scared of Webpack but have to use its plugins don't forget to try Poi
 
 ## Pax
 
-- **Language**: Rust
-- **Zero-config**: Yes
-- **Website**: https://pax.js.org/
-- **Installation**: `cargo install pax`
+<BundlerInfo
+  data={{
+    lang: 'Rust',
+    zeroConfig: 'Yes',
+    website: 'https://pax.js.org/',
+    installation: 'cargo install pax',
+  }}
+/>
 
 As I said preciously, Parcel is quite fast. But it's speed is limited to Node.js, which is slower compared to Rust. The fastest solution to bundlers is using a compiled language.
 
@@ -64,10 +79,14 @@ All those features can be enabled using CLI flags, so it remains zero config.
 
 ## Bundl
 
-- **Language**: JavaScript
-- **Zero-config**: No
-- **Website**: https://bundljs.org/
-- **Installation**: `yarn add -D @vimlet/bundl`
+<BundlerInfo
+  data={{
+    lang: 'JavaScript',
+    zeroConfig: 'No',
+    website: 'https://bundljs.org',
+    installation: 'yarn add -D @vimlet/bundl',
+  }}
+/>
 
 This bundler requires a full config, like Webpack. Config is much simpler though, and Bundl has a lot of features built-in like running executables or template processing.
 
@@ -97,10 +116,14 @@ There's an official repository for plugins (which I created btw): [repo](https:/
 
 ## esbuild
 
-- **Language**: Go
-- **Zero-config**: Yes
-- **Website**: https://github.com/evanw/esbuild
-- **Installation**: `yarn add -D esbuild-linux-64`
+<BundlerInfo
+  data={{
+    language: 'Go',
+    zeroConfig: 'Yes',
+    website: 'https://github.com/evanw/esbuild',
+    installation: 'yarn add -D esbuild-linux-64',
+  }}
+/>
 
 A piece from README:
 
@@ -110,14 +133,18 @@ esbuild is as fast as Pax because Go can be compiled. It has support for ES Modu
 
 ## Klap
 
-- **Language**: Rust
-- **Zero-config**: Yes
-- **Website**: https://github.com/osdevisnot/klap
-- **Installation**: `npx klap init`
+<BundlerInfo
+  data={{
+    language: 'Rust',
+    zeroConfig: 'Yes',
+    website: 'https://github.com/osdevisnot/klap',
+    installation: 'npx klap init',
+  }}
+/>
 
 Klap is a bundler for packages based on Rollup and Babel.
 
-At the moment Klap is the only one that supports `<script type="module ">` and it is making it unique. It was created for writing libraries but also works fine as a bundler.
+At the moment Klap is the only one that supports `<script type="module">` and it is making it unique. It was created for writing libraries but also works fine as a bundler.
 
 Here's an [example](https://github.com/osdevisnot/klap/tree/master/examples/minimal) of bundling an ESM app.
 
@@ -127,11 +154,11 @@ Here are some other notable features:
 - Dev server
 - Zero dependency
 
-## Honorable mentions
+## Other bundlers
 
-There are just too many bundlers that I couldn't tell about them all.
+There are too many JavaScript bundlers that I couldn't tell about them all.
 
-Here's a list of good ones:
+Here's a list of other ones:
 
 - [Microbundle](https://github.com/developit/microbundle)
 - [Packem](https://packem.github.io/)

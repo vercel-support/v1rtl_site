@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 import { PageStyles } from '../components/Global'
 import CodeBlock from '../components/Article/CodeBlock'
 import Footer from '../components/Footer'
-import Body from '../components/Article/Body'
+import Body, { Subheading, SubSubHeading } from '../components/Article/Body'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   const [isWebpSupported, setWebpSupported] = useState(true)
@@ -33,6 +33,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           />
           <meta name="og:title" content="V!RTL" />
           <meta name="og:image" content="/sites/v1rtl.jpg" />
+          <meta name="twitter:image" content="/sites/v1rtl.jpg" />
           <meta name="og:url" content="https://v1rtl.site" />
           <meta
             name="og:description"
@@ -59,6 +60,8 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
       <MDXProvider
         components={{
           code: CodeBlock,
+          h2: Subheading,
+          h3: SubSubHeading,
         }}
       >
         <PageStyles />
@@ -66,10 +69,6 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           styles={css`
             h1 {
               font-size: calc(2rem + 1.5vw);
-            }
-            h2 {
-              font-size: calc(1.25rem + 1vw);
-              margin-bottom: 0.5rem;
             }
           `}
         />

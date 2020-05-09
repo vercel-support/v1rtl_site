@@ -38,6 +38,12 @@ devDependencies:
   next-transpile-modules: 3.3.0
   prettier: 1.19.1
   raw-loader: 4.0.1
+  rehype-autolink-headings: 3.0.0
+  rehype-slug: 3.0.0
+  remark-emoji: 2.1.0
+  remark-images: 2.0.0
+  remark-twemoji: 0.1.1_twemoji@13.0.0
+  twemoji: 13.0.0
   typescript: 3.8.3
   webp-loader: 0.6.0
   webpack-glsl-loader: 1.0.1
@@ -3325,6 +3331,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-f4x70okzZbIQl/NSRLkI/+tteV/9WqL98zx+SQ69KbXxmVrmjwsNUPn/gYJJ0sHvEak24cZgHIPegRePAtA/xw==
+  /emoji-regex/6.1.1:
+    dev: true
+    resolution:
+      integrity: sha1-xs0OwbBkLio8Z6ETfvxeeW2k+I4=
   /emoji-regex/7.0.3:
     dev: true
     resolution:
@@ -3343,6 +3353,10 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
+  /emoticon/3.2.0:
+    dev: true
+    resolution:
+      integrity: sha512-SNujglcLTTg+lDAcApPNgEdudaqQFiAbJCqzjNxJkvN9vAwCGi0uu8IUVvx+f16h+V44KCY6Y2yboroc9pilHg==
   /end-of-stream/1.4.4:
     dependencies:
       once: 1.4.0
@@ -4084,6 +4098,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==
+  /fs-extra/8.1.0:
+    dependencies:
+      graceful-fs: 4.2.4
+      jsonfile: 4.0.0
+      universalify: 0.1.2
+    dev: true
+    engines:
+      node: '>=6 <7 || >=8'
+    resolution:
+      integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
   /fs-write-stream-atomic/1.0.10:
     dependencies:
       graceful-fs: 4.2.4
@@ -4186,6 +4210,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
+  /github-slugger/1.3.0:
+    dependencies:
+      emoji-regex: 6.1.1
+    dev: true
+    resolution:
+      integrity: sha512-gwJScWVNhFYSRDvURk/8yhcFBee6aFjye2a7Lhb2bUyRulpIoek9p0I9Kt7PT67d/nUlZbFu8L9RLiA0woQN8Q==
   /glob-parent/3.1.0:
     dependencies:
       is-glob: 3.1.0
@@ -4427,6 +4457,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-gOc8UB99F6eWVWFtM9jUikjN7QkWxB3nY0df5Z0Zq1/Nkwl5V4hAAsl0tmwlgWl/1shlTF8DnNYLO8X6wRV9pA==
+  /hast-util-has-property/1.0.4:
+    dev: true
+    resolution:
+      integrity: sha512-ghHup2voGfgFoHMGnaLHOjbYFACKrRh9KFttdCzMCbFoBMJXiNi2+XTrPP8+q6cDJM/RSqlCfVWrjp1H201rZg==
+  /hast-util-is-element/1.0.4:
+    dev: true
+    resolution:
+      integrity: sha512-NFR6ljJRvDcyPP5SbV7MyPBgF47X3BsskLnmw1U34yL+X6YC0MoBx9EyMg8Jtx4FzGH95jw8+c1VPLHaRA0wDQ==
   /hast-util-parse-selector/2.2.4:
     dev: true
     resolution:
@@ -5020,6 +5058,10 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-OwijhaRSgqvhm/0ZdAcXNZt9lYdKFpcRDT5ULUuYXPoT794UNOdU+gpT6Rzo7b4V2HUl/op6GqY894AZwv9faQ==
+  /is-url/1.2.4:
+    dev: true
+    resolution:
+      integrity: sha512-ITvGim8FhRiYe4IQ5uHSkj7pVaPDrCTkNd3yq3cV7iZAcJdHTUMPMEHcqSOy9xZ9qFenQCvi+2wjH9a1nXqHww==
   /is-utf8/0.2.1:
     dev: true
     resolution:
@@ -5146,6 +5188,20 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-KXPvOm8K9IJKFM0bmdn8QXh7udDh1g/giieX0NLCaMnb4hEiVFqnop2ImTXCc5e0/oHz3LTqmHGtExn5hfMkOA==
+  /jsonfile/4.0.0:
+    dev: true
+    optionalDependencies:
+      graceful-fs: 4.2.4
+    resolution:
+      integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
+  /jsonfile/5.0.0:
+    dependencies:
+      universalify: 0.1.2
+    dev: true
+    optionalDependencies:
+      graceful-fs: 4.2.4
+    resolution:
+      integrity: sha512-NQRZ5CRo74MhMMC3/3r5g2k4fjodJ/wh8MxjFbCViWKFjxrnudWSY5vomh+23ZaXzAS7J3fBZIR2dV6WbmfM0w==
   /jsx-ast-utils/2.2.3:
     dependencies:
       array-includes: 3.1.1
@@ -5278,6 +5334,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+  /lodash.toarray/4.4.0:
+    dev: true
+    resolution:
+      integrity: sha1-JMS/zWsvuji/0FlNsRedjptlZWE=
   /lodash.uniq/4.5.0:
     resolution:
       integrity: sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
@@ -5786,6 +5846,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
+  /node-emoji/1.10.0:
+    dependencies:
+      lodash.toarray: 4.4.0
+    dev: true
+    resolution:
+      integrity: sha512-Yt3384If5H6BYGVHiHwTL+99OzJKHhgp82S8/dktEK73T26BazdgZ4JZh92xSVtGNJvz9UbXdNAc5hcrXV42vw==
   /node-fetch/2.6.0:
     dev: false
     engines:
@@ -7259,10 +7325,45 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-64O87/dPDgfk8/RQqC4gkZoGyyWFIEUTTh80CU6CWuK5vkCGyekIx+oKcEIYtP/RAxSQltCZHCNu/mdd7fqlJw==
+  /rehype-autolink-headings/3.0.0:
+    dependencies:
+      extend: 3.0.2
+      hast-util-has-property: 1.0.4
+      hast-util-is-element: 1.0.4
+      unist-util-visit: 2.0.2
+    dev: true
+    resolution:
+      integrity: sha512-Kit6caYCGvH7OSeXgEq0F4b4vXFg92owru/26ckSLCODjvbD4TogAOvYvzcvkaeIO0uDpnmCg0MsmHJtHXBvyQ==
+  /rehype-slug/3.0.0:
+    dependencies:
+      github-slugger: 1.3.0
+      hast-util-has-property: 1.0.4
+      hast-util-is-element: 1.0.4
+      hast-util-to-string: 1.0.3
+      unist-util-visit: 2.0.2
+    dev: true
+    resolution:
+      integrity: sha512-zFnj5BCEJXV6+URwaz8yW+9BdjDwO5iVzlQui3+7cCJ9MXlIEL0IY8VefcT/03Gw+2Hutdrx+zXnS7bnOrepZg==
+  /remark-emoji/2.1.0:
+    dependencies:
+      emoticon: 3.2.0
+      node-emoji: 1.10.0
+      unist-util-visit: 2.0.2
+    dev: true
+    resolution:
+      integrity: sha512-lDddGsxXURV01WS9WAiS9rO/cedO1pvr9tahtLhr6qCGFhHG4yZSJW3Ha4Nw9Uk1hLNmUBtPC0+m45Ms+xEitg==
   /remark-footnotes/1.0.0:
     dev: true
     resolution:
       integrity: sha512-X9Ncj4cj3/CIvLI2Z9IobHtVi8FVdUrdJkCNaL9kdX8ohfsi18DXHsCVd/A7ssARBdccdDb5ODnt62WuEWaM/g==
+  /remark-images/2.0.0:
+    dependencies:
+      is-url: 1.2.4
+      unist-util-is: 4.0.2
+      unist-util-visit-parents: 3.0.2
+    dev: true
+    resolution:
+      integrity: sha512-1X6XTBQZW489HSwU0k+aU3xAlVe3TyPll6N2Mt1onwINTIqcTk9QTC57937Z8NQDJ8h7gKGXy9d4TJug2dm8lg==
   /remark-mdx/1.6.0:
     dependencies:
       '@babel/core': 7.9.0
@@ -7303,6 +7404,17 @@ packages:
     dev: true
     resolution:
       integrity: sha512-8qRqmL9F4nuLPIgl92XUuxI3pFxize+F1H0e/W3llTk0UsjJaj01+RrirkMw7P21RKe4X6goQhYRSvNWX+70Rw==
+  /remark-twemoji/0.1.1_twemoji@13.0.0:
+    dependencies:
+      twemoji: 13.0.0
+      unist-util-visit: 1.4.1
+    dev: true
+    engines:
+      node: '>=6'
+    peerDependencies:
+      twemoji: '>=2.5.0'
+    resolution:
+      integrity: sha1-iksmB/BLGu3zSFOSbSoU35JE+wk=
   /remove-trailing-separator/1.1.0:
     dev: false
     resolution:
@@ -8350,6 +8462,19 @@ packages:
     dev: true
     resolution:
       integrity: sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=
+  /twemoji-parser/13.0.0:
+    dev: true
+    resolution:
+      integrity: sha512-zMaGdskpH8yKjT2RSE/HwE340R4Fm+fbie4AaqjDa4H/l07YUmAvxkSfNl6awVWNRRQ0zdzLQ8SAJZuY5MgstQ==
+  /twemoji/13.0.0:
+    dependencies:
+      fs-extra: 8.1.0
+      jsonfile: 5.0.0
+      twemoji-parser: 13.0.0
+      universalify: 0.1.2
+    dev: true
+    resolution:
+      integrity: sha512-JIkoLy0lL7ZlsiUKAOdXTp0o8C15O3CzDzAmnWdeDHpjeifmKDDKX4CyViUj+9g33pIqMr8Uhcy1WLwETr8oNg==
   /type-check/0.3.2:
     dependencies:
       prelude-ls: 1.1.2
@@ -8547,6 +8672,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-HoHNhGnKj6y+Sq+7ASo2zpVdfdRifhTgX2KTU3B/sO/TTlZchp7E3S4vjRzDJ7L60KmrCPsQkVK3lEF3cz36XQ==
+  /universalify/0.1.2:
+    dev: true
+    engines:
+      node: '>= 4.0.0'
+    resolution:
+      integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
   /unquote/1.1.1:
     resolution:
       integrity: sha1-j97XMk7G6IoP+LkF58CYzcCG1UQ=
@@ -8916,7 +9047,13 @@ specifiers:
   react-dom: ^16.13.1
   react-draggable: ^4.3.1
   react-three-fiber: ^4.1.4
+  rehype-autolink-headings: ^3.0.0
+  rehype-slug: ^3.0.0
+  remark-emoji: ^2.1.0
+  remark-images: ^2.0.0
+  remark-twemoji: ^0.1.1
   three: ^0.116.0
+  twemoji: ^13.0.0
   typeface-fira-code: ^1.1.4
   typeface-inter: ^3.12.0
   typescript: ^3.8.3
