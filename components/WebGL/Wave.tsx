@@ -1,7 +1,7 @@
 import React, { Suspense, useContext } from 'react'
 import { TextureLoader, LinearFilter } from 'three'
-import { Canvas, useLoader, Dom } from 'react-three-fiber'
-
+import { Canvas, useLoader } from 'react-three-fiber'
+import { HTML } from 'drei'
 import { ContainerProps } from 'react-three-fiber/targets/shared/web/ResizeContainer'
 import { DataContext } from '../../lib/context'
 import Shader from './Shader'
@@ -69,9 +69,9 @@ const Wave = ({
       <Canvas resize={{ scroll: false }} {...canvasProps}>
         <Suspense
           fallback={
-            <Dom>
+            <HTML>
               <h1>{fallback}</h1>
-            </Dom>
+            </HTML>
           }
         >
           <ShaderWithImage texture={isWebpSupported ? img : imgFallback} {...{ amp, freq, width, height }} />
