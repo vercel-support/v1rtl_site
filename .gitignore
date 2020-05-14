@@ -27,4 +27,8 @@ yarn-error.log*
 .now
 .mdx-data
 pnpm-debug.log
+
+# Lighthouse reports
+
 v1rtl.site_*
+v1rtl-2.tal-guy.now.sh_*

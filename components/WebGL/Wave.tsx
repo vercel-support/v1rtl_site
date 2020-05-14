@@ -7,8 +7,6 @@ import { DataContext } from '../../lib/context'
 import Shader from './Shader'
 
 const ShaderWithImage = ({
-  height,
-  width,
   texture,
   amp,
   freq,
@@ -35,7 +33,7 @@ const ShaderWithImage = ({
         },
       }}
     >
-      <planeGeometry args={[width, height, 8, 8]} attach="geometry" />
+      <planeGeometry args={[window.innerWidth / 110, window.innerHeight / 110, 8, 8]} attach="geometry" />
     </Shader>
   )
 }
@@ -46,8 +44,8 @@ const Wave = ({
   children,
   amp = 1.0,
   freq = 1.5,
-  width = 15,
-  height = 7.5,
+  width = 12,
+  height = 6,
   canvasProps,
   fallback = '',
   ...props

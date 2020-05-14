@@ -10,7 +10,6 @@ import 'isomorphic-unfetch'
 
 import Contact from '../components/Contact'
 import Title from '../components/WebGL/Title'
-import fonts from '../lib/fonts'
 
 const Index: NextPage = () => {
   return (

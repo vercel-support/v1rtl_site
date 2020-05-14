@@ -1,6 +1,10 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import { Project } from '../lib/projects'
-import Wave from './WebGL/Wave'
+
+const Wave = dynamic(() => import('./WebGL/Wave'), {
+  ssr: false,
+})
 
 const ProjectView = ({ proj }: { proj: Project }) => {
   return (
