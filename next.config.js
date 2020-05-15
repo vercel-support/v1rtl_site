@@ -17,6 +17,8 @@ const withMDX = require('@next/mdx')({
   },
 })
 
+const path = require('path')
+
 module.exports = withOptimizedImages(
   withMDX(
     withImages({
@@ -33,32 +35,38 @@ module.exports = withOptimizedImages(
       webpack(config) {
         const originalEntry = config.entry
 
-        /**Polyfill */
+        /* Polyfill */
 
         config.entry = async () => {
           const entries = await originalEntry()
 
-          if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
-            entries['main.js'].unshift('./client/polyfills.js')
+          if (entries['main.js'] && !entries['main.js'].includes('./external/polyfills.js')) {
+            entries['main.js'].unshift('./external/polyfills.js')
           }
 
           return entries
         }
 
-        /* Importing txt */
-
-        config.module.rules.push({
-          use: 'raw-loader',
-          test: /\.txt/,
-        })
-
-        /* GLSL */
+           /* GLSL */
 
         config.module.rules.push({
           // shader import support
           test: /\.glsl$/,
           use: ['webpack-glsl-loader'],
         })
+
+  
+          /* Importing txt */
+
+          config.module.rules.push({
+            use: 'raw-loader',
+            test: /\.txt/,
+          })
+
+     
+
+              /* strip unused stuff from three.js */
+        config.resolve.alias['three$'] = path.resolve('./external/three.js')
 
         return config
       },

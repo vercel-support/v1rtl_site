@@ -1,0 +1,78 @@
+import Meta from '../../components/Blog/Meta.tsx'
+
+export const meta = {
+  title: 'Basis Universal setup in react-three-fiber',
+  date: '16/05/2020',
+  desc: 'Step-by-step tutorial about importing Basis Universal texture assets in react-three-fiber',
+}
+
+<Meta meta={meta} />
+
+## Why using Basis
+
+Basis is gpu-oriented super compressed texture codec.
+
+Usually .basis textures are 6x smaller than png ones so it's worth using them in order to reduce load time and size for your THREE.js web apps.
+
+You don't need to worry about browser support - everything is done internally in the loader.
+
+## Installing the CLI
+
+### Building from source
+
+If you scroll down the README you'll see a part of using a CLI tool. You can compile it with `make`.
+
+### Use prebuilt binaries
+
+Go to releases tab and grab the zip folder, and extract the executable where you want to.
+
+### Installing a package
+
+Another way is installing a package.
+
+**Arch Linux / Manjaro**:
+
+```sh
+yay -S basis-universal
+```
+
+## Generating .basis assets
+
+Then, open your assets folder. They should be JPG, PNG or BMP and all must use sRGB color profile.
+Otherwise, CLI will refuse to process files.
+
+If you use a single folder for all textures (as I do) you can loop through the files to get every texture:
+
+```sh
+basisu *.png
+```
+
+## Loading assets
+
+Now that we have our assets ready, it's time to load them.
+As usual, all assets in r3f are loaded through `useLoader`.
+For Basis, THREE already has a special loader called `BasisTextureLoader`.
+
+It uses WebAssembly transcoder and a js wrapper about it. It also automatically detects which codec
+basis should convert to based on info from `WebGLRenderer` (`gl` in r3f).
+
+We can use a custom react hook for loading Basis and returning a loaded asset.
+
+```js
+import { BasisTextureLoader } from 'three/examples/jsm/loaders/BasisTextureLoader'
+import { useLoader, useThree } from 'react-three-fiber'
+
+const useTexture = (path: string) => {
+  const { gl } = useThree()
+
+  const asset = useLoader(BasisTextureLoader, path, (loader: BasisTextureLoader) => {
+    loader.setTranscoderPath('examples/js/libs/basis/')
+
+    loader.detectSupport(gl)
+  })
+
+  return asset
+}
+
+export default useTexture
+```

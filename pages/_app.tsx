@@ -10,9 +10,10 @@ import { supportsWebp } from '../lib/webp'
 import { DataContextProvider } from '../lib/context'
 import { useRouter } from 'next/router'
 import { PageStyles } from '../components/Global'
-import CodeBlock from '../components/Article/CodeBlock'
+import CodeBlock from '../components/Blog/CodeBlock'
 import Footer from '../components/Footer'
-import Body, { Subheading, SubSubHeading } from '../components/Article/Body'
+import Body, { Subheading, SubSubHeading } from '../components/Blog/Body'
+import Table from 'components/Blog/Table'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   const [isWebpSupported, setWebpSupported] = useState(true)
@@ -62,6 +63,7 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           code: CodeBlock,
           h2: Subheading,
           h3: SubSubHeading,
+          table: Table,
         }}
       >
         <PageStyles />

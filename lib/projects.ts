@@ -20,8 +20,10 @@ export const websites: Project[] = [
       'Apollo',
       'TypeScript',
       'Figma',
-      'ZEIT Now',
+      'Vercel',
       'Travis CI',
+      'Heroku',
+      'Cypress',
     ],
     link: 'https://komfy.now.sh/',
     title: 'Komfy',
@@ -53,7 +55,7 @@ export const websites: Project[] = [
 
   {
     type: 'site',
-    stack: ['Next.js', 'Rebass', 'Emotion', 'TypeScript', 'Contentful', 'Figma', 'ZEIT Now'],
+    stack: ['Next.js', 'Rebass', 'Emotion', 'TypeScript', 'Contentful', 'Figma', 'Vercel'],
     title: 'Proctolog',
     desc: 'Doctor personal site. The whole website is made from scratch, both design and code.',
     link: 'https://isachkov.com',
@@ -61,7 +63,7 @@ export const websites: Project[] = [
   },
   {
     type: 'site',
-    stack: ['Next.js', 'PostCSS', 'ZEIT Now', 'JavaScript'],
+    stack: ['Next.js', 'PostCSS', 'Vercel', 'JavaScript'],
     title: 'Tech design',
     desc:
       'Site for design classes where I had been going to for 4 years. There I learnt the basics of vector and bitmap graphics, animations and video editing. I made this site for free as a gift to this place.',
@@ -70,7 +72,7 @@ export const websites: Project[] = [
   },
   {
     type: 'site',
-    stack: ['Next.js', 'THREE', 'react-three-fiber', 'TypeScript', 'Emotion', 'REST'],
+    stack: ['Next.js', 'THREE', 'react-three-fiber', 'TypeScript', 'Emotion', 'REST', 'Vercel'],
     title: 'This website',
     desc: 'The one you are currently watching',
     screenshot: 'v1rtl',

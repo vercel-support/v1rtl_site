@@ -4,7 +4,7 @@ import Notice from './JobNotice'
 
 const NavBar = ({
   items = [
-    { text: 'home', href: '/#' },
+    { text: 'home', href: '/' },
     { text: 'posts', href: '/blog' },
     { text: 'about', href: '/#about' },
     { text: 'tech skills', href: '/#tech_skills' },

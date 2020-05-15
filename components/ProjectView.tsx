@@ -14,8 +14,7 @@ const ProjectView = ({ proj }: { proj: Project }) => {
           <a href={proj.link} target="_blank" rel="noopener noreferrer">
             <Wave
               key={proj.title}
-              img={`/sites/${proj.screenshot}.webp`}
-              imgFallback={`/sites/${proj.screenshot}.jpg`}
+              img={`/basis-sites/${proj.screenshot}.basis`}
               amp={0.1}
               freq={0.2}
               css={{

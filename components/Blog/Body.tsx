@@ -15,6 +15,7 @@ const Body = ({ children }: { children: any }) => (
       }
       p {
         text-align: justify;
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
       h1 {
         text-align: center;

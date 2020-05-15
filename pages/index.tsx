@@ -9,11 +9,21 @@ import { NextPage } from 'next'
 import 'isomorphic-unfetch'
 
 import Contact from '../components/Contact'
-import Title from '../components/WebGL/Title'
+
+import dynamic from 'next/dynamic'
+import Alert from 'components/Alert'
+
+const Title = dynamic(() => import('../components/WebGL/Title'), {
+  ssr: false,
+})
 
 const Index: NextPage = () => {
   return (
     <main>
+      <Alert>
+        Site is in progress. The version you are watching is either broken or laggy as hell. Come back later when I
+        finish it.
+      </Alert>
       <header
         css={{
           display: 'flex',
@@ -63,12 +73,22 @@ const Index: NextPage = () => {
           <h3 css={{ marginTop: 0 }}>Howdy, I&apos;m Paul</h3>
           <p>
             I&apos;m a self-taught fullstack web developer who tries to combine technology and art. I like web
-            development, OSS, design and drawing. I&apos;m the lead developer at
-            <a href="https://komfy.now.sh">Komfy</a> and author of <a href="https://t.me/we_use_js">@we_use_js</a>{' '}
-            Telegram channel.
+            development, OSS, design and drawing.
+            <ul>
+              <li>
+                Founder of <a href="https://komfy.now.sh">Komfy</a>
+              </li>
+              <li>
+                <a href="https://t.me/we_use_js">@we_use_js</a> Telegram channel author
+              </li>
+              <li>
+                Co-author of{' '}
+                <a href="https://github.com/react-spring/react-postprocessing">react-postprocessing (W.I.P.)</a>
+              </li>
+            </ul>
           </p>
         </section>
-        <picture
+        {/* <picture
           css={{
             display: 'flex',
             justifyContent: 'center',
@@ -76,13 +96,13 @@ const Index: NextPage = () => {
         >
           <source srcSet="/me.webp" type="image/webp" media="screen" />
           <img src="/me.gif" alt="me" width="100%" loading="lazy" />
-        </picture>
+        </picture> */}
         <Bio />
       </section>
       <ProjectSearch />
       <Sites projects={websites} />
-      <Artwork />
       <Repos />
+      <Artwork />
       <Contact />
     </main>
   )

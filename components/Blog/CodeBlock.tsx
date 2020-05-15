@@ -31,6 +31,7 @@ const CodeBlock = ({ children, className }: { children: string; className: strin
       css={{
         display: 'flex',
         flexDirection: 'column',
+        fontSize: '14px',
       }}
     >
       <button

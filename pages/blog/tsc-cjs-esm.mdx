@@ -1,0 +1,209 @@
+import Meta from '../../components/Blog/Meta.tsx'
+
+export const meta = {
+  title: 'TypeScript-only bundling with CJS and ESM output',
+  date: '15/05/2020',
+  desc: 'A small tutorial about setting up TS-only builds with ESM, CJS and types',
+}
+
+<Meta meta={meta} />
+
+## Why?
+
+As a rule, building a library with different module systems is a job for a bundler.
+
+For instance, [Rollup](https://rollupjs.org):
+
+```js
+export default [
+  {
+    input: `./src/index.tsx`,
+    output: { dir: `dist/esm`, format: 'esm' },
+  },
+  {
+    input: `./src/index.tsx`,
+    output: { dir: `dist/cjs`, format: 'cjs' },
+  },
+]
+```
+
+However, if you write a library with TypeScript you can already achieve bundling with different module systems using only `tsconfig.json` and npm scripts. You don't even need an additional bundler for that.
+
+> **WARNING!** [TypeScript doesn't support browserlist](https://github.com/Microsoft/TypeScript/issues/20095) and plugins aren't as common as in Babel.
+> If you have a library that requires a specific polyfill or transformation, better pick Babel + TS + Rollup toolchain instead.
+
+## Setup
+
+First, let's do package setup routine:
+
+```shell
+mkdir my-cool-component
+cd my-cool-component
+mkdir src dist
+npm init -y
+```
+
+After that, install typescript, React and types for it:
+
+```shell
+npm i react
+npm i -D typescript @types/react
+```
+
+## Example component
+
+For simplicity we'll use a counter component as a source for our module.
+
+```tsx
+// src/Counter.tsx
+import React, { useState } from 'react'
+
+const Counter = ({ initialCount }: { initialCount: number }) => {
+  const [count, setCount] = useState(initialCount)
+
+  return (
+    <>
+      <button onClick={() => setCount((c) => c + 1)}>+1</button>
+      <p>{count}</p>
+    </>
+  )
+}
+
+export default Counter
+```
+
+Save it to `src/Counter.tsx` file.
+
+Then create an `src/index.ts` that re-exports the component. This is optional but better it would be better to do so writing paths to the component will be easier:
+
+```tsx
+// src/index.ts
+
+import Counter from './Counter'
+
+export default Counter
+```
+
+## TypeScript configuration
+
+The whole idea is using two config files - one for esm - and another one for cjs.
+
+Create a tsconfig (`tsconfig.json`) file for esm, like this:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "ES6",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "preserveSymlinks": true,
+    "declaration": true,
+    "outDir": "dist/esm"
+  },
+  "include": ["./types/**/*", "src"],
+  "exclude": ["node_modules"]
+}
+```
+
+After that, create a second configuration (cjs.config.json for instance) - to build your library with `require` imports (e.g. cjs):
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "preserveSymlinks": true,
+    "declaration": true,
+    "outDir": "dist/cjs"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+```
+
+The only differences between them are different module system and output directory:
+
+| esm                    | cjs                    |
+| ---------------------- | ---------------------- |
+| `"outDir": "dist/esm"` | `"outDir": "dist/cjs"` |
+| `"module": "ES6"`      | `"module": "commonjs"` |
+
+Our TypeScript configuration is ready.
+
+## npm scripts
+
+In order to run both complilations in a queue we can use 3 scripts. 2 of them run `tsc` separately and another one runs them both.
+
+It will look something like this:
+
+```json
+"scripts": {
+  "build:esm": "tsc",
+  "build:cjs": "tsc -p cjs.tsconfig.json",
+  "build": "pnpm run build:esm && pnpm run build:cjs",
+  "prepare": "pnpm run build"
+}
+```
+
+Note that `&&` means if ESM build fails CJS build won't start.
+
+## assigning "main", "module" and "types"
+
+In order for npm to understand how the module works we will need to add those three fields. First field is used for CommonJS. `"module"` is consumed by ESM environment. `"types"` provides type declarations for TypeScript and editors that support types (e.g. VS Code).
+
+Everything gets generated in dist, under two folders as we declared it in tsconfigs. So we just put the paths to files into these fields:
+
+```json
+"main": "dist/cjs/index.js",
+"esm": "dist/esm/index.js",
+"types": "dist/esm/index.d.ts"
+```
+
+Also it's a good practise to put `"files"` field in package.json so it becomes easier to import a specific file. This is useful when you have a component library and you don't want to install the dependencies you don't use so you just import that one component.
+
+```json
+"files": ["dist"]
+```
+
+## trying it out
+
+To build our component in both module systems, simply run `npm run build`. After the build process finishes, you'll get a dist directory with the following structure:
+
+```tree
+│
+└──── cjs
+│   ├── index.d.ts
+│   ├── index.js
+│   ├── Counter.d.ts
+│   ├── Counter.js
+│   └── Counter.jsx
+└── esm
+│   ├── index.d.ts
+│   ├── index.js
+│   ├── Counter.d.ts
+│   ├── Counter.js
+│   └── Counter.jsx
+```
+
+Let's take a closer look. `tsc` generates 2 outputs: both have typings, JSX and no-JSX files. Bundlers that will use the component will resolve files properly and types will be understood by an editor.
+
+## Conclusion
+
+As you can see, there's no need to use a bundler for building a library in TypeScript. This applies to most cases when you don't have to use a custom polyfill or when you don't need to target specific browser versions.
+
+In case you need browserslist support and custom plugins for compiling JavaScript, pick Babel. It has a good TypeScript integration.
+
+For easier management of all these tools you might also include Rollup to connect Rollup plugins and make a more complex setup.

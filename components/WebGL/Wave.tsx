@@ -1,10 +1,10 @@
-import React, { Suspense, useContext } from 'react'
-import { TextureLoader, LinearFilter } from 'three'
-import { Canvas, useLoader } from 'react-three-fiber'
-import { HTML } from 'drei'
+import React, { Suspense, useMemo, useEffect, useRef } from 'react'
+import { Canvas } from 'react-three-fiber'
+import { HTML } from './HTML'
 import { ContainerProps } from 'react-three-fiber/targets/shared/web/ResizeContainer'
-import { DataContext } from '../../lib/context'
 import Shader from './Shader'
+import useTexture from './useTexture'
+import { MeshBasicMaterial, Mesh, ShaderMaterial, sRGBEncoding, MeshStandardMaterial, LinearFilter } from 'three'
 
 const ShaderWithImage = ({
   texture,
@@ -17,30 +17,20 @@ const ShaderWithImage = ({
   freq: number
   texture: string
 }) => {
-  const img = useLoader(TextureLoader, texture)
-
-  img.minFilter = LinearFilter
+  const img = useTexture({
+    path: texture,
+  })
 
   return (
-    <Shader
-      {...{ amp, freq }}
-      position={[0, 0, -1]}
-      materialParams={{
-        uniforms: {
-          uTexture: {
-            value: img,
-          },
-        },
-      }}
-    >
+    <mesh>
+      <meshBasicMaterial map={img} needsUpdate />
       <planeGeometry args={[window.innerWidth / 110, window.innerHeight / 110, 8, 8]} attach="geometry" />
-    </Shader>
+    </mesh>
   )
 }
 
 const Wave = ({
   img = '/logo.png',
-  imgFallback,
   children,
   amp = 1.0,
   freq = 1.5,
@@ -55,13 +45,10 @@ const Wave = ({
   amp?: number
   freq?: number
   width?: number
-  imgFallback?: string
   height?: number
   canvasProps?: Omit<ContainerProps, 'children'>
   fallback?: any
 }) => {
-  const { isWebpSupported } = useContext(DataContext)
-
   return (
     <div {...props}>
       <Canvas resize={{ scroll: false }} {...canvasProps}>
@@ -72,7 +59,7 @@ const Wave = ({
             </HTML>
           }
         >
-          <ShaderWithImage texture={isWebpSupported ? img : imgFallback} {...{ amp, freq, width, height }} />
+          <ShaderWithImage texture={img} {...{ amp, freq, width, height }} />
         </Suspense>
       </Canvas>
       {children}

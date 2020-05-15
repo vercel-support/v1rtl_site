@@ -50,8 +50,6 @@ const Shader = ({
 } & any) => {
   const clock = new Clock()
 
-  // Stolen from https://codesandbox.io/s/02-make-some-noise-ln8xv?from-embed
-
   const material = createShaderMaterial({ amp, freq, materialParams })
 
   useFrame(() => (material.uniforms.uTime.value = clock.getElapsedTime()))

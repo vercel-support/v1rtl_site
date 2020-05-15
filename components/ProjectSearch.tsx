@@ -70,7 +70,9 @@ const ProjectSearch = () => {
           Here&apos;s a list of all the tools I ever used for my work. I know some of them on a decent level, others I
           may used a few times. Here are programming languages, frameworks, design tools, Kanban boards, CIs, and more.
         </p>
-        <p>Select tags and then click &quot;Filter projects&quot; to see my work with usage of any of these tech.</p>
+        <p>
+          Select tags and then click &quot;Filter projects&quot; to see my work with usage of any of these technologies.
+        </p>
       </section>
       <form
         css={{
@@ -107,7 +109,8 @@ const ProjectSearch = () => {
             'Jest',
             'Figma',
             'Trello',
-            'ZEIT Now',
+            'Vercel',
+            'Cypress',
             'Linux',
             'Ubuntu',
             'Python',
