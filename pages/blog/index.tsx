@@ -2,9 +2,13 @@ import React from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import 'isomorphic-unfetch'
-import posts from '../../lib/posts'
+import { frontMatter, MDXPost } from './*.mdx'
+
+const formatPath = (p: string) => p.replace(/\.mdx$/, '')
 
 const PageList: NextPage = () => {
+  const posts = frontMatter as MDXPost[]
+
   return (
     <section
       css={{
@@ -32,9 +36,9 @@ const PageList: NextPage = () => {
       <h1>My Blog</h1>
       <div>
         {posts.map((post) => (
-          <Link key={post.title} href={`/blog/${post.link}`}>
+          <Link key={post.title} href={formatPath(post.__resourcePath)}>
             <a
-              href={`/blog/${post.link}`}
+              href={formatPath(post.__resourcePath)}
               css={{
                 textDecoration: 'none',
               }}

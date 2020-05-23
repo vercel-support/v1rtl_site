@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withImages = require('next-images')
 const withOptimizedImages = require('next-optimized-images')
 
+const path = require('path')
 const emoji = require('remark-emoji')
 const emojiToImage = require('remark-twemoji')
 
@@ -9,15 +11,11 @@ const images = require('remark-images')
 const autoLink = require('rehype-autolink-headings')
 const slug = require('rehype-slug')
 
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [emoji, emojiToImage, images],
-    rehypePlugins: [slug, autoLink],
-  },
+const withMDX = require('next-mdx-enhanced')({
+  remarkPlugins: [emoji, emojiToImage, images],
+  rehypePlugins: [slug, autoLink],
+  defaultLayout: 'index.tsx',
 })
-
-const path = require('path')
 
 module.exports = withOptimizedImages(
   withMDX(
@@ -47,7 +45,7 @@ module.exports = withOptimizedImages(
           return entries
         }
 
-           /* GLSL */
+        /* GLSL */
 
         config.module.rules.push({
           // shader import support
@@ -55,17 +53,14 @@ module.exports = withOptimizedImages(
           use: ['webpack-glsl-loader'],
         })
 
-  
-          /* Importing txt */
+        /* Importing txt */
 
-          config.module.rules.push({
-            use: 'raw-loader',
-            test: /\.txt/,
-          })
+        config.module.rules.push({
+          use: 'raw-loader',
+          test: /\.txt/,
+        })
 
-     
-
-              /* strip unused stuff from three.js */
+        /* strip unused stuff from three.js */
         config.resolve.alias['three$'] = path.resolve('./external/three.js')
 
         return config

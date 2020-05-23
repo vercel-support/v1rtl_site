@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-export type MetaProps = {
+export interface PostMeta {
   title: string
   desc: string
   image: string
@@ -9,7 +9,7 @@ export type MetaProps = {
   imageLink?: string
 }
 
-const Meta = ({ meta }: { meta: MetaProps }) => {
+const Meta = ({ meta }: { meta: PostMeta }) => {
   const title = `${meta.title} - v1rtl.site`
 
   return (
@@ -53,7 +53,13 @@ const Meta = ({ meta }: { meta: MetaProps }) => {
           />
         )}
 
-        <h1>{meta.title}</h1>
+        <h1
+          css={{
+            textAlign: 'center',
+          }}
+        >
+          {meta.title}
+        </h1>
       </header>
     </>
   )

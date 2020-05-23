@@ -4,6 +4,7 @@ import { AppProps } from 'next/app'
 import { Global, css } from '@emotion/core'
 import 'typeface-fira-code'
 import 'typeface-inter'
+import 'typeface-source-sans-pro'
 import { MDXProvider } from '@mdx-js/react'
 import NavBar from '../components/Navbar'
 import { supportsWebp } from '../lib/webp'
@@ -12,7 +13,7 @@ import { useRouter } from 'next/router'
 import { PageStyles } from '../components/Global'
 import CodeBlock from '../components/Blog/CodeBlock'
 import Footer from '../components/Footer'
-import Body, { Subheading, SubSubHeading } from '../components/Blog/Body'
+import { Subheading, SubSubHeading } from '../components/Blog/Headings'
 import Table from 'components/Blog/Table'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
@@ -75,9 +76,9 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
           `}
         />
         <NavBar />
-        <Body>
-          <Component {...pageProps} />
-        </Body>
+
+        <Component {...pageProps} />
+
         <Footer />
       </MDXProvider>
     )

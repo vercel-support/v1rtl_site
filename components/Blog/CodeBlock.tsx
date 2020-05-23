@@ -13,6 +13,7 @@ const buttonStyles = css`
   align-items: center;
   align-self: flex-end;
   padding: 0;
+  margin: 0;
   &:hover {
     cursor: pointer;
   }

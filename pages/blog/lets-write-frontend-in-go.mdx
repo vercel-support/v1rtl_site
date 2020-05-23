@@ -1,19 +1,16 @@
+---
+title: "Let's write frontend in Go"
+desc: 'A short tutorial of setting up a simple Go+WASM app'
+date: '19/07/2019'
+image: '/blog/go-wasm.jpg'
+imageLink: 'https://vk.com/wall12743298_297'
+---
+
 import WasmHelloWorld from '../../blog-components/fe-in-go/WasmHelloWorld.tsx'
 import WasmButtonDemo from '../../blog-components/fe-in-go/WasmButtonDemo.tsx'
 
 import Alert from '../../components/Alert.tsx'
 
-import Meta from '../../components/Blog/Meta.tsx'
-
-export const meta = {
-  title: "Let's write frontend in Go",
-  desc: 'A short tutorial of setting up a simple Go+WASM app',
-  date: '19/07/2019',
-  image: '/blog/go-wasm.jpg',
-  imageLink: 'https://vk.com/wall12743298_297',
-}
-
-<Meta meta={meta} />
 <Alert>
   I wrote a CLI to quickly bootstrap a simple Go + WebAssembly application. It contains a dev server, auto-build and
   glue code. It also uses tinygo under the hood to produce the smallest binary possible. Go check it out on{' '}

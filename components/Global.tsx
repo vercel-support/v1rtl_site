@@ -33,13 +33,6 @@ export const PageStyles = () => (
         }
       }
 
-      body main h2 {
-        letter-spacing: -3px;
-        font-size: calc(2rem + 2vw);
-        text-align: center;
-        margin-top: 1.25rem;
-      }
-
       body main {
         scroll-behavior: smooth;
         button,

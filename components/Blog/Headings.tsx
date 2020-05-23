@@ -1,45 +1,6 @@
 import React, { ReactNode } from 'react'
-import { css } from '@emotion/core'
-import Link from 'next/link'
 
-const Body = ({ children }: { children: any }) => (
-  <article
-    css={css`
-      padding: 3rem;
-      width: calc(35vw + 15em);
-      padding-top: 5rem;
-      margin: 0 auto;
-      @media (max-width: 980px) {
-        width: auto;
-        margin: 0;
-      }
-      p {
-        text-align: justify;
-        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      }
-      h1 {
-        text-align: center;
-      }
-      ul {
-        padding-left: 1rem;
-      }
-      blockquote {
-        font-style: italic;
-        margin-left: 0;
-      }
-      p > img {
-        width: 100%;
-        margin: 3rem 0;
-      }
-      .emoji {
-        width: 1rem;
-        margin: 0;
-      }
-    `}
-  >
-    {children}
-  </article>
-)
+import { css } from '@emotion/core'
 
 export const Subheading = ({ children, id, ...props }: { children: ReactNode; id: string }) => (
   <h2
@@ -102,5 +63,3 @@ export const SubSubHeading = ({ children, id, ...props }: { children: ReactNode;
     {children}
   </h3>
 )
-
-export default Body

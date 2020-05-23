@@ -99,10 +99,7 @@ const Index: NextPage = () => {
         </picture> */}
         <Bio />
       </section>
-      <ProjectSearch />
-      <Sites projects={websites} />
-      <Repos />
-      <Artwork />
+
       <Contact />
     </main>
   )
