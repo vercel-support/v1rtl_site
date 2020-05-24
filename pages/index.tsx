@@ -1,10 +1,6 @@
 import React from 'react'
 import { websites } from '../lib/projects'
 import Bio from '../components/Bio'
-import ProjectSearch from '../components/ProjectSearch'
-import Sites from '../components/Sites'
-import Artwork from '../components/Artwork'
-import Repos from '../components/Repos'
 import { NextPage } from 'next'
 import 'isomorphic-unfetch'
 
