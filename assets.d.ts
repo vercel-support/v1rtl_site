@@ -12,3 +12,8 @@ declare module '*.txt' {
   const value: string
   export = value
 }
+
+declare module '*.woff' {
+  const value: string
+  export = value
+}
