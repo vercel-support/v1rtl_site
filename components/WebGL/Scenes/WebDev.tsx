@@ -29,13 +29,7 @@ ready - started server on http://localhost:3000
 > Location: "/home/v1rtl/Coding/v1rtl-2/.babelrc"
 event - compiled successfully`
 
-const Cube = (
-  {
-    args
-  }: {
-    args?: [number, number, number]
-  } = { args: [11, 7, 0.75] }
-) => {
+const Cube = ({ args }: { args: [number, number, number] }) => {
   return (
     <mesh>
       <boxGeometry args={args} attach="geometry" />
@@ -52,8 +46,8 @@ const WebDev = () => {
       <pointLight position={[0, 2, 0]} color={new Color('white')} intensity={0.8} />
       <group rotation-x={0.3} position-y={-1}>
         <group position={[-12, 4, 0]} rotation={[0.01, 0.7, -0.1]}>
-          <Cube />
-          <ResponsiveText position={[-5, 3, 0.4]}>{code}</ResponsiveText>
+          <Cube args={[11, 6.5, 0.75]} />
+          <ResponsiveText position={[0, 0, 0.4]}>{code}</ResponsiveText>
         </group>
         <Suspense
           fallback={
@@ -65,8 +59,8 @@ const WebDev = () => {
           <Laptop />
         </Suspense>
         <group position={[16, 6, 0]} rotation={[0.1, -0.5, 0.1]}>
-          <Cube args={[9, 5, 0.75]} />
-          <ResponsiveText position={[-4, 2, 0.4]}>{term}</ResponsiveText>
+          <Cube args={[9, 4, 0.75]} />
+          <ResponsiveText position={[0, 0, 0.4]}>{term}</ResponsiveText>
         </group>
       </group>
     </>
