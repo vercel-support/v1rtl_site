@@ -1,7 +1,6 @@
-import React, { useRef, Suspense, ReactNode } from 'react'
-import { useFrame, ReactThreeFiber } from 'react-three-fiber'
-import { Mesh, BoxGeometry } from 'three'
-import { HTML, Text, OrbitControls } from 'drei'
+import React, { Suspense } from 'react'
+import { Color } from 'three'
+import { HTML, OrbitControls } from 'drei'
 import ResponsiveText from '../Primitives/ResponsiveText'
 import Laptop from '../Models/Laptop'
 
@@ -49,8 +48,8 @@ const WebDev = () => {
   return (
     <>
       <OrbitControls enableZoom={false} />
-      <directionalLight position={[0, 2, 0]} color="white" intensity={0.6} />
-      <pointLight position={[0, 2, 0]} color="white" intensity={0.8} />
+      <directionalLight position={[0, 2, 0]} color={new Color('white')} intensity={0.6} />
+      <pointLight position={[0, 2, 0]} color={new Color('white')} intensity={0.8} />
       <group rotation-x={0.3} position-y={-1}>
         <group position={[-12, 4, 0]} rotation={[0.01, 0.7, -0.1]}>
           <Cube />
