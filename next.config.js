@@ -18,9 +18,9 @@ const withMDX = require('next-mdx-enhanced')({
   defaultLayout: 'index.tsx'
 })
 
-module.exports = withOptimizedImages(
+module.exports = withMDX(
   withFonts(
-    withMDX(
+    withOptimizedImages(
       withImages({
         handleImages: ['jpeg', 'svg', 'webp', 'gif'],
         mozjpeg: {

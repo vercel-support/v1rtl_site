@@ -11,8 +11,6 @@ dependencies:
   prism-react-renderer: 1.1.1_react@16.13.1
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
-  react-draggable: 4.4.2
-  react-dropzone: 11.0.1_react@16.13.1
   react-three-fiber: 4.2.8_ccf67cf5c1ce26b3ee8e9816e5019071
   three: 0.117.1
   typeface-fira-code: 1.1.4
@@ -2039,12 +2037,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
-  /attr-accept/2.1.0:
-    dev: false
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-sLzVM3zCCmmDtDNhI0i96k6PUztkotSOXqE4kDGQt/6iDi5M+H0srjeF+QC6jN581l4X/Zq3Zu/tgcErEssavg==
   /axobject-query/2.1.2:
     dev: true
     resolution:
@@ -4086,14 +4078,6 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
     resolution:
       integrity: sha512-/aMOAYEFXDdjG0wytpTL5YQLfZnnTmLNjn+AIrJ/6HVnTfDqLsVKUUwkDf4I4kgex36BvjuXEn/TX9B/1ESyqQ==
-  /file-selector/0.1.12:
-    dependencies:
-      tslib: 1.13.0
-    dev: false
-    engines:
-      node: '>= 8'
-    resolution:
-      integrity: sha512-Kx7RTzxyQipHuiqyZGf+Nz4vY9R1XGxuQl/hLoJwq+J4avk/9wxxgZyHKtbyIPJmbD4A66DWGYfyykWNpcYutQ==
   /file-type/10.11.0:
     dev: true
     engines:
@@ -7459,26 +7443,6 @@ packages:
       react: ^16.13.1
     resolution:
       integrity: sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
-  /react-draggable/4.4.2:
-    dependencies:
-      classnames: 2.2.6
-      prop-types: 15.7.2
-    dev: false
-    resolution:
-      integrity: sha512-zLQs4R4bnBCGnCVTZiD8hPsHtkiJxgMpGDlRESM+EHQo8ysXhKJ2GKdJ8UxxLJdRVceX1j19jy+hQS2wHislPQ==
-  /react-dropzone/11.0.1_react@16.13.1:
-    dependencies:
-      attr-accept: 2.1.0
-      file-selector: 0.1.12
-      prop-types: 15.7.2
-      react: 16.13.1
-    dev: false
-    engines:
-      node: '>= 8'
-    peerDependencies:
-      react: '>= 16.8'
-    resolution:
-      integrity: sha512-x/6wqRHaR8jsrNiu/boVMIPYuoxb83Vyfv77hO7/3ZRn8Pr+KH5onsCsB8MLBa3zdJl410C5FXPUINbu16XIzw==
   /react-is/16.13.1:
     resolution:
       integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -9611,8 +9575,6 @@ specifiers:
   raw-loader: ^4.0.1
   react: ^16.13.1
   react-dom: ^16.13.1
-  react-draggable: ^4.4.2
-  react-dropzone: ^11.0.1
   react-three-fiber: ^4.2.8
   rehype-autolink-headings: ^3.0.0
   rehype-slug: ^3.0.0

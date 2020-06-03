@@ -19,8 +19,6 @@
     "prism-react-renderer": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-draggable": "^4.4.2",
-    "react-dropzone": "^11.0.1",
     "react-three-fiber": "^4.2.8",
     "three": "^0.117.1",
     "typeface-fira-code": "^1.1.4",
