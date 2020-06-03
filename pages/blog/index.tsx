@@ -2,12 +2,12 @@ import React from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import 'isomorphic-unfetch'
-// import { frontMatter, MDXPost } from './*.mdx'
+import { frontMatter, MDXPost } from './*.mdx'
 
 const formatPath = (p: string) => p.replace(/\.mdx$/, '')
 
 const PageList: NextPage = () => {
-  const posts = /* frontMatter as MDXPost[] || */ []
+  const posts = (frontMatter as MDXPost[]) || []
 
   return (
     <section
