@@ -8,9 +8,9 @@ import Alert from 'components/Alert'
 import { Canvas } from 'react-three-fiber'
 import { css } from '@emotion/core'
 
-// const WebDev = dynamic(() => import('components/WebGL/Scenes/WebDev'), {
-//   ssr: false
-// })
+const WebDev = dynamic(() => import('components/WebGL/Scenes/WebDev'), {
+  ssr: false
+})
 
 const Index: NextPage = () => {
   return (
@@ -26,7 +26,7 @@ const Index: NextPage = () => {
         `}
       >
         <Canvas camera={{ position: [0, 0, 17] }} resize={{ scroll: false }}>
-          {/* <WebDev /> */}
+          <WebDev />
         </Canvas>
       </div>
 

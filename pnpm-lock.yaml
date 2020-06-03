@@ -25,6 +25,7 @@ devDependencies:
   '@typescript-eslint/parser': 3.1.0_eslint@7.1.0+typescript@3.9.3
   babel-plugin-emotion: 10.0.33
   babel-plugin-import-glob-array: 0.2.0
+  bindings: 1.5.0
   eslint: 7.1.0
   eslint-config-prettier: 6.11.0_eslint@7.1.0
   eslint-plugin-jsx-a11y: 6.2.3_eslint@7.1.0
@@ -2144,8 +2145,6 @@ packages:
   /bindings/1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
-    dev: false
-    optional: true
     resolution:
       integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==
   /bl/1.2.2:
@@ -4055,8 +4054,6 @@ packages:
     resolution:
       integrity: sha512-qyQ0pzAy78gVoJsmYeNgl8uH8yKhr1lVhW7JbzJmnlRi0I4R2eEDEJZVKG8agpDnLpacwNbDhLNG/LMdxHD2YQ==
   /file-uri-to-path/1.0.0:
-    dev: false
-    optional: true
     resolution:
       integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==
   /filename-reserved-regex/2.0.0:
@@ -9485,6 +9482,7 @@ specifiers:
   '@typescript-eslint/parser': ^3.1.0
   babel-plugin-emotion: ^10.0.33
   babel-plugin-import-glob-array: ^0.2.0
+  bindings: ^1.5.0
   drei: 0.0.54
   eslint: ^7.1.0
   eslint-config-prettier: ^6.11.0
