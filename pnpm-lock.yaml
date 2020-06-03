@@ -1,9 +1,6 @@
 dependencies:
   '@emotion/core': 10.0.28_react@16.13.1
   '@juggle/resize-observer': 3.2.0
-  '@react-hook/window-scroll': 1.2.3_react-dom@16.13.1+react@16.13.1
-  '@react-hook/window-size': 2.1.1_react-dom@16.13.1+react@16.13.1
-  dayjs: 1.8.28
   drei: 0.0.54_88386fde1cefb3f08dae10d3348dad91
   isomorphic-unfetch: 3.0.0
   next: 9.4.4_af9fa062b6a4bfe9ae4185908f81044b
@@ -1415,65 +1412,6 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-1V9XOY4rDW0rehzbrcqAmHnz8e7SKvX27gh8Gt2WgB0+pdzdiLV83p72kZPU+jvMbS1qU5mauP2iOvO8rhmurQ==
-  /@react-hook/debounce/2.0.5_react@16.13.1:
-    dependencies:
-      react: 16.13.1
-    dev: false
-    peerDependencies:
-      react: '>=16.8'
-    resolution:
-      integrity: sha512-WrwQ1e4vx5lxxxEpGPPliMcs6oUJ8cyEb/GL8OEUPhBW4WL8YRSDW5oPnsOqIPqhHDyQMHgMipXWgj7QVmRMKA==
-  /@react-hook/event/1.1.0_react-dom@16.13.1+react@16.13.1:
-    dependencies:
-      '@react-hook/passive-layout-effect': 1.1.0_react@16.13.1
-      react: 16.13.1
-      react-dom: 16.13.1_react@16.13.1
-    dev: false
-    peerDependencies:
-      prop-types: '>=15.6'
-      react: '>=16.8'
-      react-dom: '>=16.8'
-    resolution:
-      integrity: sha512-jaVePoJXqQtQE4umQifLz+Uom4yC5GYTd5K/LrUVRnu0iMXtoIU5qiN4WIVwE6304P9VcBJTcMKtB/5iCC7brg==
-  /@react-hook/passive-layout-effect/1.1.0_react@16.13.1:
-    dependencies:
-      react: 16.13.1
-    dev: false
-    peerDependencies:
-      react: '>=16.8.0'
-    resolution:
-      integrity: sha512-mdUSD+Quu4vB5bL0dN8CoJvfYdEtUf36ZqvHTt2Otdru6h0QgC7KbrCgOLdZ3tm/7N89ETHC5qJmXWFquXPN5g==
-  /@react-hook/throttle/2.1.4_react@16.13.1:
-    dependencies:
-      react: 16.13.1
-    dev: false
-    peerDependencies:
-      react: '>=16.8'
-    resolution:
-      integrity: sha512-ePn7Agti1hVUHYjONrK2thTfCMXmuzkZaJN6dBMrYb3zPbT83CaLB4gHJSAoWcffimgPyLhR/xLomvZrXCRedA==
-  /@react-hook/window-scroll/1.2.3_react-dom@16.13.1+react@16.13.1:
-    dependencies:
-      '@react-hook/event': 1.1.0_react-dom@16.13.1+react@16.13.1
-      '@react-hook/throttle': 2.1.4_react@16.13.1
-      react: 16.13.1
-    dev: false
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '*'
-    resolution:
-      integrity: sha512-KTjPkD5KRKTGPfk/gLYQJ575sPWN9+NFicAqjAiXDsXlRGHManppAlc+x5ohOc1jCjIsoco8rsByIIGPIXYS7A==
-  /@react-hook/window-size/2.1.1_react-dom@16.13.1+react@16.13.1:
-    dependencies:
-      '@react-hook/debounce': 2.0.5_react@16.13.1
-      '@react-hook/event': 1.1.0_react-dom@16.13.1+react@16.13.1
-      '@react-hook/throttle': 2.1.4_react@16.13.1
-      react: 16.13.1
-    dev: false
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '*'
-    resolution:
-      integrity: sha512-W9qr9kUt5pJU82XWUBxcGc2P2kFJPB3xSqmwanFKhiih26y7PmRUa01ZnaARyHZwrmfP/MQGEXBTliCgXc7Gfg==
   /@sindresorhus/is/0.7.0:
     dev: true
     engines:
@@ -3177,10 +3115,6 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-MJ6mFTZ+nPQO+39ua/ltwNePXrfdF3Ww0wP1Od7EePySXN1cP9XNqRQOG3FxTfipp8jx898LUCgBCEP11Qw/ZQ==
-  /dayjs/1.8.28:
-    dev: false
-    resolution:
-      integrity: sha512-ccnYgKC0/hPSGXxj7Ju6AV/BP4HUkXC2u15mikXT5mX9YorEaoi1bEKOmAqdkJHN4EEkmAf97SpH66Try5Mbeg==
   /debounce/1.2.0:
     dev: false
     resolution:
@@ -9544,8 +9478,6 @@ specifiers:
   '@juggle/resize-observer': ^3.2.0
   '@mapbox/rehype-prism': ^0.4.0
   '@mdx-js/loader': ^1.6.5
-  '@react-hook/window-scroll': ^1.2.3
-  '@react-hook/window-size': ^2.1.1
   '@types/mdx-js__react': ^1.5.2
   '@types/node': ^14.0.9
   '@types/react': ^16.9.35
@@ -9553,7 +9485,6 @@ specifiers:
   '@typescript-eslint/parser': ^3.1.0
   babel-plugin-emotion: ^10.0.33
   babel-plugin-import-glob-array: ^0.2.0
-  dayjs: ^1.8.28
   drei: 0.0.54
   eslint: ^7.1.0
   eslint-config-prettier: ^6.11.0

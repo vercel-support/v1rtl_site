@@ -33,19 +33,19 @@ module.exports = withMDX(
         pageExtensions: ['md', 'mdx', 'tsx', 'ts'],
 
         webpack(config) {
-          const originalEntry = config.entry
+          // const originalEntry = config.entry
 
-          /* Polyfill */
+          // /* Polyfill */
 
-          config.entry = async () => {
-            const entries = await originalEntry()
+          // config.entry = async () => {
+          //   const entries = await originalEntry()
 
-            if (entries['main.js'] && !entries['main.js'].includes('./external/polyfills.js')) {
-              entries['main.js'].unshift('./external/polyfills.js')
-            }
+          //   if (entries['main.js'] && !entries['main.js'].includes('./external/polyfills.js')) {
+          //     entries['main.js'].unshift('./external/polyfills.js')
+          //   }
 
-            return entries
-          }
+          //   return entries
+          // }
 
           /* GLSL */
 

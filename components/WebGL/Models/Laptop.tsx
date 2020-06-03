@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Object3D, Material, MeshBasicMaterial, MeshPhongMaterial, MeshPhysicalMaterial } from 'three'
+import { Object3D, Material, MeshPhysicalMaterial } from 'three'
 
 const Laptop = (props: any) => {
   const glb = useLoader(GLTFLoader, '/models/laptop.glb')
