@@ -2,9 +2,9 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { Project } from '../lib/projects'
 
-const Wave = dynamic(() => import('./WebGL/Wave'), {
-  ssr: false,
-})
+// const Wave = dynamic(() => import('./WebGL/Wave'), {
+//   ssr: false,
+// })
 
 const ProjectView = ({ proj }: { proj: Project }) => {
   return (
@@ -12,7 +12,7 @@ const ProjectView = ({ proj }: { proj: Project }) => {
       {proj.screenshot && (
         <>
           <a href={proj.link} target="_blank" rel="noopener noreferrer">
-            <Wave
+            {/*  <Wave
               key={proj.title}
               img={`/basis-sites/${proj.screenshot}.basis`}
               amp={0.1}
@@ -26,7 +26,7 @@ const ProjectView = ({ proj }: { proj: Project }) => {
                   width: '100%',
                 },
               }}
-            />
+            /> */}
             <noscript>
               <picture>
                 <source srcSet={`/sites/${proj.screenshot}.webp`} type="image/webp" />
@@ -36,8 +36,8 @@ const ProjectView = ({ proj }: { proj: Project }) => {
                   css={{
                     width: '100%',
                     '&:hover': {
-                      transform: 'scale(1.05)',
-                    },
+                      transform: 'scale(1.05)'
+                    }
                   }}
                 />
               </picture>
@@ -57,7 +57,7 @@ const ProjectView = ({ proj }: { proj: Project }) => {
               marginRight: '1rem',
               display: 'inline-block',
               marginBottom: '1rem',
-              fontSize: '0.8rem',
+              fontSize: '0.8rem'
             }}
             key={t}
           >
