@@ -11,5 +11,5 @@
     ],
     "@emotion/babel-preset-css-prop"
   ],
-  "plugins": ["emotion", "import-glob-array"]
+  "plugins": ["import-glob-array", "emotion"]
 }
